@@ -22,7 +22,8 @@ class EscapeRoomServiceProvider extends PackageServiceProvider
             ->hasViews()
             ->hasMigrations([
                 '2020_02_16_100000_create_rates_table',
-                '2020_02_16_130000_create_supervisions_table'
+                '2020_02_16_130000_create_supervisions_table',
+                '2020_02_18_100000_create_themes_table'
             ])
             ->hasCommand(EscapeRoomCommand::class);
     }
