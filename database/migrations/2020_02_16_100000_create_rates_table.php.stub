@@ -9,7 +9,7 @@ class CreateRatesTable extends Migration
     public function up()
     {
         Schema::create('rates', function (Blueprint $table) {
-            $userModel = config('refunds.model_class.user');
+            $userModel = config('escape-room.model_class.user');
             $userTable = (new $userModel)->getTable();
 
             $table->id();
