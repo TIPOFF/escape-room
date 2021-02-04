@@ -12,6 +12,12 @@ return [
 
         'schedule' => \App\Models\Schedule::class,
 
+        'schedule_eraser' => \App\Models\ScheduleEraser::class,
+
+        'signature' => \App\Models\Signature::class,
+
+        'recurring_schedule' => \App\Models\RecurringSchedule::class,
+
         'game' => \App\Models\Game::class,
 
         'location' => \App\Models\Location::class,
