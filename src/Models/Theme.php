@@ -45,12 +45,12 @@ class Theme extends Model
 
     public function rooms()
     {
-        return $this->hasMany(config('escape-room.model_class.room'));
+        return $this->hasMany(Room::class);
     }
 
     public function locations()
     {
-        return $this->hasManyThrough(config('escape-room.model_class.location'), config('escape-room.model_class.room'), 'theme_id', 'id', 'id', 'location_id');
+        return $this->hasManyThrough(config('escape-room.model_class.location'), Room::class, 'theme_id', 'id', 'id', 'location_id');
     }
 
     public function supervision()
@@ -167,7 +167,7 @@ class Theme extends Model
 
     public function findMarkets()
     {
-        $rooms = config('escape-room.model_class.room')::where('theme_id', $this->id)
+        $rooms = Room::where('theme_id', $this->id)
             ->whereNull('closed_at')
             ->get();
 

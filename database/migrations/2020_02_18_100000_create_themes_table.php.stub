@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Tipoff\EscapeRoom\Models\Supervision;
 
 class CreateThemesTable extends Migration
 {
@@ -18,7 +19,7 @@ class CreateThemesTable extends Migration
             $videoModel = config('escape-room.model_class.video');
             $videoTable = (new $videoModel)->getTable();
 
-            $supervisionModel = config('escape-room.model_class.supervision');
+            $supervisionModel = new Supervision;
             $supervisionTable = (new $supervisionModel)->getTable();
 
             $table->id();

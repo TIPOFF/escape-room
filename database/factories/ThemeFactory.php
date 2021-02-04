@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Tipoff\EscapeRoom\Models\Supervision;
 use Tipoff\EscapeRoom\Models\Theme;
 
 class ThemeFactory extends Factory
@@ -37,7 +38,7 @@ class ThemeFactory extends Factory
             'scavenger_level' => $this->faker->numberBetween(1, 5),
             'puzzle_level'    => $this->faker->numberBetween(1, 5),
             'escape_rate'     => $this->faker->numberBetween(1, 100),
-            'supervision_id'  => randomOrCreate(config('escape-room.model_class.supervision')),
+            'supervision_id'  => randomOrCreate(Supervision::class),
             'creator_id'      => randomOrCreate(config('escape-room.model_class.user')),
             'updater_id'      => randomOrCreate(config('escape-room.model_class.user')),
         ];

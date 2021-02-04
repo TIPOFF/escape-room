@@ -153,7 +153,7 @@ class Rate extends Model
      */
     public function rooms()
     {
-        return $this->hasMany(config('escape-room.model_class.room'));
+        return $this->hasMany(Room::class);
     }
 
     /**

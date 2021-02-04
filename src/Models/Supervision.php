@@ -18,12 +18,12 @@ class Supervision extends Model
 
     public function themes()
     {
-        return $this->hasMany(config('escape-room.model_class.theme'));
+        return $this->hasMany(Theme::class);
     }
 
     public function rooms()
     {
-        return $this->hasMany(config('escape-room.model_class.room'));
+        return $this->hasMany(Room::class);
     }
 
     public function slots()
