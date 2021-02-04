@@ -14,6 +14,10 @@ return [
 
         'schedule' => \App\Models\Schedule::class,
 
+        'theme' => \App\Models\Theme::class,
+
+        'game' => \App\Models\Game::class,
+
     ]
 
 ];
