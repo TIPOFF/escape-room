@@ -50,7 +50,7 @@ class Theme extends Model
 
     public function locations()
     {
-        return $this->hasManyThrough(config('escape-room.model_class.location'), Room::class, 'theme_id', 'id', 'id', 'location_id');
+        return $this->hasManyThrough(config('tipoff.model_class.location'), Room::class, 'theme_id', 'id', 'id', 'location_id');
     }
 
     public function supervision()
@@ -60,43 +60,43 @@ class Theme extends Model
 
     public function images()
     {
-        return $this->belongsToMany(config('escape-room.model_class.image'))->withTimestamps();
+        return $this->belongsToMany(config('tipoff.model_class.image'))->withTimestamps();
     }
 
     public function image()
     {
-        return $this->belongsTo(config('escape-room.model_class.image'));
+        return $this->belongsTo(config('tipoff.model_class.image'));
     }
 
     public function icon()
     {
-        return $this->belongsTo(config('escape-room.model_class.image'), 'icon_id');
+        return $this->belongsTo(config('tipoff.model_class.image'), 'icon_id');
     }
 
     public function poster()
     {
-        return $this->belongsTo(config('escape-room.model_class.image'), 'poster_image_id');
+        return $this->belongsTo(config('tipoff.model_class.image'), 'poster_image_id');
     }
 
     public function video()
     {
-        return $this->belongsTo(config('escape-room.model_class.video'));
+        return $this->belongsTo(config('tipoff.model_class.video'));
     }
 
     public function creator()
     {
-        return $this->belongsTo(config('escape-room.model_class.user'), 'creator_id');
+        return $this->belongsTo(config('tipoff.model_class.user'), 'creator_id');
     }
 
     public function updater()
     {
-        return $this->belongsTo(config('escape-room.model_class.user'), 'updater_id');
+        return $this->belongsTo(config('tipoff.model_class.user'), 'updater_id');
     }
 
     public function getPathAttribute()
     {
         if (Session::get('current_market_id') != null) {
-            $market = config('escape-room.model_class.market')::find(Session::get('current_market_id'))->slug;
+            $market = config('tipoff.model_class.market')::find(Session::get('current_market_id'))->slug;
 
             return "/{$market}/rooms/{$this->slug}";
         }
@@ -171,11 +171,11 @@ class Theme extends Model
             ->whereNull('closed_at')
             ->get();
 
-        $locations = config('escape-room.model_class.location')::whereIn('id', $rooms->pluck('location_id'))
+        $locations = config('tipoff.model_class.location')::whereIn('id', $rooms->pluck('location_id'))
             ->whereNull('closed_at')
             ->get();
 
-        $markets = config('escape-room.model_class.market')::whereIn('id', $locations->pluck('market_id'))
+        $markets = config('tipoff.model_class.market')::whereIn('id', $locations->pluck('market_id'))
             ->orderBy('state')
             ->orderBy('name')
             ->get();

@@ -12,13 +12,13 @@ class CreateRoomsTable extends Migration
     public function up()
     {
         Schema::create('rooms', function (Blueprint $table) {
-            $userModel = config('escape-room.model_class.user');
+            $userModel = config('tipoff.model_class.user');
             $userTable = (new $userModel)->getTable();
 
-            $locationModel = config('escape-room.model_class.location');
+            $locationModel = config('tipoff.model_class.location');
             $locationTable = (new $locationModel)->getTable();
 
-            $imageModel = config('escape-room.model_class.image');
+            $imageModel = config('tipoff.model_class.image');
             $imageTable = (new $imageModel)->getTable();
 
             $themeTable = (new Theme)->getTable();

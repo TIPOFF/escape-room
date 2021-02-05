@@ -98,7 +98,7 @@ class Room extends Model
 
     public function location()
     {
-        return $this->belongsTo(config('escape-room.model_class.location'));
+        return $this->belongsTo(config('tipoff.model_class.location'));
     }
 
     public function theme()
@@ -118,42 +118,42 @@ class Room extends Model
 
     public function image()
     {
-        return $this->belongsTo(config('escape-room.model_class.image'));
+        return $this->belongsTo(config('tipoff.model_class.image'));
     }
 
     public function schedules()
     {
-        return $this->hasMany(config('escape-room.model_class.schedule'));
+        return $this->hasMany(config('tipoff.model_class.schedule'));
     }
 
     public function scheduleErasers()
     {
-        return $this->hasMany(config('escape-room.model_class.schedule_eraser'));
+        return $this->hasMany(config('tipoff.model_class.schedule_eraser'));
     }
 
     public function signatures()
     {
-        return $this->hasMany(config('escape-room.model_class.signature'));
+        return $this->hasMany(config('tipoff.model_class.signature'));
     }
 
     public function games()
     {
-        return $this->hasMany(config('escape-room.model_class.game'));
+        return $this->hasMany(config('tipoff.model_class.game'));
     }
 
     public function slots()
     {
-        return $this->hasMany(config('escape-room.model_class.slot'));
+        return $this->hasMany(config('tipoff.model_class.slot'));
     }
 
     public function creator()
     {
-        return $this->belongsTo(config('escape-room.model_class.user'), 'creator_id');
+        return $this->belongsTo(config('tipoff.model_class.user'), 'creator_id');
     }
 
     public function updater()
     {
-        return $this->belongsTo(config('escape-room.model_class.user'), 'updater_id');
+        return $this->belongsTo(config('tipoff.model_class.user'), 'updater_id');
     }
 
     public function isComing()
@@ -182,7 +182,7 @@ class Room extends Model
 
     public function recurringSchedules()
     {
-        return $this->hasMany(config('escape-room.model_class.recurring_schedule'));
+        return $this->hasMany(config('tipoff.model_class.recurring_schedule'));
     }
 
     /**
