@@ -54,8 +54,8 @@ class RateFactory extends Factory
             'private_15'        => $this->faker->numberBetween(1500, 5000),
             'private_16'        => $this->faker->numberBetween(1500, 5000),
 
-            'creator_id'        => randomOrCreate(config('support.model_class.user')),
-            'updater_id'        => randomOrCreate(config('support.model_class.user')),
+            'creator_id'        => randomOrCreate(config('tipoff.model_class.user')),
+            'updater_id'        => randomOrCreate(config('tipoff.model_class.user')),
         ];
     }
 }

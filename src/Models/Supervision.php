@@ -28,11 +28,11 @@ class Supervision extends Model
 
     public function slots()
     {
-        return $this->hasMany(config('support.model_class.slot'));
+        return $this->hasMany(config('tipoff.model_class.slot'));
     }
 
     public function games()
     {
-        return $this->hasMany(config('support.model_class.game'));
+        return $this->hasMany(config('tipoff.model_class.game'));
     }
 }

@@ -9,7 +9,7 @@ class CreateRatesTable extends Migration
     public function up()
     {
         Schema::create('rates', function (Blueprint $table) {
-            $userModel = config('support.model_class.user');
+            $userModel = config('tipoff.model_class.user');
             $userTable = (new $userModel)->getTable();
 
             $table->id();

@@ -23,7 +23,7 @@ class RoomFactory extends Factory
     public function definition()
     {
         return [
-            'location_id'           => randomOrCreate(config('support.model_class.location')),
+            'location_id'           => randomOrCreate(config('tipoff.model_class.location')),
             'theme_id'              => randomOrCreate(Theme::class),
             'rate_id'               => randomOrCreate(Rate::class),
             'supervision_id'        => randomOrCreate(Supervision::class),
@@ -35,8 +35,8 @@ class RoomFactory extends Factory
             'reset_time'            => $this->faker->randomElement([10, 15, 15, 20, 25, 30, 30, 30, 45]),
             'occupied_time'         => $this->faker->randomElement([45, 60, 75, 90, 120]),
             'note'                  => $this->faker->sentences(1, true),
-            'creator_id'            => randomOrCreate(config('support.model_class.user')),
-            'updater_id'            => randomOrCreate(config('support.model_class.user')),
+            'creator_id'            => randomOrCreate(config('tipoff.model_class.user')),
+            'updater_id'            => randomOrCreate(config('tipoff.model_class.user')),
         ];
     }
 }
