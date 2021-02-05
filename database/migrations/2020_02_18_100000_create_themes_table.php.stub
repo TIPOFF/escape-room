@@ -1,0 +1,51 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Tipoff\EscapeRoom\Models\Supervision;
+
+class CreateThemesTable extends Migration
+{
+    public function up()
+    {
+        Schema::create('themes', function (Blueprint $table) {
+            $userModel = config('escape-room.model_class.user');
+            $userTable = (new $userModel)->getTable();
+
+            $imageModel = config('escape-room.model_class.image');
+            $imageTable = (new $imageModel)->getTable();
+
+            $videoModel = config('escape-room.model_class.video');
+            $videoTable = (new $videoModel)->getTable();
+
+            $supervisionModel = new Supervision;
+            $supervisionTable = (new $supervisionModel)->getTable();
+
+            $table->id();
+            $table->string('slug')->unique()->index();
+            $table->string('name')->unique();
+            $table->string('title')->unique();
+            $table->string('full_title')->unique();
+            $table->text('excerpt')->nullable();
+            $table->text('description')->nullable();
+            $table->text('synopsis')->nullable();
+            $table->text('story')->nullable();
+            $table->text('info')->nullable(); // Additional information about escape rooms with this theme. Used for note on Escape the Colosseum
+            $table->unsignedTinyInteger('duration'); // Minutes
+            $table->unsignedTinyInteger('occupied_time'); // Minutes. Typically is duration of theme plus a reset/cleanup time. In some cases like Colossuem, groups can be staggered into room every 45 min.
+            $table->unsignedTinyInteger('scavenger_level')->nullable(); // 1-5 scale
+            $table->unsignedTinyInteger('puzzle_level')->nullable(); // 1-5 scale
+            $table->unsignedTinyInteger('escape_rate')->nullable(); // 0-100% scale
+            $table->foreignId('image_id')->nullable()->references('id')->on($imageTable);
+            $table->foreignId('video_id')->nullable()->unique()->references('id')->on($videoTable);
+            $table->foreignId('poster_image_id')->nullable()->references('id')->on($imageTable);
+            $table->foreignId('icon_id')->nullable()->references('id')->on($imageTable);
+            $table->foreignId('supervision_id')->references('id')->on($supervisionTable);
+
+            $table->foreignId('creator_id')->references('id')->on($userTable);
+            $table->foreignId('updater_id')->references('id')->on($userTable);
+            $table->timestamps();
+        });
+    }
+}
