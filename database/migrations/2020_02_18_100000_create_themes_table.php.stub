@@ -10,13 +10,13 @@ class CreateThemesTable extends Migration
     public function up()
     {
         Schema::create('themes', function (Blueprint $table) {
-            $userModel = config('escape-room.model_class.user');
+            $userModel = config('support.model_class.user');
             $userTable = (new $userModel)->getTable();
 
-            $imageModel = config('escape-room.model_class.image');
+            $imageModel = config('support.model_class.image');
             $imageTable = (new $imageModel)->getTable();
 
-            $videoModel = config('escape-room.model_class.video');
+            $videoModel = config('support.model_class.video');
             $videoTable = (new $videoModel)->getTable();
 
             $supervisionModel = new Supervision;

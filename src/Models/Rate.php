@@ -137,7 +137,7 @@ class Rate extends Model
      */
     public function creator()
     {
-        return $this->belongsTo(config('escape-room.model_class.user'), 'creator_id');
+        return $this->belongsTo(config('support.model_class.user'), 'creator_id');
     }
 
     /**
@@ -145,7 +145,7 @@ class Rate extends Model
      */
     public function updater()
     {
-        return $this->belongsTo(config('escape-room.model_class.user'), 'updater_id');
+        return $this->belongsTo(config('support.model_class.user'), 'updater_id');
     }
 
     /**
@@ -161,7 +161,7 @@ class Rate extends Model
      */
     public function slots()
     {
-        return $this->hasMany(config('escape-room.model_class.slot'));
+        return $this->hasMany(config('support.model_class.slot'));
     }
 
     /**
@@ -169,7 +169,7 @@ class Rate extends Model
      */
     public function bookings()
     {
-        return $this->hasMany(config('escape-room.model_class.booking'));
+        return $this->hasMany(config('support.model_class.booking'));
     }
 
     /**
@@ -177,6 +177,6 @@ class Rate extends Model
      */
     public function schedules()
     {
-        return $this->hasMany(config('escape-room.model_class.schedule'));
+        return $this->hasMany(config('support.model_class.schedule'));
     }
 }

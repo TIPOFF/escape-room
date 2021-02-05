@@ -39,8 +39,8 @@ class ThemeFactory extends Factory
             'puzzle_level'    => $this->faker->numberBetween(1, 5),
             'escape_rate'     => $this->faker->numberBetween(1, 100),
             'supervision_id'  => randomOrCreate(Supervision::class),
-            'creator_id'      => randomOrCreate(config('escape-room.model_class.user')),
-            'updater_id'      => randomOrCreate(config('escape-room.model_class.user')),
+            'creator_id'      => randomOrCreate(config('support.model_class.user')),
+            'updater_id'      => randomOrCreate(config('support.model_class.user')),
         ];
     }
 }
