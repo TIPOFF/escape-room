@@ -96,7 +96,11 @@ class Theme extends BaseModel
     public function getPathAttribute()
     {
         if (Session::get('current_market_id') != null) {
-            $market = config('tipoff.model_class.market')::find(Session::get('current_market_id'))->slug;
+            /** @var string $marketModel */
+            $marketModel = config('tipoff.model_class.market');
+            $marketModelInstance = new $marketModel;
+
+            $market = $marketModelInstance->find(Session::get('current_market_id'))->slug;
 
             return "/{$market}/rooms/{$this->slug}";
         }
@@ -171,11 +175,19 @@ class Theme extends BaseModel
             ->whereNull('closed_at')
             ->get();
 
-        $locations = config('tipoff.model_class.location')::whereIn('id', $rooms->pluck('location_id'))
+        /** @var string $locationModel */
+        $locationModel = config('tipoff.model_class.location');
+        $locationModelInstance = (new $locationModel)->query();
+
+        $locations = $locationModelInstance->whereIn('id', $rooms->pluck('location_id'))
             ->whereNull('closed_at')
             ->get();
 
-        $markets = config('tipoff.model_class.market')::whereIn('id', $locations->pluck('market_id'))
+        /** @var string $marketModel */
+        $marketModel = config('tipoff.model_class.market');
+        $marketModelInstance = (new $marketModel)->query();
+
+        $markets = $marketModelInstance->whereIn('id', $locations->pluck('market_id'))
             ->orderBy('state')
             ->orderBy('name')
             ->get();
