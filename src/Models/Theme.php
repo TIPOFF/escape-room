@@ -1,10 +1,10 @@
 <?php namespace Tipoff\EscapeRoom\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
+use Tipoff\Support\Models\BaseModel;
 
-class Theme extends Model
+class Theme extends BaseModel
 {
     use HasFactory;
 

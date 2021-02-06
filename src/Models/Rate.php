@@ -1,9 +1,9 @@
 <?php namespace Tipoff\EscapeRoom\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Tipoff\Support\Models\BaseModel;
 
-class Rate extends Model
+class Rate extends BaseModel
 {
     use HasFactory;
 
