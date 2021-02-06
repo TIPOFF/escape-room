@@ -1,7 +1,7 @@
 # Laravel package for escape room models and logic
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/tipoff/escape-room.svg?style=flat-square)](https://packagist.org/packages/tipoff/escape-room)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/tipoff/escape-room/run-tests?label=tests)](https://github.com/tipoff/escape-room/actions?query=workflow%3ATests+branch%3Amaster)
+![Tests](https://github.com/tipoff/escape-room/workflows/Tests/badge.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/tipoff/escape-room.svg?style=flat-square)](https://packagist.org/packages/tipoff/escape-room)
 
 
