@@ -25,6 +25,7 @@ class EscapeRoomServiceProvider extends PackageServiceProvider
                 '2020_02_16_130000_create_supervisions_table',
                 '2020_02_18_100000_create_themes_table',
                 '2020_02_18_110000_create_rooms_table',
+                '2020_05_11_100000_create_participants_table',
             ])
             ->hasCommand(EscapeRoomCommand::class);
     }
