@@ -25,7 +25,7 @@ class EscapeRoomServiceProvider extends PackageServiceProvider
                 '2020_02_16_130000_create_supervisions_table',
                 '2020_02_18_100000_create_themes_table',
                 '2020_02_18_110000_create_rooms_table',
-                '2020_05_11_100000_create_participants_table'
+                '2020_05_11_100000_create_participants_table',
             ])
             ->hasCommand(EscapeRoomCommand::class);
     }
@@ -37,7 +37,7 @@ class EscapeRoomServiceProvider extends PackageServiceProvider
     public function packageBooted()
     {
         foreach ($this->package->migrationFileNames as $migrationFileName) {
-            if (!$this->migrationFileExists($migrationFileName)) {
+            if (! $this->migrationFileExists($migrationFileName)) {
                 $this->publishes([
                     $this->package->basePath("/../database/migrations/{$migrationFileName}.php.stub") => database_path('migrations/' . Str::finish($migrationFileName, '.php')),
                 ], "{$this->package->name}-migrations");
