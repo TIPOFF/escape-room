@@ -40,7 +40,7 @@ class ThemeFactory extends Factory
             'escape_rate'     => $this->faker->numberBetween(1, 100),
             'supervision_id'  => randomOrCreate(app('supervision')),
             'creator_id'      => randomOrCreate(app('user')),
-            'updater_id'      => randomOrCreate(app('user')),
+            'updater_id'      => randomOrCreate(app('user'))
         ];
     }
 }

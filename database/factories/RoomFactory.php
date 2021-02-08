@@ -36,7 +36,7 @@ class RoomFactory extends Factory
             'occupied_time'         => $this->faker->randomElement([45, 60, 75, 90, 120]),
             'note'                  => $this->faker->sentences(1, true),
             'creator_id'            => randomOrCreate(app('user')),
-            'updater_id'            => randomOrCreate(app('user')),
+            'updater_id'            => randomOrCreate(app('user'))
         ];
     }
 }

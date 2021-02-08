@@ -24,7 +24,7 @@ class ParticipantFactory extends Factory
             'email'     => $this->faker->unique()->safeEmail,
             'name'      => $this->faker->firstName,
             'name_last' => $this->faker->lastName,
-            'dob'       => $this->faker->date('Y-m-d', '-18 years'),
+            'dob'       => $this->faker->date('Y-m-d', '-18 years')
         ];
     }
 }
