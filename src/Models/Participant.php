@@ -20,7 +20,7 @@ class Participant extends Model
      */
     public function user()
     {
-        return $this->belongsTo(config('tipoff.model_class.user'));
+        return $this->belongsTo(app('user'));
     }
 
     /**
@@ -28,7 +28,7 @@ class Participant extends Model
      */
     public function feedbacks()
     {
-        return $this->hasMany(config('tipoff.model_class.feedback'));
+        return $this->hasMany(app('feedback'));
     }
 
     /**
@@ -36,7 +36,7 @@ class Participant extends Model
      */
     public function signatures()
     {
-        return $this->hasMany(config('tipoff.model_class.signature'));
+        return $this->hasMany(app('signature'));
     }
 
     /**
@@ -44,6 +44,6 @@ class Participant extends Model
      */
     public function bookings()
     {
-        return $this->belongsToMany(config('tipoff.model_class.booking'));
+        return $this->belongsToMany(app('booking'));
     }
 }
