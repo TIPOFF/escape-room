@@ -1,12 +1,12 @@
 <?php namespace Tipoff\EscapeRoom\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Tipoff\Support\Models\BaseModel;
+use Tipoff\Support\Traits\HasPackageFactory;
 
 class Room extends BaseModel
 {
-    use HasFactory;
+    use HasPackageFactory;
 
     protected $guarded = ['id'];
 
