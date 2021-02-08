@@ -148,12 +148,12 @@ class Room extends BaseModel
 
     public function creator()
     {
-        return $this->belongsTo(app('user')), 'creator_id');
+        return $this->belongsTo(app('user'), 'creator_id');
     }
 
     public function updater()
     {
-        return $this->belongsTo(app('user')), 'updater_id');
+        return $this->belongsTo(app('user'), 'updater_id');
     }
 
     public function isComing()
