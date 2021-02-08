@@ -3,8 +3,6 @@
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Tipoff\EscapeRoom\Models\Rate;
 use Tipoff\EscapeRoom\Models\Room;
-use Tipoff\EscapeRoom\Models\Supervision;
-use Tipoff\EscapeRoom\Models\Theme;
 
 class RoomFactory extends Factory
 {
@@ -13,7 +11,7 @@ class RoomFactory extends Factory
      *
      * @var string
      */
-    protected $model = Room::class;
+    protected $model = app('room');
 
     /**
      * Define the model's default state.

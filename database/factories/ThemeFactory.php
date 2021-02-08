@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Tipoff\EscapeRoom\Models\Supervision;
-use Tipoff\EscapeRoom\Models\Theme;
 
 class ThemeFactory extends Factory
 {
@@ -12,7 +10,7 @@ class ThemeFactory extends Factory
      *
      * @var string
      */
-    protected $model = Theme::class;
+    protected $model = app('theme');
 
     /**
      * Define the model's default state.

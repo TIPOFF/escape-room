@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Tipoff\EscapeRoom\Models\Supervision;
 
 class SupervisionFactory extends Factory
 {
@@ -11,7 +10,7 @@ class SupervisionFactory extends Factory
      *
      * @var string
      */
-    protected $model = Supervision::class;
+    protected $model = app('supervision');
 
     /**
      * Define the model's default state.
