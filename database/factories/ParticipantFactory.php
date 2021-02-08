@@ -20,7 +20,7 @@ class ParticipantFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'   => randomOrCreate(config('tipoff.model_class.user')),
+            'user_id'   => randomOrCreate(app('user')),
             'email'     => $this->faker->unique()->safeEmail,
             'name'      => $this->faker->firstName,
             'name_last' => $this->faker->lastName,
