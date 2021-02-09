@@ -1,7 +1,6 @@
 <?php namespace Tipoff\EscapeRoom\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Tipoff\EscapeRoom\Models\Rate;
 use Tipoff\EscapeRoom\Models\Room;
 
 class RoomFactory extends Factory
@@ -11,7 +10,7 @@ class RoomFactory extends Factory
      *
      * @var string
      */
-    protected $model = app('room');
+    protected $model = Room::class;
 
     /**
      * Define the model's default state.

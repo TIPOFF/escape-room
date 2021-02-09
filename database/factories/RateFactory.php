@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Tipoff\EscapeRoom\Models\Rate;
 
 class RateFactory extends Factory
 {
@@ -10,7 +11,7 @@ class RateFactory extends Factory
      *
      * @var string
      */
-    protected $model = app('rate');
+    protected $model = Rate::class;
 
     /**
      * Define the model's default state.

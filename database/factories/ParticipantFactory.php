@@ -1,6 +1,9 @@
-<?php namespace Tipoff\EscapeRoom\Database\Factories;
+<?php
+
+namespace Tipoff\EscapeRoom\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Tipoff\EscapeRoom\Models\Participant;
 
 class ParticipantFactory extends Factory
 {
@@ -9,7 +12,7 @@ class ParticipantFactory extends Factory
      *
      * @var string
      */
-    protected $model = app('participant');
+    protected $model = Participant::class;
 
     /**
      * Define the model's default state.
