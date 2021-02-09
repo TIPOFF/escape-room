@@ -12,26 +12,11 @@ class CreateRoomsTable extends Migration
     public function up()
     {
         Schema::create('rooms', function (Blueprint $table) {
-            $userModel = config('tipoff.model_class.user');
-            $userTable = (new $userModel)->getTable();
-
-            $locationModel = config('tipoff.model_class.location');
-            $locationTable = (new $locationModel)->getTable();
-
-            $imageModel = config('tipoff.model_class.image');
-            $imageTable = (new $imageModel)->getTable();
-
-            $themeTable = (new Theme)->getTable();
-
-            $rateTable = (new Rate)->getTable();
-
-            $supervisionTable = (new Supervision)->getTable();
-
             $table->id();
-            $table->foreignId('location_id')->index()->references('id')->on($locationTable);
-            $table->foreignId('theme_id')->index()->references('id')->on($themeTable);
-            $table->foreignId('rate_id')->index()->references('id')->on($rateTable); // Default pricing rate structure for the room. Can be ovveridden by schedules & slots.
-            $table->foreignId('supervision_id')->references('id')->on($supervisionTable);
+            $table->foreignIdFor(app('location'), 'location_id')->index();
+            $table->foreignIdFor(app('theme'), 'theme_id')->index();
+            $table->foreignIdFor(app('rate'), 'rate_id')->index(); // Default pricing rate structure for the room. Can be ovveridden by schedules & slots.
+            $table->foreignIdFor(app('supervision'), 'supervision_id');
             $table->date('opened_at');
             $table->date('closed_at')->nullable();
             $table->unsignedTinyInteger('participants'); // Max amount of participants for public games
@@ -43,11 +28,11 @@ class CreateRoomsTable extends Migration
             $table->string('title')->nullable(); // Override of theme title on Market page if needed
             $table->text('excerpt')->nullable(); // Override of theme excerpt on Market page if needed
             $table->text('description')->nullable(); // Override of theme description on Market page if needed
-            $table->foreignId('image_id')->nullable()->references('id')->on($imageTable);
-            $table->foreignId('poster_image_id')->nullable()->references('id')->on($imageTable); // Override of theme poster on Market page if needed
+            $table->foreignIdFor(app('image'), 'image_id')->nullable();
+            $table->foreignIdFor(app('image'), 'poster_image_id')->nullable(); // Override of theme poster on Market page if needed
 
-            $table->foreignId('creator_id')->references('id')->on($userTable);
-            $table->foreignId('updater_id')->references('id')->on($userTable);
+            $table->foreignIdFor(app('user'), 'creator_id');
+            $table->foreignIdFor(app('user'), 'updater_id');
             $table->timestamps();
         });
     }

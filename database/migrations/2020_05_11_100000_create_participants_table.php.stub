@@ -9,11 +9,8 @@ class CreateParticipantsTable extends Migration
     public function up()
     {
         Schema::create('participants', function (Blueprint $table) {
-            $userModel = config('tipoff.model_class.user');
-            $userTable = (new $userModel)->getTable();
-
             $table->id();
-            $table->foreignId('user_id')->nullable()->index()->references('id')->on($userTable);
+            $table->foreignIdFor(app('user'), 'user_id')->nullable()->index();
             $table->string('email')->unique();
             $table->string('name')->nullable(); // first name
             $table->string('name_last')->nullable();

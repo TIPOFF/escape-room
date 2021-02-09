@@ -10,18 +10,6 @@ class CreateThemesTable extends Migration
     public function up()
     {
         Schema::create('themes', function (Blueprint $table) {
-            $userModel = config('tipoff.model_class.user');
-            $userTable = (new $userModel)->getTable();
-
-            $imageModel = config('tipoff.model_class.image');
-            $imageTable = (new $imageModel)->getTable();
-
-            $videoModel = config('tipoff.model_class.video');
-            $videoTable = (new $videoModel)->getTable();
-
-            $supervisionModel = new Supervision;
-            $supervisionTable = (new $supervisionModel)->getTable();
-
             $table->id();
             $table->string('slug')->unique()->index();
             $table->string('name')->unique();
@@ -37,14 +25,14 @@ class CreateThemesTable extends Migration
             $table->unsignedTinyInteger('scavenger_level')->nullable(); // 1-5 scale
             $table->unsignedTinyInteger('puzzle_level')->nullable(); // 1-5 scale
             $table->unsignedTinyInteger('escape_rate')->nullable(); // 0-100% scale
-            $table->foreignId('image_id')->nullable()->references('id')->on($imageTable);
-            $table->foreignId('video_id')->nullable()->unique()->references('id')->on($videoTable);
-            $table->foreignId('poster_image_id')->nullable()->references('id')->on($imageTable);
-            $table->foreignId('icon_id')->nullable()->references('id')->on($imageTable);
-            $table->foreignId('supervision_id')->references('id')->on($supervisionTable);
+            $table->foreignIdFor(app('image'), 'image_id')->nullable();
+            $table->foreignIdFor(app('video'), 'video_id')->nullable()->unique();
+            $table->foreignIdFor(app('image'), 'poster_image_id')->nullable();
+            $table->foreignIdFor(app('image'), 'icon_id')->nullable();
+            $table->foreignIdFor(app('supervision'), 'supervision_id');
 
-            $table->foreignId('creator_id')->references('id')->on($userTable);
-            $table->foreignId('updater_id')->references('id')->on($userTable);
+            $table->foreignIdFor(app('user'), 'creator_id');
+            $table->foreignIdFor(app('user'), 'updater_id');
             $table->timestamps();
         });
     }
