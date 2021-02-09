@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace Tipoff\EscapeRoom;
 
-use Illuminate\Support\Str;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Tipoff\EscapeRoom\Commands\EscapeRoomCommand;
 
 class EscapeRoomServiceProvider extends PackageServiceProvider
 {
