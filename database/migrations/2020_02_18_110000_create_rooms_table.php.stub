@@ -13,10 +13,10 @@ class CreateRoomsTable extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(app('location'), 'location_id')->index();
-            $table->foreignIdFor(app('theme'), 'theme_id')->index();
-            $table->foreignIdFor(app('rate'), 'rate_id')->index(); // Default pricing rate structure for the room. Can be ovveridden by schedules & slots.
-            $table->foreignIdFor(app('supervision'), 'supervision_id');
+            $table->foreignIdFor(app('location'))->index();
+            $table->foreignIdFor(app('theme'))->index();
+            $table->foreignIdFor(app('rate'))->index(); // Default pricing rate structure for the room. Can be ovveridden by schedules & slots.
+            $table->foreignIdFor(app('supervision'));
             $table->date('opened_at');
             $table->date('closed_at')->nullable();
             $table->unsignedTinyInteger('participants'); // Max amount of participants for public games
@@ -28,7 +28,7 @@ class CreateRoomsTable extends Migration
             $table->string('title')->nullable(); // Override of theme title on Market page if needed
             $table->text('excerpt')->nullable(); // Override of theme excerpt on Market page if needed
             $table->text('description')->nullable(); // Override of theme description on Market page if needed
-            $table->foreignIdFor(app('image'), 'image_id')->nullable();
+            $table->foreignIdFor(app('image'))->nullable();
             $table->foreignIdFor(app('image'), 'poster_image_id')->nullable(); // Override of theme poster on Market page if needed
 
             $table->foreignIdFor(app('user'), 'creator_id');
