@@ -98,62 +98,62 @@ class Room extends BaseModel
 
     public function location()
     {
-        return $this->belongsTo(config('tipoff.model_class.location'));
+        return $this->belongsTo(app('location'));
     }
 
     public function theme()
     {
-        return $this->belongsTo(Theme::class);
+        return $this->belongsTo(app('theme'));
     }
 
     public function rate()
     {
-        return $this->belongsTo(Rate::class);
+        return $this->belongsTo(app('rate'));
     }
 
     public function supervision()
     {
-        return $this->belongsTo(Supervision::class);
+        return $this->belongsTo(app('supervision'));
     }
 
     public function image()
     {
-        return $this->belongsTo(config('tipoff.model_class.image'));
+        return $this->belongsTo(app('image'));
     }
 
     public function schedules()
     {
-        return $this->hasMany(config('tipoff.model_class.schedule'));
+        return $this->hasMany(app('schedule'));
     }
 
     public function scheduleErasers()
     {
-        return $this->hasMany(config('tipoff.model_class.schedule_eraser'));
+        return $this->hasMany(app('schedule_eraser'));
     }
 
     public function signatures()
     {
-        return $this->hasMany(config('tipoff.model_class.signature'));
+        return $this->hasMany(app('signature'));
     }
 
     public function games()
     {
-        return $this->hasMany(config('tipoff.model_class.game'));
+        return $this->hasMany(app('game'));
     }
 
     public function slots()
     {
-        return $this->hasMany(config('tipoff.model_class.slot'));
+        return $this->hasMany(app('slot'));
     }
 
     public function creator()
     {
-        return $this->belongsTo(config('tipoff.model_class.user'), 'creator_id');
+        return $this->belongsTo(app('user'), 'creator_id');
     }
 
     public function updater()
     {
-        return $this->belongsTo(config('tipoff.model_class.user'), 'updater_id');
+        return $this->belongsTo(app('user'), 'updater_id');
     }
 
     public function isComing()
@@ -182,7 +182,7 @@ class Room extends BaseModel
 
     public function recurringSchedules()
     {
-        return $this->hasMany(config('tipoff.model_class.recurring_schedule'));
+        return $this->hasMany(app('recurring_schedule'));
     }
 
     /**

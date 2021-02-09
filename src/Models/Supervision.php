@@ -18,21 +18,21 @@ class Supervision extends BaseModel
 
     public function themes()
     {
-        return $this->hasMany(Theme::class);
+        return $this->hasMany(app('theme'));
     }
 
     public function rooms()
     {
-        return $this->hasMany(Room::class);
+        return $this->hasMany(app('room'));
     }
 
     public function slots()
     {
-        return $this->hasMany(config('tipoff.model_class.slot'));
+        return $this->hasMany(app('slot'));
     }
 
     public function games()
     {
-        return $this->hasMany(config('tipoff.model_class.game'));
+        return $this->hasMany(app('game'));
     }
 }

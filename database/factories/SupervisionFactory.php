@@ -28,7 +28,7 @@ class SupervisionFactory extends Factory
             'title'         => $sentence,
             'excerpt'       => $this->faker->sentence,
             'description'   => $this->faker->paragraph,
-            'details'       => $this->faker->paragraph,
+            'details'       => $this->faker->paragraph
         ];
     }
 }

@@ -137,7 +137,7 @@ class Rate extends BaseModel
      */
     public function creator()
     {
-        return $this->belongsTo(config('tipoff.model_class.user'), 'creator_id');
+        return $this->belongsTo(app('user'), 'creator_id');
     }
 
     /**
@@ -145,7 +145,7 @@ class Rate extends BaseModel
      */
     public function updater()
     {
-        return $this->belongsTo(config('tipoff.model_class.user'), 'updater_id');
+        return $this->belongsTo(app('user'), 'updater_id');
     }
 
     /**
@@ -153,7 +153,7 @@ class Rate extends BaseModel
      */
     public function rooms()
     {
-        return $this->hasMany(Room::class);
+        return $this->hasMany(app('room'));
     }
 
     /**
@@ -161,7 +161,7 @@ class Rate extends BaseModel
      */
     public function slots()
     {
-        return $this->hasMany(config('tipoff.model_class.slot'));
+        return $this->hasMany(app('slot'));
     }
 
     /**
@@ -169,7 +169,7 @@ class Rate extends BaseModel
      */
     public function bookings()
     {
-        return $this->hasMany(config('tipoff.model_class.booking'));
+        return $this->hasMany(app('booking'));
     }
 
     /**
@@ -177,6 +177,6 @@ class Rate extends BaseModel
      */
     public function schedules()
     {
-        return $this->hasMany(config('tipoff.model_class.schedule'));
+        return $this->hasMany(app('schedule'));
     }
 }
