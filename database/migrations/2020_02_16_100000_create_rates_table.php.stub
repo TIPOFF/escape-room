@@ -9,9 +9,6 @@ class CreateRatesTable extends Migration
     public function up()
     {
         Schema::create('rates', function (Blueprint $table) {
-            $userModel = config('tipoff.model_class.user');
-            $userTable = (new $userModel)->getTable();
-
             $table->id();
             $table->string('name')->unique(); // Internal reference name
             $table->string('slug')->unique()->index();
@@ -44,8 +41,8 @@ class CreateRatesTable extends Migration
             $table->unsignedInteger('private_15')->default(4800); // In cents. Price per participant.
             $table->unsignedInteger('private_16')->default(4800); // In cents. Price per participant.
 
-            $table->foreignId('creator_id')->references('id')->on($userTable);
-            $table->foreignId('updater_id')->references('id')->on($userTable);
+            $table->foreignIdFor(app('user'), 'creator_id');
+            $table->foreignIdFor(app('user'), 'updater_id');
             $table->timestamps();
         });
     }
