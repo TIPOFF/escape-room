@@ -12,6 +12,7 @@ class EscapeRoomServiceProvider extends PackageServiceProvider
     public function boot()
     {
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
         parent::boot();
     }
 
