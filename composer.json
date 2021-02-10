@@ -18,7 +18,7 @@
         "php": "^7.4|^8.0",
         "drewroberts/media": "^3.0",
         "nesbot/carbon": "^2.44",
-        "tipoff/support": "^1.2"
+        "tipoff/support": "^1.2.0"
     },
     "require-dev": {
         "tipoff/test-support": "^1.0"

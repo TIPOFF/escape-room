@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tipoff\EscapeRoom;
 
 use Spatie\LaravelPackageTools\Package;
@@ -23,7 +25,6 @@ class EscapeRoomServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('escape-room')
-            ->hasConfigFile()
-            ->hasViews();
+            ->hasConfigFile();
     }
 }
