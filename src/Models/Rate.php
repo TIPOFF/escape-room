@@ -1,11 +1,13 @@
 <?php namespace Tipoff\EscapeRoom\Models;
 
 use Tipoff\Support\Models\BaseModel;
+use Tipoff\Support\Traits\HasCreator;
 use Tipoff\Support\Traits\HasPackageFactory;
+use Tipoff\Support\Traits\HasUpdater;
 
 class Rate extends BaseModel
 {
-    use HasPackageFactory;
+    use HasCreator, HasUpdater, HasPackageFactory;
 
     protected $guarded = ['id'];
 
@@ -15,16 +17,8 @@ class Rate extends BaseModel
     {
         parent::boot();
 
-        static::creating(function ($rate) {
-            if (auth()->check()) {
-                $rate->creator_id = auth()->id();
-            }
-        });
 
         static::saving(function ($rate) {
-            if (auth()->check()) {
-                $rate->updater_id = auth()->id();
-            }
             if (empty($rate->name)) {
                 throw new \Exception('A rate must have a name.');
             }
@@ -131,23 +125,6 @@ class Rate extends BaseModel
 
         return $this->$key * $participants;
     }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function creator()
-    {
-        return $this->belongsTo(app('user'), 'creator_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function updater()
-    {
-        return $this->belongsTo(app('user'), 'updater_id');
-    }
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

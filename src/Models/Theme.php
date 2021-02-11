@@ -3,11 +3,13 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
 use Tipoff\Support\Models\BaseModel;
+use Tipoff\Support\Traits\HasCreator;
 use Tipoff\Support\Traits\HasPackageFactory;
+use Tipoff\Support\Traits\HasUpdater;
 
 class Theme extends BaseModel
 {
-    use HasPackageFactory;
+    use HasCreator, HasUpdater, HasPackageFactory;
 
     protected $guarded = ['id'];
 
@@ -22,12 +24,6 @@ class Theme extends BaseModel
     {
         parent::boot();
 
-        static::creating(function ($theme) {
-            if (auth()->check()) {
-                $theme->creator_id = auth()->id();
-            }
-        });
-
         static::saving(function ($theme) {
             if (empty($theme->duration)) {
                 $theme->duration = 60;
@@ -37,9 +33,6 @@ class Theme extends BaseModel
             }
             if (empty($theme->supervision_id)) {
                 $theme->supervision_id = 2;
-            }
-            if (auth()->check()) {
-                $theme->updater_id = auth()->id();
             }
         });
     }
@@ -82,16 +75,6 @@ class Theme extends BaseModel
     public function video()
     {
         return $this->belongsTo(app('video'));
-    }
-
-    public function creator()
-    {
-        return $this->belongsTo(app('user'), 'creator_id');
-    }
-
-    public function updater()
-    {
-        return $this->belongsTo(app('user'), 'updater_id');
     }
 
     public function getPathAttribute()

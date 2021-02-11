@@ -2,11 +2,13 @@
 
 use Illuminate\Database\Eloquent\Builder;
 use Tipoff\Support\Models\BaseModel;
+use Tipoff\Support\Traits\HasCreator;
 use Tipoff\Support\Traits\HasPackageFactory;
+use Tipoff\Support\Traits\HasUpdater;
 
 class Room extends BaseModel
 {
-    use HasPackageFactory;
+    use HasCreator, HasUpdater, HasPackageFactory;
 
     protected $guarded = ['id'];
 
@@ -20,12 +22,6 @@ class Room extends BaseModel
     protected static function boot()
     {
         parent::boot();
-
-        static::creating(function ($room) {
-            if (auth()->check()) {
-                $room->creator_id = auth()->id();
-            }
-        });
 
         static::saving(function ($room) {
             if (empty($room->location_id)) {
@@ -57,9 +53,6 @@ class Room extends BaseModel
             }
             if (empty($room->priority)) {
                 $room->priority = 10; // A higher priority shows the room higher on the market page, a priority of 1 shows the room on the bottom of the market page.
-            }
-            if (auth()->check()) {
-                $room->updater_id = auth()->id();
             }
         });
 
@@ -144,16 +137,6 @@ class Room extends BaseModel
     public function slots()
     {
         return $this->hasMany(app('slot'));
-    }
-
-    public function creator()
-    {
-        return $this->belongsTo(app('user'), 'creator_id');
-    }
-
-    public function updater()
-    {
-        return $this->belongsTo(app('user'), 'updater_id');
     }
 
     public function isComing()
