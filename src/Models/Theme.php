@@ -9,7 +9,9 @@ use Tipoff\Support\Traits\HasUpdater;
 
 class Theme extends BaseModel
 {
-    use HasCreator, HasUpdater, HasPackageFactory;
+    use HasCreator;
+    use HasUpdater;
+    use HasPackageFactory;
 
     protected $guarded = ['id'];
 

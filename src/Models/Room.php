@@ -8,7 +8,9 @@ use Tipoff\Support\Traits\HasUpdater;
 
 class Room extends BaseModel
 {
-    use HasCreator, HasUpdater, HasPackageFactory;
+    use HasCreator;
+    use HasUpdater;
+    use HasPackageFactory;
 
     protected $guarded = ['id'];
 

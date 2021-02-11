@@ -7,7 +7,9 @@ use Tipoff\Support\Traits\HasUpdater;
 
 class Rate extends BaseModel
 {
-    use HasCreator, HasUpdater, HasPackageFactory;
+    use HasCreator;
+    use HasUpdater;
+    use HasPackageFactory;
 
     protected $guarded = ['id'];
 
@@ -125,6 +127,7 @@ class Rate extends BaseModel
 
         return $this->$key * $participants;
     }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
