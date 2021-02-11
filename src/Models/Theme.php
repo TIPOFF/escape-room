@@ -99,9 +99,8 @@ class Theme extends BaseModel
         if (Session::get('current_market_id') != null) {
             /** @var Model $marketModel */
             $marketModel = app('market');
-            $marketModelInstance = new $marketModel;
 
-            $market = $marketModelInstance->find(Session::get('current_market_id'))->slug;
+            $market = $marketModel->find(Session::get('current_market_id'))->slug;
 
             return "/{$market}/rooms/{$this->slug}";
         }
@@ -185,10 +184,9 @@ class Theme extends BaseModel
             ->get();
 
         /** @var Model $marketModel */
-        $marketModel = app('market');
-        $marketModelInstance = (new $marketModel)->query();
+        $marketModel = app('market')->query();
 
-        $markets = $marketModelInstance->whereIn('id', $locations->pluck('market_id'))
+        $markets = $marketModel->whereIn('id', $locations->pluck('market_id'))
             ->orderBy('state')
             ->orderBy('name')
             ->get();
