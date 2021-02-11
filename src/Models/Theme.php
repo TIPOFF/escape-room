@@ -1,5 +1,6 @@
 <?php namespace Tipoff\EscapeRoom\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
 use Tipoff\Support\Models\BaseModel;
 use Tipoff\Support\Traits\HasPackageFactory;
@@ -50,7 +51,7 @@ class Theme extends BaseModel
 
     public function locations()
     {
-        return $this->hasManyThrough(config('tipoff.model_class.location'), Room::class, 'theme_id', 'id', 'id', 'location_id');
+        return $this->hasManyThrough(app('location'), Room::class, 'theme_id', 'id', 'id', 'location_id');
     }
 
     public function supervision()
@@ -60,44 +61,44 @@ class Theme extends BaseModel
 
     public function images()
     {
-        return $this->belongsToMany(config('tipoff.model_class.image'))->withTimestamps();
+        return $this->belongsToMany(app('image'))->withTimestamps();
     }
 
     public function image()
     {
-        return $this->belongsTo(config('tipoff.model_class.image'));
+        return $this->belongsTo(app('image'));
     }
 
     public function icon()
     {
-        return $this->belongsTo(config('tipoff.model_class.image'), 'icon_id');
+        return $this->belongsTo(app('image'), 'icon_id');
     }
 
     public function poster()
     {
-        return $this->belongsTo(config('tipoff.model_class.image'), 'poster_image_id');
+        return $this->belongsTo(app('image'), 'poster_image_id');
     }
 
     public function video()
     {
-        return $this->belongsTo(config('tipoff.model_class.video'));
+        return $this->belongsTo(app('video'));
     }
 
     public function creator()
     {
-        return $this->belongsTo(config('tipoff.model_class.user'), 'creator_id');
+        return $this->belongsTo(app('user'), 'creator_id');
     }
 
     public function updater()
     {
-        return $this->belongsTo(config('tipoff.model_class.user'), 'updater_id');
+        return $this->belongsTo(app('user'), 'updater_id');
     }
 
     public function getPathAttribute()
     {
         if (Session::get('current_market_id') != null) {
-            /** @var string $marketModel */
-            $marketModel = config('tipoff.model_class.market');
+            /** @var Model $marketModel */
+            $marketModel = app('market');
             $marketModelInstance = new $marketModel;
 
             $market = $marketModelInstance->find(Session::get('current_market_id'))->slug;
@@ -176,15 +177,15 @@ class Theme extends BaseModel
             ->get();
 
         /** @var string $locationModel */
-        $locationModel = config('tipoff.model_class.location');
+        $locationModel = app('location');
         $locationModelInstance = (new $locationModel)->query();
 
         $locations = $locationModelInstance->whereIn('id', $rooms->pluck('location_id'))
             ->whereNull('closed_at')
             ->get();
 
-        /** @var string $marketModel */
-        $marketModel = config('tipoff.model_class.market');
+        /** @var Model $marketModel */
+        $marketModel = app('market');
         $marketModelInstance = (new $marketModel)->query();
 
         $markets = $marketModelInstance->whereIn('id', $locations->pluck('market_id'))
