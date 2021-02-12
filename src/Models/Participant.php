@@ -9,8 +9,6 @@ class Participant extends Model
     use HasPackageFactory;
     use SoftDeletes;
 
-    protected $guarded = ['id'];
-
     protected $casts = [
         'dob' => 'date',
     ];
