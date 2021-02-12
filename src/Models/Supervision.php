@@ -7,8 +7,6 @@ class Supervision extends BaseModel
 {
     use HasPackageFactory;
 
-    protected $guarded = ['id'];
-
     protected $casts = [];
 
     public function getRouteKeyName()

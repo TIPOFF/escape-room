@@ -12,8 +12,6 @@ class Room extends BaseModel
     use HasUpdater;
     use HasPackageFactory;
 
-    protected $guarded = ['id'];
-
     protected $casts = [
         'opened_at' => 'datetime',
         'closed_at' => 'datetime',

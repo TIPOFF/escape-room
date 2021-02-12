@@ -11,8 +11,6 @@ class Rate extends BaseModel
     use HasUpdater;
     use HasPackageFactory;
 
-    protected $guarded = ['id'];
-
     protected $casts = [];
 
     protected static function boot()
