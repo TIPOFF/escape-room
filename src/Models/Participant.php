@@ -1,4 +1,8 @@
-<?php namespace Tipoff\EscapeRoom\Models;
+<?php 
+
+declare(strict_types=1);
+
+namespace Tipoff\EscapeRoom\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;

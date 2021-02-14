@@ -1,4 +1,8 @@
-<?php namespace Tipoff\EscapeRoom\Models;
+<?php 
+
+declare(strict_types=1);
+
+namespace Tipoff\EscapeRoom\Models;
 
 use Tipoff\Support\Models\BaseModel;
 use Tipoff\Support\Traits\HasPackageFactory;
