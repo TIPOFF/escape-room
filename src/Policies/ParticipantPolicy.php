@@ -1,46 +1,46 @@
 <?php
 
-namespace Tipoff\EscapeRoom\Policies;
+namespace App\Policies;
 
-use Tipoff\EscapeRoom\Models\Theme;
+use Tipoff\EscapeRoom\Models\Participant;
 use Tipoff\Support\Contracts\Models\UserInterface;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ThemePolicy
+class ParticipantPolicy
 {
     use HandlesAuthorization;
 
     public function viewAny(UserInterface $user)
     {
-        return $user->hasPermissionTo('view themes') ? true : false;
+        return $user->hasPermissionTo('view participants') ? true : false;
     }
 
-    public function view(UserInterface $user, Theme $theme)
+    public function view(UserInterface $user, Participant $participant)
     {
-        return $user->hasPermissionTo('view themes') ? true : false;
+        return $user->hasPermissionTo('view participants') ? true : false;
     }
 
     public function create(UserInterface $user)
     {
-        return $user->hasPermissionTo('create themes') ? true : false;
+        return false;
     }
 
-    public function update(UserInterface $user, Theme $theme)
-    {
-        return $user->hasPermissionTo('update themes') ? true : false;
-    }
-
-    public function delete(UserInterface $user, Theme $theme)
+    public function update(UserInterface $user, Participant $participant)
     {
         return false;
     }
 
-    public function restore(UserInterface $user, Theme $theme)
+    public function delete(UserInterface $user, Participant $participant)
     {
         return false;
     }
 
-    public function forceDelete(UserInterface $user, Theme $theme)
+    public function restore(UserInterface $user, Participant $participant)
+    {
+        return false;
+    }
+
+    public function forceDelete(UserInterface $user, Participant $participant)
     {
         return false;
     }
