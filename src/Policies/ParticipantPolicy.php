@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Policies;
+namespace Tipoff\EscapeRoom\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Tipoff\EscapeRoom\Models\Participant;
