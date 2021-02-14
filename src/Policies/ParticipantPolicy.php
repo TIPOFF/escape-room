@@ -3,8 +3,8 @@
 namespace App\Policies;
 
 use Tipoff\EscapeRoom\Models\Participant;
-use Tipoff\Support\Contracts\Models\UserInterface;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Tipoff\Support\Contracts\Models\UserInterface;
 
 class ParticipantPolicy
 {

@@ -2,8 +2,8 @@
 
 namespace Tipoff\EscapeRoom\Models;
 
-use Tipoff\Support\Models\BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Tipoff\Support\Models\BaseModel;
 use Tipoff\Support\Traits\HasPackageFactory;
 
 class Participant extends BaseModel
