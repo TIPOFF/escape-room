@@ -41,9 +41,9 @@ class ParticipantPolicyTest extends TestCase
         return [
             'view-true' => [ 'view', self::createPermissionedUser('view participants', true), true ],
             'view-false' => [ 'view', self::createPermissionedUser('view participants', false), false ],
-            'create-true' => [ 'create', self::createPermissionedUser('create participants', true), true ],
+            'create-true' => [ 'create', self::createPermissionedUser('create participants', true), false ],
             'create-false' => [ 'create', self::createPermissionedUser('create participants', false), false ],
-            'update-true' => [ 'update', self::createPermissionedUser('update participants', true), true ],
+            'update-true' => [ 'update', self::createPermissionedUser('update participants', true), false ],
             'update-false' => [ 'update', self::createPermissionedUser('update participants', false), false ],
             'delete-true' => [ 'delete', self::createPermissionedUser('delete participants', true), false ],
             'delete-false' => [ 'delete', self::createPermissionedUser('delete participants', false), false ],
