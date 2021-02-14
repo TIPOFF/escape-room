@@ -2,9 +2,9 @@
 
 namespace Tipoff\EscapeRoom\Policies;
 
+use Illuminate\Auth\Access\HandlesAuthorization;
 use Tipoff\EscapeRoom\Models\Supervision;
 use Tipoff\Support\Contracts\Models\UserInterface;
-use Illuminate\Auth\Access\HandlesAuthorization;
 
 class SupervisionPolicy
 {
