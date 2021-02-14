@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tipoff\EscapeRoom\Tests;
 
 use Spatie\Permission\PermissionServiceProvider;
@@ -13,6 +15,9 @@ class TestCase extends BaseTestCase
     protected function getPackageProviders($app)
     {
         return [
+            SupportServiceProvider::class,
+            AuthorizationServiceProvider::class,
+            PermissionServiceProvider::class,
             EscapeRoomServiceProvider::class,
             SupportServiceProvider::class,
             AuthorizationServiceProvider::class,

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tipoff\EscapeRoom\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -10,37 +12,37 @@ class RatePolicy
 {
     use HandlesAuthorization;
 
-    public function viewAny(UserInterface $user)
+    public function viewAny(UserInterface $user): bool
     {
         return $user->hasPermissionTo('view rates') ? true : false;
     }
 
-    public function view(UserInterface $user, Rate $rate)
+    public function view(UserInterface $user, Rate $rate): bool
     {
         return $user->hasPermissionTo('view rates') ? true : false;
     }
 
-    public function create(UserInterface $user)
+    public function create(UserInterface $user): bool
     {
         return $user->hasPermissionTo('create rates') ? true : false;
     }
 
-    public function update(UserInterface $user, Rate $rate)
+    public function update(UserInterface $user, Rate $rate): bool
     {
         return $user->hasPermissionTo('update rates') ? true : false;
     }
 
-    public function delete(UserInterface $user, Rate $rate)
+    public function delete(UserInterface $user, Rate $rate): bool
     {
         return false;
     }
 
-    public function restore(UserInterface $user, Rate $rate)
+    public function restore(UserInterface $user, Rate $rate): bool
     {
         return false;
     }
 
-    public function forceDelete(UserInterface $user, Rate $rate)
+    public function forceDelete(UserInterface $user, Rate $rate): bool
     {
         return false;
     }

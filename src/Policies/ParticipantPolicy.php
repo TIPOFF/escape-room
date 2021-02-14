@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tipoff\EscapeRoom\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -10,37 +12,37 @@ class ParticipantPolicy
 {
     use HandlesAuthorization;
 
-    public function viewAny(UserInterface $user)
+    public function viewAny(UserInterface $user): bool
     {
         return $user->hasPermissionTo('view participants') ? true : false;
     }
 
-    public function view(UserInterface $user, Participant $participant)
+    public function view(UserInterface $user, Participant $participant): bool
     {
         return $user->hasPermissionTo('view participants') ? true : false;
     }
 
-    public function create(UserInterface $user)
+    public function create(UserInterface $user): bool
     {
         return false;
     }
 
-    public function update(UserInterface $user, Participant $participant)
+    public function update(UserInterface $user, Participant $participant): bool
     {
         return false;
     }
 
-    public function delete(UserInterface $user, Participant $participant)
+    public function delete(UserInterface $user, Participant $participant): bool
     {
         return false;
     }
 
-    public function restore(UserInterface $user, Participant $participant)
+    public function restore(UserInterface $user, Participant $participant): bool
     {
         return false;
     }
 
-    public function forceDelete(UserInterface $user, Participant $participant)
+    public function forceDelete(UserInterface $user, Participant $participant): bool
     {
         return false;
     }

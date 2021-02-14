@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 use Spatie\Permission\Contracts\Permission;
 use Spatie\Permission\PermissionRegistrar;
 
-class AddRatePermissions extends Migration
+class AddRoomPermissions extends Migration
 {
     public function up()
     {
@@ -14,9 +14,9 @@ class AddRatePermissions extends Migration
             app(PermissionRegistrar::class)->forgetCachedPermissions();
 
             foreach ([
-                         'view rates',
-                         'create rates',
-                         'update rates'
+                         'view rooms',
+                         'create rooms',
+                         'update rooms'
                      ] as $name) {
                 app(Permission::class)::findOrCreate($name, null);
             };
