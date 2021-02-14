@@ -47,10 +47,7 @@
         "laravel": {
             "providers": [
                 "Tipoff\\EscapeRoom\\EscapeRoomServiceProvider"
-            ],
-            "aliases": {
-                "EscapeRoom": "Tipoff\\EscapeRoom\\EscapeRoomFacade"
-            }
+            ]
         }
     },
     "repositories": [
