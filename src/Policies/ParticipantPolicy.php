@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use Tipoff\EscapeRoom\Models\Participant;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Tipoff\EscapeRoom\Models\Participant;
 use Tipoff\Support\Contracts\Models\UserInterface;
 
 class ParticipantPolicy
