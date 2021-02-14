@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Tipoff\EscapeRoom\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Tipoff\Support\Models\BaseModel;
 use Tipoff\Support\Traits\HasPackageFactory;
 
-class Participant extends Model
+class Participant extends BaseModel
 {
     use HasPackageFactory;
     use SoftDeletes;
