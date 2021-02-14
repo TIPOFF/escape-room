@@ -1,10 +1,12 @@
-<?php namespace Tipoff\EscapeRoom\Models;
+<?php
 
-use Illuminate\Database\Eloquent\Model;
+namespace Tipoff\EscapeRoom\Models;
+
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Tipoff\Support\Models\BaseModel;
 use Tipoff\Support\Traits\HasPackageFactory;
 
-class Participant extends Model
+class Participant extends BaseModel
 {
     use HasPackageFactory;
     use SoftDeletes;

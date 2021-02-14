@@ -1,4 +1,6 @@
-<?php namespace Tipoff\EscapeRoom\Models;
+<?php
+
+namespace Tipoff\EscapeRoom\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;

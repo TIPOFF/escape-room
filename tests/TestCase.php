@@ -19,6 +19,9 @@ class TestCase extends BaseTestCase
             AuthorizationServiceProvider::class,
             PermissionServiceProvider::class,
             EscapeRoomServiceProvider::class,
+            SupportServiceProvider::class,
+            AuthorizationServiceProvider::class,
+            PermissionServiceProvider::class,
         ];
     }
 }
