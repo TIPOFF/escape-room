@@ -41,7 +41,7 @@ class Theme extends BaseResource
 
     public function fields(Request $request)
     {
-        return [
+        return array_filter([
             Text::make('Name')->required(),
             Slug::make('Slug')->from('Name'),
             Text::make('Title')->required(),
@@ -53,67 +53,47 @@ class Theme extends BaseResource
 
             new Panel('Info Fields', $this->infoFields()),
 
-            BelongsToMany::make('Images', 'images', nova('image')),
+            nova('image') ? BelongsToMany::make('Images', 'images', nova('image')) : null,
 
             new Panel('Media Fields', $this->mediaFields()),
 
-            HasMany::make('Rooms', 'rooms', nova('room')),
+            nova('room') ? HasMany::make('Rooms', 'rooms', nova('room')) : null,
 
             new Panel('Data Fields', $this->dataFields()),
 
-        ];
+        ]);
     }
 
     protected function infoFields()
     {
-        return [
+        return array_filter([
             Text::make('Excerpt')->nullable(),
             Textarea::make('Description')->rows(3)->alwaysShow()->nullable(),
             Markdown::make('Synopsis')->alwaysShow()->nullable(),
             Markdown::make('Story')->alwaysShow()->nullable(),
             Markdown::make('Info')->alwaysShow()->nullable(),
-            BelongsTo::make('Supervision', 'supervision', nova('supervision'))->nullable(),
-        ];
+            nova('supervision') ? BelongsTo::make('Supervision', 'supervision', nova('supervision'))->nullable() : null,
+        ]);
     }
 
     protected function mediaFields()
     {
-        return [
-            BelongsTo::make('Image', 'image', nova('image'))->nullable()->showCreateRelationButton(),
-            BelongsTo::make('Icon', 'icon', nova('icon'))->nullable()->showCreateRelationButton(),
-            BelongsTo::make('Poster', 'poster', nova('poster'))->nullable()->showCreateRelationButton(),
-            BelongsTo::make('Video', 'video', nova('video'))->nullable()->showCreateRelationButton(),
-        ];
+        return array_filter([
+            nova('image') ? BelongsTo::make('Image', 'image', nova('image'))->nullable()->showCreateRelationButton() : null,
+            nova('icon') ? BelongsTo::make('Icon', 'icon', nova('icon'))->nullable()->showCreateRelationButton() : null,
+            nova('poster') ? BelongsTo::make('Poster', 'poster', nova('poster'))->nullable()->showCreateRelationButton() : null,
+            nova('video') ? BelongsTo::make('Video', 'video', nova('video'))->nullable()->showCreateRelationButton() : null,
+        ]);
     }
 
     protected function dataFields(): array
     {
-        return [
+        return array_filter([
             ID::make(),
-            BelongsTo::make('Created By', 'creator', nova('user'))->exceptOnForms(),
+            nova('user') ? BelongsTo::make('Created By', 'creator', nova('user'))->exceptOnForms() : null,
             DateTime::make('Created At')->exceptOnForms(),
-            BelongsTo::make('Updated By', 'updater', nova('user'))->exceptOnForms(),
+            nova('user') ? BelongsTo::make('Updated By', 'updater', nova('user'))->exceptOnForms() : null,
             DateTime::make('Updated At')->exceptOnForms(),
-        ];
-    }
-
-    public function cards(Request $request)
-    {
-        return [];
-    }
-
-    public function filters(Request $request)
-    {
-        return [];
-    }
-
-    public function lenses(Request $request)
-    {
-        return [];
-    }
-
-    public function actions(Request $request)
-    {
-        return [];
+        ]);
     }
 }

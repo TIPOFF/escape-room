@@ -29,19 +29,19 @@ class Rate extends BaseResource
 
     public function fieldsForIndex(NovaRequest $request)
     {
-        return [
+        return array_filter([
             ID::make()->sortable(),
             Text::make('Slug')->sortable(),
             Text::make('Name')->sortable(),
             Currency::make('Public 2', 'public_2')->asMinorUnits()->sortable(),
             Currency::make('Private 2', 'private_2')->asMinorUnits()->sortable(),
             Date::make('Created', 'created_at')->sortable()->exceptOnForms(),
-        ];
+        ]);
     }
 
     public function fields(Request $request)
     {
-        return [
+        return array_filter([
             Text::make('Name')->required(),
             Slug::make('Slug')->from('Name'),
 
@@ -49,14 +49,14 @@ class Rate extends BaseResource
 
             new Panel('Private Fields', $this->privateFields()),
 
-            HasMany::make('Rooms', 'rooms', nova('room')),
+            nova('room') ? HasMany::make('Rooms', 'rooms', nova('room')) : null,
 
             new Panel('Data Fields', $this->dataFields()),
 
-            HasMany::make('Slots', 'slots', nova('slot')),
-            HasMany::make('Bookings', 'bookings', nova('booking')),
+            nova('slot') ? HasMany::make('Slots', 'slots', nova('slot')) : null,
+            nova('booking') ? HasMany::make('Bookings', 'bookings', nova('booking')) : null,
 
-        ];
+        ]);
     }
 
     protected function publicFields()
@@ -281,32 +281,12 @@ class Rate extends BaseResource
 
     protected function dataFields(): array
     {
-        return [
+        return array_filter([
             ID::make(),
-            BelongsTo::make('Created By', 'creator', nova('user'))->exceptOnForms(),
+            nova('user') ? BelongsTo::make('Created By', 'creator', nova('user'))->exceptOnForms() : null,
             DateTime::make('Created At')->exceptOnForms(),
-            BelongsTo::make('Updated By', 'updater', nova('user'))->exceptOnForms(),
+            nova('user') ? BelongsTo::make('Updated By', 'updater', nova('user'))->exceptOnForms() : null,
             DateTime::make('Updated At')->exceptOnForms(),
-        ];
-    }
-
-    public function cards(Request $request)
-    {
-        return [];
-    }
-
-    public function filters(Request $request)
-    {
-        return [];
-    }
-
-    public function lenses(Request $request)
-    {
-        return [];
-    }
-
-    public function actions(Request $request)
-    {
-        return [];
+        ]);
     }
 }

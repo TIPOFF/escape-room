@@ -31,17 +31,17 @@ class Supervision extends BaseResource
 
     public function fieldsForIndex(NovaRequest $request)
     {
-        return [
+        return array_filter([
             ID::make(),
             Text::make('Name')->sortable(),
             Text::make('Title')->sortable(),
             Text::make('Slug')->sortable(),
-        ];
+        ]);
     }
 
     public function fields(Request $request)
     {
-        return [
+        return array_filter([
             Text::make('Name (Internal)', 'name')->required(),
             Text::make('Title (What Customers See)', 'title')->required(),
             Slug::make('Slug')->from('Title'),
@@ -51,11 +51,11 @@ class Supervision extends BaseResource
 
             new Panel('Data Fields', $this->dataFields()),
 
-            HasMany::make('Themes', 'themes', nova('theme')),
-            HasMany::make('Rooms', 'rooms', nova('room')),
-            HasMany::make('Slots', 'slots', nova('slot')),
-            HasMany::make('Games', 'games', nova('game')),
-        ];
+            nova('theme') ? HasMany::make('Themes', 'themes', nova('theme')) : null,
+            nova('room') ? HasMany::make('Rooms', 'rooms', nova('room')) : null,
+            nova('slot') ? HasMany::make('Slots', 'slots', nova('slot')) : null,
+            nova('game') ? HasMany::make('Games', 'games', nova('game')) : null,
+        ]);
     }
 
     protected function dataFields(): array
@@ -65,25 +65,5 @@ class Supervision extends BaseResource
             DateTime::make('Created At')->exceptOnForms(),
             DateTime::make('Updated At')->exceptOnForms(),
         ];
-    }
-
-    public function cards(Request $request)
-    {
-        return [];
-    }
-
-    public function filters(Request $request)
-    {
-        return [];
-    }
-
-    public function lenses(Request $request)
-    {
-        return [];
-    }
-
-    public function actions(Request $request)
-    {
-        return [];
     }
 }

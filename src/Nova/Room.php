@@ -33,96 +33,78 @@ class Room extends BaseResource
 
     public static $perPageViaRelationship = 20;
 
+    protected array $filterClassList = [
+        Location::class
+    ];
+
     public function fieldsForIndex(NovaRequest $request)
     {
-        return [
+        return array_filter([
             ID::make()->sortable(),
             Text::make('Name'),
-            BelongsTo::make('Location', 'location', nova('location'))->sortable(),
-            BelongsTo::make('Theme', 'theme', nova('theme'))->sortable(),
-            BelongsTo::make('Rate', 'rate', nova('rate'))->sortable(),
+            nova('location') ? BelongsTo::make('Location', 'location', nova('location'))->sortable() : null,
+            nova('theme') ? BelongsTo::make('Theme', 'theme', nova('theme'))->sortable() : null,
+            nova('rate') ? BelongsTo::make('Rate', 'rate', nova('rate'))->sortable() : null,
             Number::make('Max Participants Public', 'participants')->sortable(),
             Number::make('Max Participants Private', 'participants_private')->sortable(),
-        ];
+        ]);
     }
 
     public function fields(Request $request)
     {
-        return [
+        return array_filter([
             Text::make('Name')->exceptOnForms(),
-            BelongsTo::make('Location', 'location', nova('location'))->hideWhenUpdating()->required(),
-            BelongsTo::make('Theme', 'theme', nova('theme'))->hideWhenUpdating()->required(),
-            BelongsTo::make('Rate', 'rate', nova('rate'))->required(),
+            nova('location') ? BelongsTo::make('Location', 'location', nova('location'))->hideWhenUpdating()->required() : null,
+            nova('theme') ? BelongsTo::make('Theme', 'theme', nova('theme'))->hideWhenUpdating()->required() : null,
+            nova('rate') ? BelongsTo::make('Rate', 'rate', nova('rate'))->required() : null,
             Number::make('Max Participants Public', 'participants')->min(1)->max(20)->step(1)->nullable(),
             Number::make('Max Participants Private', 'participants_private')->min(1)->max(30)->step(1)->nullable(),
 
             new Panel('Extra Room Fields', $this->extraFields()),
 
-            HasMany::make('Recurring schedules', 'recurringSchedules', nova('recurring_schedule')),
+            nova('recurring_schedule') ? HasMany::make('Recurring schedules', 'recurringSchedules', nova('recurring_schedule')) : null,
 
             new Panel('Override Theme Fields', $this->overrideFields()),
 
             // HasMany::make('Games'),
-            HasMany::make('Slots', 'slots', nova('slot')),
-            HasMany::make('Schedule erasers', 'scheduleErasers', nova('schedule_eraser')),
+            nova('slot') ? HasMany::make('Slots', 'slots', nova('slot')) : null,
+            nova('schedule_eraser') ? HasMany::make('Schedule erasers', 'scheduleErasers', nova('schedule_eraser')) : null,
 
             new Panel('Data Fields', $this->dataFields()),
-        ];
+        ]);
     }
 
     protected function extraFields()
     {
-        return [
+        return array_filter([
             Number::make('Reset Time (Minutes)', 'reset_time')->min(1)->max(120)->step(1)->hideWhenCreating()->nullable(),
             Number::make('Occupied Time (Minutes)', 'occupied_time')->min(1)->max(120)->step(1)->hideWhenCreating()->nullable(),
             Date::make('Opened', 'opened_at')->nullable(),
             Date::make('Closed', 'closed_at')->hideWhenCreating()->nullable(),
-            BelongsTo::make('Default Supervision', 'supervision', nova('supervision'))->hideWhenCreating()->nullable(),
+            nova('supervision') ? BelongsTo::make('Default Supervision', 'supervision', nova('supervision'))->hideWhenCreating()->nullable() : null,
             Number::make('Priority')->min(1)->max(20)->step(1)->hideWhenCreating()->nullable(),
             Markdown::make('Note')->alwaysShow()->hideWhenCreating()->nullable(),
-        ];
+        ]);
     }
 
     protected function overrideFields()
     {
-        return [
+        return array_filter([
             // Text::make('Title')->nullable(),
             Textarea::make('Excerpt')->alwaysShow()->hideWhenCreating()->nullable(),
             Textarea::make('Description')->alwaysShow()->hideWhenCreating()->nullable(),
-            BelongsTo::make('Image', 'image', nova('image'))->hideWhenCreating()->nullable()->showCreateRelationButton(),
-        ];
+            nova('image') ? BelongsTo::make('Image', 'image', nova('image'))->hideWhenCreating()->nullable()->showCreateRelationButton() : null,
+        ]);
     }
 
     protected function dataFields(): array
     {
-        return [
+        return array_filter([
             ID::make(),
-            BelongsTo::make('Created By', 'creator', nova('user'))->exceptOnForms(),
+            nova('user') ? BelongsTo::make('Created By', 'creator', nova('user'))->exceptOnForms() : null,
             DateTime::make('Created At')->exceptOnForms(),
-            BelongsTo::make('Updated By', 'updater', nova('user'))->exceptOnForms(),
+            nova('user') ? BelongsTo::make('Updated By', 'updater', nova('user'))->exceptOnForms() : null,
             DateTime::make('Updated At')->exceptOnForms(),
-        ];
-    }
-
-    public function cards(Request $request)
-    {
-        return [];
-    }
-
-    public function filters(Request $request)
-    {
-        return [
-            new Location,
-        ];
-    }
-
-    public function lenses(Request $request)
-    {
-        return [];
-    }
-
-    public function actions(Request $request)
-    {
-        return [];
+        ]);
     }
 }

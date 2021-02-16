@@ -27,20 +27,20 @@ class Participant extends BaseResource
 
     public function fieldsForIndex(NovaRequest $request)
     {
-        return [
+        return array_filter([
             ID::make()->sortable(),
             Text::make('Name', function () {
                 return $this->name . ' ' . $this->name_last;
             }),
             Text::make('Email'),
             DateTime::make('Created', 'created_at')->sortable(),
-        ];
+        ]);
     }
 
     public function fields(Request $request)
     {
-        return [
-            BelongsTo::make('User', 'user', nova('user'))->searchable()->withSubtitles()->withoutTrashed(),
+        return array_filter([
+            nova('user') ? BelongsTo::make('User', 'user', nova('user'))->searchable()->withSubtitles()->withoutTrashed() : null,
             Text::make('First Name', 'name'),
             Text::make('Last Name', 'name_last'),
             Text::make('Email'),
@@ -59,29 +59,9 @@ class Participant extends BaseResource
 
             ID::make(),
 
-            HasMany::make('Feedbacks', 'feedbacks', nova('feedback')),
+            nova('feedback') ? HasMany::make('Feedbacks', 'feedbacks', nova('feedback')) : null,
 
-            HasMany::make('Signatures', 'signatures', nova('signature')),
-        ];
-    }
-
-    public function cards(Request $request)
-    {
-        return [];
-    }
-
-    public function filters(Request $request)
-    {
-        return [];
-    }
-
-    public function lenses(Request $request)
-    {
-        return [];
-    }
-
-    public function actions(Request $request)
-    {
-        return [];
+            nova('signature') ? HasMany::make('Signatures', 'signatures', nova('signature')) : null,
+        ]);
     }
 }
