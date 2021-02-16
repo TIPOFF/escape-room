@@ -14,7 +14,6 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
-use Tipoff\EscapeRoom\Nova\Filters\Location;
 use Tipoff\Support\Nova\BaseResource;
 
 class Room extends BaseResource
@@ -33,8 +32,9 @@ class Room extends BaseResource
 
     public static $perPageViaRelationship = 20;
 
+    /** @psalm-suppress UndefinedClass */
     protected array $filterClassList = [
-        Location::class
+        \Tipoff\Locations\Nova\Filters\Location::class,
     ];
 
     public function fieldsForIndex(NovaRequest $request)
