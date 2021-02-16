@@ -34,7 +34,7 @@ class Room extends BaseResource
     public static $perPageViaRelationship = 20;
 
     protected array $filterClassList = [
-        Location::class
+        Location::class,
     ];
 
     public function fieldsForIndex(NovaRequest $request)
