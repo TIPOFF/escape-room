@@ -40,7 +40,7 @@ class Participant extends BaseResource
     public function fields(Request $request)
     {
         return [
-            BelongsTo::make('User' ,'user', nova('user'))->searchable()->withSubtitles()->withoutTrashed(),
+            BelongsTo::make('User', 'user', nova('user'))->searchable()->withSubtitles()->withoutTrashed(),
             Text::make('First Name', 'name'),
             Text::make('Last Name', 'name_last'),
             Text::make('Email'),
