@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 declare(strict_types=1);
 
@@ -6,6 +6,7 @@ namespace Tipoff\EscapeRoom\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Tipoff\EscapeRoom\Models\Room;
+use Tipoff\Locations\Models\Location;
 
 class RoomFactory extends Factory
 {
@@ -24,7 +25,7 @@ class RoomFactory extends Factory
     public function definition()
     {
         return [
-            'location_id'           => randomOrCreate(app('location')),
+            'location_id'           => randomOrCreate(Location::factory()->create()->id()),
             'theme_id'              => randomOrCreate(app('theme')),
             'rate_id'               => randomOrCreate(app('rate')),
             'supervision_id'        => randomOrCreate(app('supervision')),
