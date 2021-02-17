@@ -7,6 +7,7 @@ namespace Tipoff\EscapeRoom\Tests;
 use Spatie\Permission\PermissionServiceProvider;
 use Tipoff\Authorization\AuthorizationServiceProvider;
 use Tipoff\EscapeRoom\EscapeRoomServiceProvider;
+use Tipoff\Locations\LocationsServiceProvider;
 use Tipoff\Support\SupportServiceProvider;
 use Tipoff\TestSupport\BaseTestCase;
 
@@ -19,6 +20,7 @@ class TestCase extends BaseTestCase
             AuthorizationServiceProvider::class,
             PermissionServiceProvider::class,
             EscapeRoomServiceProvider::class,
+            LocationsServiceProvider::class,
             SupportServiceProvider::class,
             AuthorizationServiceProvider::class,
             PermissionServiceProvider::class,
