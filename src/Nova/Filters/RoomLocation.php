@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tipoff\EscapeRoom\Filters;
+namespace Tipoff\EscapeRoom\Nova\Filters;
 
 use Illuminate\Http\Request;
 
