@@ -23,14 +23,23 @@ class RoomLocation extends Filters
     public $name = 'Location';
 
     /**
-     * Apply the filter to the given query.
+     * Registered filters to operate upon.
+     *
+     * @var array
+     */
+    protected $availableFilters = [
+        'room',
+    ];
+
+    /**
+     * Filter the room query by a given location id.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @param  mixed  $value
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function apply(Request $request, $query, $value)
+    public function room(Request $request, $query, $value)
     {
         return $query->whereHas('room', function ($query) use ($value) {
             $query->where('rooms.location_id', $value);
