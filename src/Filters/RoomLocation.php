@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Filters;
 
 use Illuminate\Http\Request;
-use Tipoff\Schediling\Filters\Filters;
+use Tipoff\EscapeRoom\Filters\Filters;
 
 class RoomLocation extends Filters
 {

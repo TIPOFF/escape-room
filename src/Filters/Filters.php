@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tipoff\Scheduling\Filters;
+namespace Tipoff\EscapeRoom\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
