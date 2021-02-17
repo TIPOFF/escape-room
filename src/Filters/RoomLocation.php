@@ -45,6 +45,6 @@ class RoomLocation extends Filters
      */
     public function options(Request $request)
     {
-        return \App\Models\Location::pluck('id', 'name');
+        return \Tipoff\Locations\Models\Location::pluck('id', 'name');
     }
 }
