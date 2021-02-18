@@ -5,7 +5,7 @@ namespace Tipoff\EscapeRoom\Filters;
 use Illuminate\Http\Request;
 use Laravel\Nova\Filters\Filter;
 
-class Room extends Filters
+class SlotRoom extends Filters
 {
     /**
      * The filter's component.
@@ -13,6 +13,13 @@ class Room extends Filters
      * @var string
      */
     public $component = 'select-filter';
+
+    /**
+     * The displayable name of the filter.
+     *
+     * @var string
+     */
+    public $name = 'Room';
 
     /**
      * Apply the filter to the given query.
@@ -24,7 +31,9 @@ class Room extends Filters
      */
     public function apply(Request $request, $query, $value)
     {
-        return $query->where('room_id', $value);
+        return $query->whereHas('slot', function ($query) use ($value) {
+            $query->where('slots.room_id', $value);
+        });
     }
 
     /**
