@@ -25,7 +25,7 @@ class RoomFactory extends Factory
     public function definition()
     {
         return [
-            'location_id'           => randomOrCreate(Location::factory()->create()->id),
+            'location_id'           => randomOrCreate(app('location')),
             'theme_id'              => randomOrCreate(app('theme')),
             'rate_id'               => randomOrCreate(app('rate')),
             'supervision_id'        => randomOrCreate(app('supervision')),
