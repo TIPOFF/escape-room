@@ -15,3 +15,12 @@ All notable changes to `escape-room` will be documented in this file.
 
 - add image theme pivot table
 - update models
+
+## 2.0.0 - 2021-02-18
+
+- add models
+- add factories
+- add policies
+- register policies
+- add nova resources
+- add nova filters
