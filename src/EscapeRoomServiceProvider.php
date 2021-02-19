@@ -29,6 +29,13 @@ class EscapeRoomServiceProvider extends TipoffServiceProvider
                 Supervision::class => SupervisionPolicy::class,
                 Theme::class => ThemePolicy::class,
             ])
+            ->hasNovaResources([
+                \Tipoff\EscapeRoom\Nova\Participant::class,
+                \Tipoff\EscapeRoom\Nova\Rate::class,
+                \Tipoff\EscapeRoom\Nova\Room::class,
+                \Tipoff\EscapeRoom\Nova\Supervision::class,
+                \Tipoff\EscapeRoom\Nova\Theme::class,
+            ])
             ->name('escape-room')
             ->hasConfigFile();
     }
