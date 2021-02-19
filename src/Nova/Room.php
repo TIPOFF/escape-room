@@ -1,6 +1,6 @@
 <?php
 
-namespace Tipoff\EspaceRoom\Nova;
+namespace Tipoff\EscapeRoom\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
