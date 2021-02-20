@@ -27,13 +27,13 @@ class EscapeRoomServiceProvider extends TipoffServiceProvider
     {
         $package
             ->hasPolicies([
-                Participant::class        => ParticipantPolicy::class,
-                Rate::class               => RatePolicy::class,
-                Room::class               => RoomPolicy::class,
-                Supervision::class        => SupervisionPolicy::class,
-                Theme::class              => ThemePolicy::class,
+                Participant::class => ParticipantPolicy::class,
+                Rate::class => RatePolicy::class,
+                Room::class => RoomPolicy::class,
+                Supervision::class => SupervisionPolicy::class,
+                Theme::class => ThemePolicy::class,
                 EscapeRoomLocation::class => EscapeRoomLocationPolicy::class,
-                EscapeRoomMarket::class   => EscapeRoomMarketPolicy::class
+                EscapeRoomMarket::class => EscapeRoomMarketPolicy::class,
             ])
             ->hasNovaResources([
                 \Tipoff\EscapeRoom\Nova\Participant::class,
@@ -42,7 +42,7 @@ class EscapeRoomServiceProvider extends TipoffServiceProvider
                 \Tipoff\EscapeRoom\Nova\Supervision::class,
                 \Tipoff\EscapeRoom\Nova\Theme::class,
                 \Tipoff\EscapeRoom\Nova\EscapeRoomLocation::class,
-                \Tipoff\EscapeRoom\Nova\EscapeRoomMarket::class
+                \Tipoff\EscapeRoom\Nova\EscapeRoomMarket::class,
             ])
             ->name('escape-room')
             ->hasConfigFile();

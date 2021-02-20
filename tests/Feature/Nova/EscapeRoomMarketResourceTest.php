@@ -6,8 +6,8 @@ namespace Tipoff\EscapeRoom\Tests\Feature\Nova;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tipoff\EscapeRoom\Models\EscapeRoomMarket;
-use Tipoff\TestSupport\Models\User;
 use Tipoff\EscapeRoom\Tests\TestCase;
+use Tipoff\TestSupport\Models\User;
 
 class EscapeRoomMarketResourceTest extends TestCase
 {
