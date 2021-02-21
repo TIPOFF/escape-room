@@ -40,7 +40,6 @@ We include the following models:
 
 **List of Models**
 
-- Participant
 - Rate
 - Room
 - Supervision
