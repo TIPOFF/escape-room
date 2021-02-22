@@ -28,7 +28,10 @@ class AddEscapeRoomPermissions extends Migration
                          'update rooms',
                          'view escape room locations',
                          'create escape room locations',
-                         'update escape room locations'
+                         'update escape room locations',
+                         'view escape room markets',
+                         'create escape room markets',
+                         'update escape room markets'
                      ] as $name) {
                 app(Permission::class)::findOrCreate($name, null);
             };
