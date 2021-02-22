@@ -24,3 +24,10 @@ All notable changes to `escape-room` will be documented in this file.
 - register policies
 - add nova resources
 - add nova filters
+
+## 2.1.0 - 2021-02-21
+
+- remove participant
+- add escape room market
+- add escape room location
+- register nova resources
