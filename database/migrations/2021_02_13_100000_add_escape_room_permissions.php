@@ -2,39 +2,34 @@
 
 declare(strict_types=1);
 
-use Illuminate\Database\Migrations\Migration;
-use Spatie\Permission\Contracts\Permission;
-use Spatie\Permission\PermissionRegistrar;
+use Tipoff\Authorization\Permissions\BasePermissionsMigration;
 
-class AddEscapeRoomPermissions extends Migration
+class AddEscapeRoomPermissions extends BasePermissionsMigration
 {
     public function up()
     {
-        if (app()->has(Permission::class)) {
-            app(PermissionRegistrar::class)->forgetCachedPermissions();
 
-            foreach ([
-                         'view rates',
-                         'create rates',
-                         'update rates',
-                         'view supervisions',
-                         'create supervisions',
-                         'update supervisions',
-                         'view themes',
-                         'create themes',
-                         'update themes',
-                         'view rooms',
-                         'create rooms',
-                         'update rooms',
-                         'view escape room locations',
-                         'create escape room locations',
-                         'update escape room locations',
-                         'view escape room markets',
-                         'create escape room markets',
-                         'update escape room markets'
-                     ] as $name) {
-                app(Permission::class)::findOrCreate($name, null);
-            };
-        }
+        $permissions = [
+             'view rates',
+             'create rates',
+             'update rates',
+             'view supervisions',
+             'create supervisions',
+             'update supervisions',
+             'view themes',
+             'create themes',
+             'update themes',
+             'view rooms',
+             'create rooms',
+             'update rooms',
+             'view escape room locations',
+             'create escape room locations',
+             'update escape room locations',
+             'view escape room markets',
+             'create escape room markets',
+             'update escape room markets'
+        ];
+
+        $this->createPermissions($permissions);
     }
 }
