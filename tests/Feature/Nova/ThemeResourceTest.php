@@ -7,7 +7,6 @@ namespace Tipoff\EscapeRoom\Tests\Feature\Nova;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tipoff\EscapeRoom\Models\Theme;
 use Tipoff\EscapeRoom\Tests\TestCase;
-use Tipoff\TestSupport\Models\User;
 
 class ThemeResourceTest extends TestCase
 {
