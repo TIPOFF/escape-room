@@ -18,7 +18,7 @@ class SupervisionResourceTest extends TestCase
     {
         Supervision::factory()->count(1)->create();
 
-        $this->actingAs(User::factory()->create());
+        $this->actingAs(self::createPermissionedUser('view supervisions', true));
 
         $response = $this->getJson('nova-api/supervisions')->assertOk();
 

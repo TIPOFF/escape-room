@@ -18,7 +18,7 @@ class EscapeRoomMarketResourceTest extends TestCase
     {
         EscapeRoomMarket::factory()->count(1)->create();
 
-        $this->actingAs(User::factory()->create());
+        $this->actingAs(self::createPermissionedUser('view escape room markets', true));
 
         $response = $this->getJson('nova-api/escape-room-markets')->assertOk();
 

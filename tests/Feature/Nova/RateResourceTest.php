@@ -18,7 +18,7 @@ class RateResourceTest extends TestCase
     {
         Rate::factory()->count(1)->create();
 
-        $this->actingAs(User::factory()->create());
+        $this->actingAs(self::createPermissionedUser('view rates', true));
 
         $response = $this->getJson('nova-api/rates')->assertOk();
 

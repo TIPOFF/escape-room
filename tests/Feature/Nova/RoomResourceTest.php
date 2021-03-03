@@ -18,7 +18,7 @@ class RoomResourceTest extends TestCase
     {
         Room::factory()->count(1)->create();
 
-        $this->actingAs(User::factory()->create());
+        $this->actingAs(self::createPermissionedUser('view rooms', true));
 
         $response = $this->getJson('nova-api/rooms')->assertOk();
 

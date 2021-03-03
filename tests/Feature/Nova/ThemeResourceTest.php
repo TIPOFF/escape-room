@@ -18,7 +18,7 @@ class ThemeResourceTest extends TestCase
     {
         Theme::factory()->count(1)->create();
 
-        $this->actingAs(User::factory()->create());
+        $this->actingAs(self::createPermissionedUser('view themes', true));
 
         $response = $this->getJson('nova-api/themes')->assertOk();
 

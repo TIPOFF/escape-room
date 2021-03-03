@@ -18,7 +18,7 @@ class EscapeRoomLocationResourceTest extends TestCase
     {
         EscapeRoomLocation::factory()->count(1)->create();
 
-        $this->actingAs(User::factory()->create());
+        $this->actingAs(self::createPermissionedUser('view escape room locations', true));
 
         $response = $this->getJson('nova-api/escape-room-locations')->assertOk();
 
