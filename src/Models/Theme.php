@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Tipoff\EscapeRoom\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
+use Tipoff\Support\Contracts\Models\UserInterface;
 use Tipoff\Support\Models\BaseModel;
 use Tipoff\Support\Traits\HasCreator;
 use Tipoff\Support\Traits\HasPackageFactory;
 use Tipoff\Support\Traits\HasUpdater;
-use Illuminate\Database\Eloquent\Builder;
-use Tipoff\Support\Contracts\Models\UserInterface;
 
 class Theme extends BaseModel
 {
