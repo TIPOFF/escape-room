@@ -6,7 +6,6 @@ namespace Tipoff\EscapeRoom\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Tipoff\EscapeRoom\Models\EscapeRoomLocation;
-use Tipoff\Locations\Models\Location;
 
 class EscapeRoomLocationFactory extends Factory
 {
@@ -26,7 +25,7 @@ class EscapeRoomLocationFactory extends Factory
     public function definition()
     {
         return [
-            'location_id'    => randomOrCreate(Location::class),
+            'location_id'    => randomOrCreate(app('location')),
             'corporate'      => $this->faker->boolean,
             'booking_cutoff' => $this->faker->numberBetween(1, 127),
             'creator_id'     => randomOrCreate(app('user')),
