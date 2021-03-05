@@ -10,6 +10,8 @@ use Tipoff\Support\Models\BaseModel;
 use Tipoff\Support\Traits\HasCreator;
 use Tipoff\Support\Traits\HasPackageFactory;
 use Tipoff\Support\Traits\HasUpdater;
+use Illuminate\Database\Eloquent\Builder;
+use Tipoff\Support\Contracts\Models\UserInterface;
 
 class Theme extends BaseModel
 {
@@ -151,7 +153,7 @@ class Theme extends BaseModel
         return $query;
     }
 
-    public function scopeVisibleBy($query, $user)
+    public function scopeVisibleBy(Builder $query, UserInterface $user) : Builder
     {
         return $query;
     }
