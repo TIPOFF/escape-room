@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Tipoff\EscapeRoom\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
+use Tipoff\Support\Contracts\Models\UserInterface;
 use Tipoff\Support\Models\BaseModel;
 use Tipoff\Support\Traits\HasCreator;
 use Tipoff\Support\Traits\HasPackageFactory;
@@ -151,7 +153,7 @@ class Theme extends BaseModel
         return $query;
     }
 
-    public function scopeVisibleBy($query, $user)
+    public function scopeVisibleBy(Builder $query, UserInterface $user) : Builder
     {
         return $query;
     }

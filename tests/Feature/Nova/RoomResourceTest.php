@@ -7,7 +7,6 @@ namespace Tipoff\EscapeRoom\Tests\Feature\Nova;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tipoff\EscapeRoom\Models\Room;
 use Tipoff\EscapeRoom\Tests\TestCase;
-use Tipoff\TestSupport\Models\User;
 
 class RoomResourceTest extends TestCase
 {
@@ -18,7 +17,7 @@ class RoomResourceTest extends TestCase
     {
         Room::factory()->count(1)->create();
 
-        $this->actingAs(User::factory()->create());
+        $this->actingAs(self::createPermissionedUser('view rooms', true));
 
         $response = $this->getJson('nova-api/rooms')->assertOk();
 
