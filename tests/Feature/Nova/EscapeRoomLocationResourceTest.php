@@ -7,7 +7,6 @@ namespace Tipoff\EscapeRoom\Tests\Feature\Nova;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tipoff\EscapeRoom\Models\EscapeRoomLocation;
 use Tipoff\EscapeRoom\Tests\TestCase;
-use Tipoff\TestSupport\Models\User;
 
 class EscapeRoomLocationResourceTest extends TestCase
 {
@@ -18,7 +17,7 @@ class EscapeRoomLocationResourceTest extends TestCase
     {
         EscapeRoomLocation::factory()->count(1)->create();
 
-        $this->actingAs(User::factory()->create());
+        $this->actingAs(self::createPermissionedUser('view escape room locations', true));
 
         $response = $this->getJson('nova-api/escape-room-locations')->assertOk();
 
