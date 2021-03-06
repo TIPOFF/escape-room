@@ -31,3 +31,7 @@ All notable changes to `escape-room` will be documented in this file.
 - add escape room market
 - add escape room location
 - register nova resources
+
+## 2.1.1 - 2021-03-06
+
+- nova resource tests
