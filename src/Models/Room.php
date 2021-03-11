@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tipoff\EscapeRoom\Models;
 
+use Assert\Assert;
 use Illuminate\Database\Eloquent\Builder;
 use Tipoff\Support\Models\BaseModel;
 use Tipoff\Support\Traits\HasCreator;
@@ -28,15 +29,11 @@ class Room extends BaseModel
         parent::boot();
 
         static::saving(function ($room) {
-            if (empty($room->location_id)) {
-                throw new \Exception('An escape room must be at a location.');
-            }
-            if (empty($room->theme_id)) {
-                throw new \Exception('An escape room must have a theme.');
-            }
-            if (empty($room->rate_id)) {
-                throw new \Exception('An escape room must have a default rate.');
-            }
+            Assert::lazy()
+                ->that($room->location_id)->notEmpty('An escape room must be at a location.')
+                ->that($room->theme_id)->notEmpty('An escape room must have a theme.')
+                ->that($room->rate_id)->notEmpty('An escape room must have a default rate.')
+                ->verifyNow();
             if (empty($room->supervision_id)) {
                 $room->supervision_id = $room->theme->supervision_id;
             }
