@@ -10,24 +10,24 @@ class AddEscapeRoomPermissions extends BasePermissionsMigration
     {
 
         $permissions = [
-             'view rates' => ['Owner', 'Staff'],
-             'create rates' => ['Owner'],
-             'update rates' => ['Owner'],
-             'view supervisions' => ['Owner', 'Staff'],
-             'create supervisions' => ['Owner'],
-             'update supervisions' => ['Owner'],
-             'view themes' => ['Owner', 'Staff'],
-             'create themes' => ['Owner'],
-             'update themes' => ['Owner'],
-             'view rooms' => ['Owner', 'Staff'],
-             'create rooms' => ['Owner'],
-             'update rooms' => ['Owner'],
-             'view escape room locations' => ['Owner', 'Staff'],
-             'create escape room locations' => ['Owner'],
-             'update escape room locations' => ['Owner'],
-             'view escape room markets' => ['Owner', 'Staff'],
-             'create escape room markets' => ['Owner'],
-             'update escape room markets' => ['Owner']
+             'view rates' => ['Owner', 'Executive', 'Staff'],
+             'create rates' => ['Owner', 'Executive'],
+             'update rates' => ['Owner', 'Executive'],
+             'view supervisions' => ['Owner', 'Executive', 'Staff'],
+             'create supervisions' => ['Owner', 'Executive'],
+             'update supervisions' => ['Owner', 'Executive'],
+             'view themes' => ['Owner', 'Executive', 'Staff'],
+             'create themes' => ['Owner', 'Executive'],
+             'update themes' => ['Owner', 'Executive'],
+             'view rooms' => ['Owner', 'Executive', 'Staff'],
+             'create rooms' => ['Owner', 'Executive'],
+             'update rooms' => ['Owner', 'Executive'],
+             'view escape room locations' => ['Owner', 'Executive', 'Staff'],
+             'create escape room locations' => ['Owner', 'Executive'],
+             'update escape room locations' => ['Owner', 'Executive'],
+             'view escape room markets' => ['Owner', 'Executive', 'Staff'],
+             'create escape room markets' => ['Owner', 'Executive'],
+             'update escape room markets' => ['Owner', 'Executive']
         ];
 
         $this->createPermissions($permissions);
