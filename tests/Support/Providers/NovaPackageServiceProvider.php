@@ -9,7 +9,7 @@ use Tipoff\EscapeRoom\Nova\EscapeRoomMarket;
 use Tipoff\EscapeRoom\Nova\Rate;
 use Tipoff\EscapeRoom\Nova\Room;
 use Tipoff\EscapeRoom\Nova\Supervision;
-use Tipoff\EscapeRoom\Nova\Theme;
+use Tipoff\EscapeRoom\Nova\EscapeRoomTheme;
 use Tipoff\TestSupport\Providers\BaseNovaPackageServiceProvider;
 
 class NovaPackageServiceProvider extends BaseNovaPackageServiceProvider
@@ -20,6 +20,6 @@ class NovaPackageServiceProvider extends BaseNovaPackageServiceProvider
         Rate::class,
         Room::class,
         Supervision::class,
-        Theme::class,
+        EscapeRoomTheme::class,
     ];
 }

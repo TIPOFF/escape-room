@@ -6,16 +6,16 @@ namespace Tipoff\EscapeRoom\Database\Factories;
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Tipoff\EscapeRoom\Models\Theme;
+use Tipoff\EscapeRoom\Models\EscapeRoomTheme;
 
-class ThemeFactory extends Factory
+class EscapeRoomThemeFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Theme::class;
+    protected $model = EscapeRoomTheme::class;
 
     /**
      * Define the model's default state.

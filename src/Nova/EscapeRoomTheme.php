@@ -19,9 +19,9 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
 use Tipoff\Support\Nova\BaseResource;
 
-class Theme extends BaseResource
+class EscapeRoomTheme extends BaseResource
 {
-    public static $model = \Tipoff\EscapeRoom\Models\Theme::class;
+    public static $model = \Tipoff\EscapeRoom\Models\EscapeRoomTheme::class;
 
     public static $title = 'name';
 

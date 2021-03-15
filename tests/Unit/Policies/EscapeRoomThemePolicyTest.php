@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Tests\Unit\Models;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tipoff\EscapeRoom\Models\Theme;
+use Tipoff\EscapeRoom\Models\EscapeRoomTheme;
 use Tipoff\EscapeRoom\Tests\TestCase;
 use Tipoff\Support\Contracts\Models\UserInterface;
 
-class ThemePolicyTest extends TestCase
+class EscapeRoomThemePolicyTest extends TestCase 
 {
     use DatabaseTransactions;
 
@@ -17,10 +17,10 @@ class ThemePolicyTest extends TestCase
     public function view_any()
     {
         $user = self::createPermissionedUser('view themes', true);
-        $this->assertTrue($user->can('viewAny', Theme::class));
+        $this->assertTrue($user->can('viewAny', EscapeRoomTheme::class));
 
         $user = self::createPermissionedUser('view themes', false);
-        $this->assertFalse($user->can('viewAny', Theme::class));
+        $this->assertFalse($user->can('viewAny', EscapeRoomTheme::class));
     }
 
     /**
@@ -29,7 +29,7 @@ class ThemePolicyTest extends TestCase
      */
     public function all_permissions_as_creator(string $permission, UserInterface $user, bool $expected)
     {
-        $theme = Theme::factory()->make([
+        $theme = EscapeRoomTheme::factory()->make([
             'creator_id' => $user,
         ]);
 
@@ -56,7 +56,7 @@ class ThemePolicyTest extends TestCase
      */
     public function all_permissions_not_creator(string $permission, UserInterface $user, bool $expected)
     {
-        $theme = Theme::factory()->make();
+        $theme = EscapeRoomTheme::factory()->make();
 
         $this->assertEquals($expected, $user->can($permission, $theme));
     }

@@ -13,7 +13,7 @@ use Tipoff\Support\Traits\HasCreator;
 use Tipoff\Support\Traits\HasPackageFactory;
 use Tipoff\Support\Traits\HasUpdater;
 
-class Theme extends BaseModel
+class EscapeRoomTheme extends BaseModel
 {
     use HasCreator;
     use HasUpdater;
