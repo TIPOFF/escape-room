@@ -7,15 +7,15 @@ namespace Tipoff\EscapeRoom;
 use Tipoff\EscapeRoom\Models\EscapeRoomLocation;
 use Tipoff\EscapeRoom\Models\EscapeRoomMarket;
 use Tipoff\EscapeRoom\Models\EscapeRoomRate;
+use Tipoff\EscapeRoom\Models\EscapeRoomTheme;
 use Tipoff\EscapeRoom\Models\Room;
 use Tipoff\EscapeRoom\Models\Supervision;
-use Tipoff\EscapeRoom\Models\EscapeRoomTheme;
 use Tipoff\EscapeRoom\Policies\EscapeRoomLocationPolicy;
 use Tipoff\EscapeRoom\Policies\EscapeRoomMarketPolicy;
 use Tipoff\EscapeRoom\Policies\EscapeRoomRatePolicy;
+use Tipoff\EscapeRoom\Policies\EscapeRoomThemePolicy;
 use Tipoff\EscapeRoom\Policies\RoomPolicy;
 use Tipoff\EscapeRoom\Policies\SupervisionPolicy;
-use Tipoff\EscapeRoom\Policies\EscapeRoomThemePolicy;
 use Tipoff\Support\TipoffPackage;
 use Tipoff\Support\TipoffServiceProvider;
 

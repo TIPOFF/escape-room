@@ -12,8 +12,8 @@ class EscapeRoomLocationModelTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** 
-    @test 
+    /**
+    @test
     */
     public function create()
     {
@@ -21,8 +21,8 @@ class EscapeRoomLocationModelTest extends TestCase
         $this->assertNotNull($model);
     }
 
-    /** 
-    @test 
+    /**
+    @test
     */
     public function it_has_a_location()
     {
@@ -30,13 +30,13 @@ class EscapeRoomLocationModelTest extends TestCase
         $this->assertInstanceOf(get_class(app('location')), $model->location);
     }
 
-    /** 
+    /**
     @test
     */
     public function it_may_has_an_teamphoto()
     {
         $model = EscapeRoomLocation::factory()->create();
-        $array = [NULL, rand(1,1)];
-		$this->assertContains($model->team_image_id, $array);
+        $array = [null, rand(1, 1)];
+        $this->assertContains($model->team_image_id, $array);
     }
 }

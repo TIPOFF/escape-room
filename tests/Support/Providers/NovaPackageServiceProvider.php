@@ -7,9 +7,9 @@ namespace Tipoff\EscapeRoom\Tests\Support\Providers;
 use Tipoff\EscapeRoom\Nova\EscapeRoomLocation;
 use Tipoff\EscapeRoom\Nova\EscapeRoomMarket;
 use Tipoff\EscapeRoom\Nova\EscapeRoomRate;
+use Tipoff\EscapeRoom\Nova\EscapeRoomTheme;
 use Tipoff\EscapeRoom\Nova\Room;
 use Tipoff\EscapeRoom\Nova\Supervision;
-use Tipoff\EscapeRoom\Nova\EscapeRoomTheme;
 use Tipoff\TestSupport\Providers\BaseNovaPackageServiceProvider;
 
 class NovaPackageServiceProvider extends BaseNovaPackageServiceProvider

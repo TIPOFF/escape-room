@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tipoff\EscapeRoom\Tests;
 
+use DrewRoberts\Media\MediaServiceProvider;
 use Laravel\Nova\NovaCoreServiceProvider;
 use Spatie\Permission\PermissionServiceProvider;
 use Tipoff\Addresses\AddressesServiceProvider;
@@ -12,7 +13,6 @@ use Tipoff\EscapeRoom\EscapeRoomServiceProvider;
 use Tipoff\EscapeRoom\Tests\Support\Providers\NovaPackageServiceProvider;
 use Tipoff\Locations\LocationsServiceProvider;
 use Tipoff\Support\SupportServiceProvider;
-use DrewRoberts\Media\MediaServiceProvider;
 use Tipoff\TestSupport\BaseTestCase;
 
 class TestCase extends BaseTestCase

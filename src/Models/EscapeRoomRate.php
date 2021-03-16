@@ -126,6 +126,7 @@ class EscapeRoomRate extends BaseModel
     {
         $key = ($isPrivate) ? 'private_' : 'public_';
         $key = $key.$participants;
+
         return $this->$key * $participants;
     }
 

@@ -9,7 +9,7 @@ use Tipoff\EscapeRoom\Models\EscapeRoomTheme;
 use Tipoff\EscapeRoom\Tests\TestCase;
 use Tipoff\Support\Contracts\Models\UserInterface;
 
-class EscapeRoomThemePolicyTest extends TestCase 
+class EscapeRoomThemePolicyTest extends TestCase
 {
     use DatabaseTransactions;
 
