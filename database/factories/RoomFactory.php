@@ -16,8 +16,8 @@ class RoomFactory extends Factory
     {
         return [
             'location_id'           => randomOrCreate(app('location')),
-            'theme_id'              => randomOrCreate(app('theme')),
-            'rate_id'               => randomOrCreate(app('rate')),
+            'theme_id'              => randomOrCreate(app('escaperoom_theme')),
+            'rate_id'               => randomOrCreate(app('escaperoom_rate')),
             'supervision_id'        => randomOrCreate(app('supervision')),
             'opened_at'             => $this->faker->dateTimeBetween('-1 years', '+3 months'),
             'closed_at'             => null,

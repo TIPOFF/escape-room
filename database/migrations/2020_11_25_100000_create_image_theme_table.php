@@ -12,7 +12,7 @@ class CreateImageThemeTable extends Migration
     {
         Schema::create('image_theme', function (Blueprint $table) {
             $table->foreignIdFor(app('image'))->index();
-            $table->foreignIdFor(app('theme'))->index();
+            $table->foreignIdFor(app('escaperoom_theme'))->index();
             $table->timestamps();
         });
     }
