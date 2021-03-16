@@ -8,11 +8,11 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Tipoff\Locations\Models\Location;
 
-class CreateEscapeRoomLocations extends Migration
+class CreateEscaperoomLocations extends Migration
 {
     public function up()
     {
-        Schema::create('escape_room_locations', function (Blueprint $table) {
+        Schema::create('escaperoom_locations', function (Blueprint $table) {
             $table->id();
             $table->boolean('corporate')->default(true); // Mark false for Miami & DC
             $table->string('team_names')->nullable();
