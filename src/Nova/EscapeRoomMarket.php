@@ -14,9 +14,9 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
 use Tipoff\Support\Nova\BaseResource;
 
-class EscapeRoomMarket extends BaseResource
+class EscaperoomMarket extends BaseResource
 {
-    public static $model = \Tipoff\EscapeRoom\Models\EscapeRoomMarket::class;
+    public static $model = \Tipoff\EscapeRoom\Models\EscaperoomMarket::class;
 
     public static $title = 'id';
 

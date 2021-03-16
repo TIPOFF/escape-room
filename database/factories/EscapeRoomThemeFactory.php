@@ -10,18 +10,8 @@ use Tipoff\EscapeRoom\Models\EscapeRoomTheme;
 
 class EscapeRoomThemeFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
     protected $model = EscapeRoomTheme::class;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
     public function definition()
     {
         $name = $this->faker->name;

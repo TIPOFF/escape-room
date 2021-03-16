@@ -11,7 +11,7 @@ use Tipoff\Support\Traits\HasCreator;
 use Tipoff\Support\Traits\HasPackageFactory;
 use Tipoff\Support\Traits\HasUpdater;
 
-class EscapeRoomMarket extends BaseModel
+class EscaperoomMarket extends BaseModel
 {
     use HasCreator;
     use HasUpdater;

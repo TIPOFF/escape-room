@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Tests\Feature\Nova;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tipoff\EscapeRoom\Models\EscapeRoomMarket;
+use Tipoff\EscapeRoom\Models\EscaperoomMarket;
 use Tipoff\EscapeRoom\Tests\TestCase;
 
-class EscapeRoomMarketResourceTest extends TestCase
+class EscaperoomMarketResourceTest extends TestCase
 {
     use DatabaseTransactions;
 
     /** @test */
     public function index()
     {
-        EscapeRoomMarket::factory()->count(1)->create();
+        EscaperoomMarket::factory()->count(1)->create();
 
         $this->actingAs(self::createPermissionedUser('view escape room markets', true));
 

@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Tests\Unit\Models;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tipoff\EscapeRoom\Models\EscapeRoomMarket;
+use Tipoff\EscapeRoom\Models\EscaperoomMarket;
 use Tipoff\EscapeRoom\Tests\TestCase;
 use Tipoff\Support\Contracts\Models\UserInterface;
 
-class EscapeRoomMarketPolicyTest extends TestCase
+class EscaperoomMarketPolicyTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -17,10 +17,10 @@ class EscapeRoomMarketPolicyTest extends TestCase
     public function view_any()
     {
         $user = self::createPermissionedUser('view escape room markets', true);
-        $this->assertTrue($user->can('viewAny', EscapeRoomMarket::class));
+        $this->assertTrue($user->can('viewAny', EscaperoomMarket::class));
 
         $user = self::createPermissionedUser('view escape room markets', false);
-        $this->assertFalse($user->can('viewAny', EscapeRoomMarket::class));
+        $this->assertFalse($user->can('viewAny', EscaperoomMarket::class));
     }
 
     /**
@@ -32,7 +32,7 @@ class EscapeRoomMarketPolicyTest extends TestCase
      */
     public function all_permissions_as_creator(string $permission, UserInterface $user, bool $expected)
     {
-        $room = EscapeRoomMarket::factory()->make([
+        $room = EscaperoomMarket::factory()->make([
             'creator_id' => $user,
         ]);
 
@@ -42,14 +42,14 @@ class EscapeRoomMarketPolicyTest extends TestCase
     public function data_provider_for_all_permissions_as_creator()
     {
         return [
-            'view-true' => [ 'view', self::createPermissionedUser('view escape room markets', true), true ],
-            'view-false' => [ 'view', self::createPermissionedUser('view escape room markets', false), false ],
-            'create-true' => [ 'create', self::createPermissionedUser('create escape room markets', true), true ],
-            'create-false' => [ 'create', self::createPermissionedUser('create escape room markets', false), false ],
-            'update-true' => [ 'update', self::createPermissionedUser('update escape room markets', true), true ],
-            'update-false' => [ 'update', self::createPermissionedUser('update escape room markets', false), false ],
-            'delete-true' => [ 'delete', self::createPermissionedUser('delete escape room markets', true), false ],
-            'delete-false' => [ 'delete', self::createPermissionedUser('delete escape room markets', false), false ],
+            'view-true' => ['view', self::createPermissionedUser('view escape room markets', true), true],
+            'view-false' => ['view', self::createPermissionedUser('view escape room markets', false), false],
+            'create-true' => ['create', self::createPermissionedUser('create escape room markets', true), true],
+            'create-false' => ['create', self::createPermissionedUser('create escape room markets', false), false],
+            'update-true' => ['update', self::createPermissionedUser('update escape room markets', true), true],
+            'update-false' => ['update', self::createPermissionedUser('update escape room markets', false), false],
+            'delete-true' => ['delete', self::createPermissionedUser('delete escape room markets', true), false],
+            'delete-false' => ['delete', self::createPermissionedUser('delete escape room markets', false), false],
         ];
     }
 
@@ -62,7 +62,7 @@ class EscapeRoomMarketPolicyTest extends TestCase
      */
     public function all_permissions_not_creator(string $permission, UserInterface $user, bool $expected)
     {
-        $room = EscapeRoomMarket::factory()->make();
+        $room = EscaperoomMarket::factory()->make();
 
         $this->assertEquals($expected, $user->can($permission, $room));
     }

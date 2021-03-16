@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Tipoff\EscapeRoom\Models\EscapeRoomMarket;
+use Tipoff\EscapeRoom\Models\EscaperoomMarket;
 use Tipoff\Locations\Models\Location;
 
-class EscapeRoomMarketFactory extends Factory
+class EscaperoomMarketFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
-    protected $model = EscapeRoomMarket::class;
+    protected $model = EscaperoomMarket::class;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     * @throws \Exception
-     */
     public function definition()
     {
         return [

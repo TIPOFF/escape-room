@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Tests\Support\Providers;
 
 use Tipoff\EscapeRoom\Nova\EscaperoomLocation;
-use Tipoff\EscapeRoom\Nova\EscapeRoomMarket;
+use Tipoff\EscapeRoom\Nova\EscaperoomMarket;
 use Tipoff\EscapeRoom\Nova\EscapeRoomRate;
 use Tipoff\EscapeRoom\Nova\EscapeRoomTheme;
 use Tipoff\EscapeRoom\Nova\Room;
@@ -16,7 +16,7 @@ class NovaPackageServiceProvider extends BaseNovaPackageServiceProvider
 {
     public static array $packageResources = [
         EscaperoomLocation::class,
-        EscapeRoomMarket::class,
+        EscaperoomMarket::class,
         EscapeRoomRate::class,
         Room::class,
         Supervision::class,

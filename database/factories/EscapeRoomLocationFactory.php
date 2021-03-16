@@ -9,19 +9,8 @@ use Tipoff\EscapeRoom\Models\EscaperoomLocation;
 
 class EscaperoomLocationFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
     protected $model = EscaperoomLocation::class;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     * @throws \Exception
-     */
     public function definition()
     {
         return [
