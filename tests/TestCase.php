@@ -23,15 +23,12 @@ class TestCase extends BaseTestCase
             NovaCoreServiceProvider::class,
             NovaPackageServiceProvider::class,
             SupportServiceProvider::class,
-            AddressesServiceProvider::class,
-            AuthorizationServiceProvider::class,
             PermissionServiceProvider::class,
-            EscaperoomServiceProvider::class,
-            LocationsServiceProvider::class,
-            SupportServiceProvider::class,
             AuthorizationServiceProvider::class,
-            PermissionServiceProvider::class,
             MediaServiceProvider::class,
+            AddressesServiceProvider::class,
+            LocationsServiceProvider::class,
+            EscaperoomServiceProvider::class,
         ];
     }
 }
