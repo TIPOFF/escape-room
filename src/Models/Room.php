@@ -80,7 +80,7 @@ class Room extends BaseModel
         if (self::where('location_id', $this->location_id)->where('theme_id', $this->theme_id)->count() > 1) {
             return "{$this->location->abbreviation} {$this->theme->name} #{$this->id}";
         }
-
+        
         // If only room at the location with the theme, return theme title
         return "{$this->location->abbreviation} {$this->theme->name}";
     }
@@ -97,12 +97,12 @@ class Room extends BaseModel
 
     public function theme()
     {
-        return $this->belongsTo(app('theme'));
+        return $this->belongsTo(app('escaperoom_theme'));
     }
 
     public function rate()
     {
-        return $this->belongsTo(app('rate'));
+        return $this->belongsTo(app('escaperoom_rate'));
     }
 
     public function supervision()
