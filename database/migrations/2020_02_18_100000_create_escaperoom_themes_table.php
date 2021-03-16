@@ -7,11 +7,11 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Tipoff\EscapeRoom\Models\Supervision;
 
-class CreateEscapeRoomThemesTable extends Migration
+class CreateEscaperoomThemesTable extends Migration
 {
     public function up()
     {
-        Schema::create('escape_room_themes', function (Blueprint $table) {
+        Schema::create('escaperoom_themes', function (Blueprint $table) {
             $table->id();
             $table->string('slug')->unique()->index();
             $table->string('name')->unique();
