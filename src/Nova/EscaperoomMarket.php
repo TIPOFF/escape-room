@@ -38,7 +38,7 @@ class EscaperoomMarket extends BaseResource
         return array_filter([
             Boolean::make('Corporate'),
 
-            nova('location') ? BelongsTo::make('Location', 'location', nova('location'))->hideWhenUpdating()->required() : null,
+            nova('market') ? BelongsTo::make('Market', 'market', nova('market'))->hideWhenUpdating()->required() : null,
 
             Markdown::make('Rooms Content'),
 
