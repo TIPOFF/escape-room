@@ -12,6 +12,7 @@ use Tipoff\EscapeRoom\EscapeRoomServiceProvider;
 use Tipoff\EscapeRoom\Tests\Support\Providers\NovaPackageServiceProvider;
 use Tipoff\Locations\LocationsServiceProvider;
 use Tipoff\Support\SupportServiceProvider;
+use DrewRoberts\Media\MediaServiceProvider;
 use Tipoff\TestSupport\BaseTestCase;
 
 class TestCase extends BaseTestCase
@@ -30,6 +31,7 @@ class TestCase extends BaseTestCase
             SupportServiceProvider::class,
             AuthorizationServiceProvider::class,
             PermissionServiceProvider::class,
+            MediaServiceProvider::class,
         ];
     }
 }
