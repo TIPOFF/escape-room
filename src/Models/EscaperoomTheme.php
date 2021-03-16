@@ -50,7 +50,7 @@ class EscaperoomTheme extends BaseModel
 
     public function locations()
     {
-        return $this->hasManyThrough(app('location'), Room::class, 'theme_id', 'id', 'id', 'location_id');
+        return $this->hasManyThrough(app('location'), Room::class, 'escaperoom_theme_id', 'id', 'id', 'location_id');
     }
 
     public function supervision()
@@ -160,7 +160,7 @@ class EscaperoomTheme extends BaseModel
 
     public function findMarkets()
     {
-        $rooms = Room::where('theme_id', $this->id)
+        $rooms = Room::where('escaperoom_theme_id', $this->id)
             ->whereNull('closed_at')
             ->get();
 
