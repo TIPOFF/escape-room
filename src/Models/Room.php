@@ -31,8 +31,8 @@ class Room extends BaseModel
         static::saving(function ($room) {
             Assert::lazy()
                 ->that($room->location_id)->notEmpty('An escape room must be at a location.')
-                ->that($room->theme_id)->notEmpty('An escape room must have a theme.')
-                ->that($room->rate_id)->notEmpty('An escape room must have a default rate.')
+                ->that($room->escaperoom_theme_id)->notEmpty('An escape room must have a theme.')
+                ->that($room->escaperoom_rate_id)->notEmpty('An escape room must have a default rate.')
                 ->verifyNow();
             if (empty($room->supervision_id)) {
                 $room->supervision_id = $room->theme->supervision_id;
@@ -97,12 +97,12 @@ class Room extends BaseModel
 
     public function theme()
     {
-        return $this->belongsTo(app('theme'));
+        return $this->belongsTo(app('escaperoom_theme'));
     }
 
     public function rate()
     {
-        return $this->belongsTo(app('rate'));
+        return $this->belongsTo(app('escaperoom_rate'));
     }
 
     public function supervision()
