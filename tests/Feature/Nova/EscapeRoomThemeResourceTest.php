@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Tests\Feature\Nova;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tipoff\EscapeRoom\Models\EscapeRoomTheme;
+use Tipoff\EscapeRoom\Models\EscaperoomTheme;
 use Tipoff\EscapeRoom\Tests\TestCase;
 
-class EscapeRoomThemeResourceTest extends TestCase
+class EscaperoomThemeResourceTest extends TestCase
 {
     use DatabaseTransactions;
 
     /** @test */
     public function index()
     {
-        EscapeRoomTheme::factory()->count(1)->create();
+        EscaperoomTheme::factory()->count(1)->create();
 
         $this->actingAs(self::createPermissionedUser('view themes', true));
 

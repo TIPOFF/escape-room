@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Tipoff\EscapeRoom\Models\EscapeRoomTheme;
+use Tipoff\EscapeRoom\Models\EscaperoomTheme;
 use Tipoff\Support\Contracts\Models\UserInterface;
 
-class EscapeRoomThemePolicy
+class EscaperoomThemePolicy
 {
     use HandlesAuthorization;
 
@@ -17,7 +17,7 @@ class EscapeRoomThemePolicy
         return $user->hasPermissionTo('view themes') ? true : false;
     }
 
-    public function view(UserInterface $user, EscapeRoomTheme $theme): bool
+    public function view(UserInterface $user, EscaperoomTheme $theme): bool
     {
         return $user->hasPermissionTo('view themes') ? true : false;
     }
@@ -27,22 +27,22 @@ class EscapeRoomThemePolicy
         return $user->hasPermissionTo('create themes') ? true : false;
     }
 
-    public function update(UserInterface $user, EscapeRoomTheme $theme): bool
+    public function update(UserInterface $user, EscaperoomTheme $theme): bool
     {
         return $user->hasPermissionTo('update themes') ? true : false;
     }
 
-    public function delete(UserInterface $user, EscapeRoomTheme $theme): bool
+    public function delete(UserInterface $user, EscaperoomTheme $theme): bool
     {
         return false;
     }
 
-    public function restore(UserInterface $user, EscapeRoomTheme $theme): bool
+    public function restore(UserInterface $user, EscaperoomTheme $theme): bool
     {
         return false;
     }
 
-    public function forceDelete(UserInterface $user, EscapeRoomTheme $theme): bool
+    public function forceDelete(UserInterface $user, EscaperoomTheme $theme): bool
     {
         return false;
     }

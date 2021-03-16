@@ -6,7 +6,7 @@ namespace Tipoff\EscapeRoom\Tests\Unit\Models;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Session;
-use Tipoff\EscapeRoom\Models\EscapeRoomTheme;
+use Tipoff\EscapeRoom\Models\EscaperoomTheme;
 use Tipoff\EscapeRoom\Tests\TestCase;
 
 class EscaperoomThemeModelTest extends TestCase
@@ -16,7 +16,7 @@ class EscaperoomThemeModelTest extends TestCase
     /** @test */
     public function create()
     {
-        $model = EscapeRoomTheme::factory()->create();
+        $model = EscaperoomTheme::factory()->create();
         $this->assertNotNull($model);
 
         return $model;
@@ -26,7 +26,7 @@ class EscaperoomThemeModelTest extends TestCase
     @test
     *@depends create
     */
-    public function it_has_duration(EscapeRoomTheme $model)
+    public function it_has_duration(EscaperoomTheme $model)
     {
         $this->assertIsInt($model->duration);
     }
@@ -35,7 +35,7 @@ class EscaperoomThemeModelTest extends TestCase
     @test
     *@depends create
     */
-    public function it_has_occupied_time(EscapeRoomTheme $model)
+    public function it_has_occupied_time(EscaperoomTheme $model)
     {
         $this->assertIsInt($model->occupied_time);
     }
@@ -44,7 +44,7 @@ class EscaperoomThemeModelTest extends TestCase
     @test
     *@depends create
     */
-    public function it_has_supervision(EscapeRoomTheme $model)
+    public function it_has_supervision(EscaperoomTheme $model)
     {
         $this->assertIsInt($model->supervision_id);
     }
@@ -53,7 +53,7 @@ class EscaperoomThemeModelTest extends TestCase
     @test
     *@depends create
     */
-    public function determinate_if_is_scavenger(EscapeRoomTheme $model)
+    public function determinate_if_is_scavenger(EscaperoomTheme $model)
     {
         $model->scavenger_level = rand(0, 3);
         $model->save();
@@ -68,7 +68,7 @@ class EscaperoomThemeModelTest extends TestCase
     @test
     *@depends create
     */
-    public function it_has_pitch_attribute(EscapeRoomTheme $model)
+    public function it_has_pitch_attribute(EscaperoomTheme $model)
     {
         $model->scavenger_level = rand(0, 3);
         $model->save();
@@ -83,7 +83,7 @@ class EscaperoomThemeModelTest extends TestCase
     @test
     *@depends create
     */
-    public function it_has_path_attribute(EscapeRoomTheme $model)
+    public function it_has_path_attribute(EscaperoomTheme $model)
     {
         $compare1 = null;
         if (Session::get('current_market_id') != null) {
