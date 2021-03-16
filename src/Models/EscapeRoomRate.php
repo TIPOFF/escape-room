@@ -8,8 +8,9 @@ use Tipoff\Support\Models\BaseModel;
 use Tipoff\Support\Traits\HasCreator;
 use Tipoff\Support\Traits\HasPackageFactory;
 use Tipoff\Support\Traits\HasUpdater;
+use Tipoff\EscapeRoom\Models\Room;
 
-class Rate extends BaseModel
+class EscapeRoomRate extends BaseModel
 {
     use HasCreator;
     use HasUpdater;
@@ -126,7 +127,6 @@ class Rate extends BaseModel
     {
         $key = ($isPrivate) ? 'private_' : 'public_';
         $key = $key.$participants;
-
         return $this->$key * $participants;
     }
 
@@ -135,7 +135,7 @@ class Rate extends BaseModel
      */
     public function rooms()
     {
-        return $this->hasMany(app('room'));
+        return $this->hasMany(Room::class);
     }
 
     /**

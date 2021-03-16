@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Tests\Feature\Nova;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tipoff\EscapeRoom\Models\Rate;
+use Tipoff\EscapeRoom\Models\EscapeRoomRate;
 use Tipoff\EscapeRoom\Tests\TestCase;
 
-class RateResourceTest extends TestCase
+class EscapeRoomRateResourceTest extends TestCase
 {
     use DatabaseTransactions;
 
     /** @test */
     public function index()
     {
-        Rate::factory()->count(1)->create();
+        EscapeRoomRate::factory()->count(1)->create();
 
         $this->actingAs(self::createPermissionedUser('view rates', true));
 

@@ -17,9 +17,9 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
 use Tipoff\Support\Nova\BaseResource;
 
-class Rate extends BaseResource
+class EscapeRoomRate extends BaseResource
 {
-    public static $model = \Tipoff\EscapeRoom\Models\Rate::class;
+    public static $model = \Tipoff\EscapeRoom\Models\EscapeRoomRate::class;
 
     public static $title = 'name';
 
