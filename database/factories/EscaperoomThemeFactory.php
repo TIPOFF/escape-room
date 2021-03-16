@@ -32,6 +32,10 @@ class EscaperoomThemeFactory extends Factory
             'puzzle_level'    => $this->faker->numberBetween(1, 5),
             'escape_rate'     => $this->faker->numberBetween(1, 100),
             'supervision_id'  => randomOrCreate(app('supervision')),
+            'poster_image_id' => randomOrCreate(app('image')),
+            'icon_id'         => randomOrCreate(app('image')),
+            'image_id'        => randomOrCreate(app('image')),
+            'video_id'        => randomOrCreate(app('video')),
             'creator_id'      => randomOrCreate(app('user')),
             'updater_id'      => randomOrCreate(app('user'))
         ];
