@@ -105,14 +105,14 @@ class EscaperoomThemeModelTest extends TestCase
     {
         $market = app('market')::factory()->create();
         $location = app('location')::factory()->create(['closed_at'=>NULL, 'market_id'=>$market->id]);
-        $theme = EscaperoomTheme::factory()->create();
+        $theme = EscaperoomTheme::factory()->create(['video_id'=>rand(0,1)]);
         $room = app('room')::factory()->create(['theme_id'=>$theme->id, 'location_id'=>$location->id]);
         $markets = $theme->findMarkets();
         $this->assertEquals($markets[0]->id, $room->location->market->id);
 
         $market2 = app('market')::factory()->create();
         $location2 = app('location')::factory()->create(['closed_at'=>Carbon::now(), 'market_id'=>$market2->id]);
-        $theme2 = EscaperoomTheme::factory()->create();
+        $theme2 = EscaperoomTheme::factory()->create(['video_id'=>rand(2,3)]);
         $room2 = app('room')::factory()->create(['theme_id'=>$theme2->id, 'location_id'=>$location2->id]);
         $markets2 = $theme2->findMarkets();
         $this->assertEquals($markets2, NULL);
