@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Tipoff\EscapeRoom\Models\EscapeRoomRate;
+use Tipoff\EscapeRoom\Models\EscaperoomRate;
 use Tipoff\Support\Contracts\Models\UserInterface;
 
-class EscapeRoomRatePolicy
+class EscaperoomRatePolicy
 {
     use HandlesAuthorization;
 
@@ -17,7 +17,7 @@ class EscapeRoomRatePolicy
         return $user->hasPermissionTo('view rates') ? true : false;
     }
 
-    public function view(UserInterface $user, EscapeRoomRate $rate): bool
+    public function view(UserInterface $user, EscaperoomRate $rate): bool
     {
         return $user->hasPermissionTo('view rates') ? true : false;
     }
@@ -27,22 +27,22 @@ class EscapeRoomRatePolicy
         return $user->hasPermissionTo('create rates') ? true : false;
     }
 
-    public function update(UserInterface $user, EscapeRoomRate $rate): bool
+    public function update(UserInterface $user, EscaperoomRate $rate): bool
     {
         return $user->hasPermissionTo('update rates') ? true : false;
     }
 
-    public function delete(UserInterface $user, EscapeRoomRate $rate): bool
+    public function delete(UserInterface $user, EscaperoomRate $rate): bool
     {
         return false;
     }
 
-    public function restore(UserInterface $user, EscapeRoomRate $rate): bool
+    public function restore(UserInterface $user, EscaperoomRate $rate): bool
     {
         return false;
     }
 
-    public function forceDelete(UserInterface $user, EscapeRoomRate $rate): bool
+    public function forceDelete(UserInterface $user, EscaperoomRate $rate): bool
     {
         return false;
     }

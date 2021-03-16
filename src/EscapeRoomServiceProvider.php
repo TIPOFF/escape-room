@@ -6,13 +6,13 @@ namespace Tipoff\EscapeRoom;
 
 use Tipoff\EscapeRoom\Models\EscaperoomLocation;
 use Tipoff\EscapeRoom\Models\EscaperoomMarket;
-use Tipoff\EscapeRoom\Models\EscapeRoomRate;
+use Tipoff\EscapeRoom\Models\EscaperoomRate;
 use Tipoff\EscapeRoom\Models\EscapeRoomTheme;
 use Tipoff\EscapeRoom\Models\Room;
 use Tipoff\EscapeRoom\Models\Supervision;
 use Tipoff\EscapeRoom\Policies\EscaperoomLocationPolicy;
 use Tipoff\EscapeRoom\Policies\EscaperoomMarketPolicy;
-use Tipoff\EscapeRoom\Policies\EscapeRoomRatePolicy;
+use Tipoff\EscapeRoom\Policies\EscaperoomRatePolicy;
 use Tipoff\EscapeRoom\Policies\EscapeRoomThemePolicy;
 use Tipoff\EscapeRoom\Policies\RoomPolicy;
 use Tipoff\EscapeRoom\Policies\SupervisionPolicy;
@@ -25,7 +25,7 @@ class EscapeRoomServiceProvider extends TipoffServiceProvider
     {
         $package
             ->hasPolicies([
-                EscapeRoomRate::class => EscapeRoomRatePolicy::class,
+                EscaperoomRate::class => EscaperoomRatePolicy::class,
                 Room::class => RoomPolicy::class,
                 Supervision::class => SupervisionPolicy::class,
                 EscapeRoomTheme::class => EscapeRoomThemePolicy::class,
@@ -33,7 +33,7 @@ class EscapeRoomServiceProvider extends TipoffServiceProvider
                 EscaperoomMarket::class => EscaperoomMarketPolicy::class,
             ])
             ->hasNovaResources([
-                \Tipoff\EscapeRoom\Nova\EscapeRoomRate::class,
+                \Tipoff\EscapeRoom\Nova\EscaperoomRate::class,
                 \Tipoff\EscapeRoom\Nova\Room::class,
                 \Tipoff\EscapeRoom\Nova\Supervision::class,
                 \Tipoff\EscapeRoom\Nova\EscapeRoomTheme::class,

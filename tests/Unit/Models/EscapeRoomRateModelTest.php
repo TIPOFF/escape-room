@@ -5,19 +5,19 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Tests\Unit\Models;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tipoff\EscapeRoom\Models\EscapeRoomRate;
+use Tipoff\EscapeRoom\Models\EscaperoomRate;
 use Tipoff\EscapeRoom\Tests\TestCase;
 
-class EscapeRoomRateModelTest extends TestCase
+class EscaperoomRateModelTest extends TestCase
 {
     use DatabaseTransactions;
 
     /**
     @test
-    */
+     */
     public function create()
     {
-        $model = EscapeRoomRate::factory()->create();
+        $model = EscaperoomRate::factory()->create();
         $this->assertNotNull($model);
 
         return $model;
@@ -25,45 +25,45 @@ class EscapeRoomRateModelTest extends TestCase
 
     /**
     @test
-    *@depends create
-    */
-    public function it_has_a_name(EscapeRoomRate $model)
+     *@depends create
+     */
+    public function it_has_a_name(EscaperoomRate $model)
     {
         $this->assertNotNull($model->name);
     }
 
     /**
     @test
-    *@depends create
-    */
-    public function it_has_a_slug(EscapeRoomRate $model)
+     *@depends create
+     */
+    public function it_has_a_slug(EscaperoomRate $model)
     {
         $this->assertNotNull($model->slug);
     }
 
     /**
     @test
-    *@depends create
-    */
-    public function it_has_a_base_public_rate(EscapeRoomRate $model)
+     *@depends create
+     */
+    public function it_has_a_base_public_rate(EscaperoomRate $model)
     {
         $this->assertNotNull($model->public_1);
     }
 
     /**
     @test
-    *@depends create
-    */
-    public function it_has_a_base_private_rate(EscapeRoomRate $model)
+     *@depends create
+     */
+    public function it_has_a_base_private_rate(EscaperoomRate $model)
     {
         $this->assertNotNull($model->private_1);
     }
 
     /**
     @test
-    *@depends create
-    */
-    public function it_has_all_the_rates_privates_not_including_the_first_one(EscapeRoomRate $model)
+     *@depends create
+     */
+    public function it_has_all_the_rates_privates_not_including_the_first_one(EscaperoomRate $model)
     {
         $this->assertNotNull($model->private_2);
         $this->assertNotNull($model->private_3);
@@ -84,9 +84,9 @@ class EscapeRoomRateModelTest extends TestCase
 
     /**
     @test
-    *@depends create
-    */
-    public function it_has_all_the_rates_publics_not_including_the_first_one(EscapeRoomRate $model)
+     *@depends create
+     */
+    public function it_has_all_the_rates_publics_not_including_the_first_one(EscaperoomRate $model)
     {
         $this->assertNotNull($model->public_2);
         $this->assertNotNull($model->public_3);
@@ -101,9 +101,9 @@ class EscapeRoomRateModelTest extends TestCase
 
     /**
     @test
-    *@depends create
-    */
-    public function always_return_amount(EscapeRoomRate $model)
+     *@depends create
+     */
+    public function always_return_amount(EscaperoomRate $model)
     {
         $isPrivate = (bool)rand(0, 1);
         $participants = rand(1, 9);
@@ -113,9 +113,9 @@ class EscapeRoomRateModelTest extends TestCase
 
     /**
     @test
-    *@depends create
-    */
-    public function it_has_a_creator_and_updator(EscapeRoomRate $model)
+     *@depends create
+     */
+    public function it_has_a_creator_and_updator(EscaperoomRate $model)
     {
         $this->assertNotNull($model->creator_id);
         $this->assertNotNull($model->updater_id);

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 declare(strict_types=1);
 
@@ -6,11 +6,11 @@ namespace Tipoff\EscapeRoom\Database\Factories;
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Tipoff\EscapeRoom\Models\EscapeRoomRate;
+use Tipoff\EscapeRoom\Models\EscaperoomRate;
 
-class EscapeRoomRateFactory extends Factory
+class EscaperoomRateFactory extends Factory
 {
-    protected $model = EscapeRoomRate::class;
+    protected $model = EscaperoomRate::class;
 
     public function definition()
     {

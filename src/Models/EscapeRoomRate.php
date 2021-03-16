@@ -9,7 +9,7 @@ use Tipoff\Support\Traits\HasCreator;
 use Tipoff\Support\Traits\HasPackageFactory;
 use Tipoff\Support\Traits\HasUpdater;
 
-class EscapeRoomRate extends BaseModel
+class EscaperoomRate extends BaseModel
 {
     use HasCreator;
     use HasUpdater;
