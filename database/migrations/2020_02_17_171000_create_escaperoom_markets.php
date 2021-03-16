@@ -7,11 +7,11 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Tipoff\Locations\Models\Location;
 
-class CreateEscapeRoomMarkets extends Migration
+class CreateEscaperoomMarkets extends Migration
 {
     public function up()
     {
-        Schema::create('escape_room_markets', function (Blueprint $table) {
+        Schema::create('escaperoom_markets', function (Blueprint $table) {
             $table->id();
 
             $table->boolean('corporate')->default(true);
