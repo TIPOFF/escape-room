@@ -45,8 +45,8 @@ class Room extends BaseResource
             ID::make()->sortable(),
             Text::make('Name'),
             nova('location') ? BelongsTo::make('Location', 'location', nova('location'))->sortable() : null,
-            nova('theme') ? BelongsTo::make('Theme', 'theme', nova('theme'))->sortable() : null,
-            nova('rate') ? BelongsTo::make('Rate', 'rate', nova('rate'))->sortable() : null,
+            nova('escaperoom_theme') ? BelongsTo::make('Theme', 'escaperoom_theme', nova('escaperoom_theme'))->sortable() : null,
+            nova('escaperoom_rate') ? BelongsTo::make('Rate', 'escaperoom_rate', nova('escaperoom_rate'))->sortable() : null,
             Number::make('Max Participants Public', 'participants')->sortable(),
             Number::make('Max Participants Private', 'participants_private')->sortable(),
         ]);
