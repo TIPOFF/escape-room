@@ -19,7 +19,7 @@ use Tipoff\EscapeRoom\Policies\SupervisionPolicy;
 use Tipoff\Support\TipoffPackage;
 use Tipoff\Support\TipoffServiceProvider;
 
-class EscapeRoomServiceProvider extends TipoffServiceProvider
+class EscaperoomServiceProvider extends TipoffServiceProvider
 {
     public function configureTipoffPackage(TipoffPackage $package): void
     {
