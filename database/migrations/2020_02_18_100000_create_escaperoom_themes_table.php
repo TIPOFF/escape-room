@@ -28,7 +28,7 @@ class CreateEscaperoomThemesTable extends Migration
             $table->unsignedTinyInteger('puzzle_level')->nullable(); // 1-5 scale
             $table->unsignedTinyInteger('escape_rate')->nullable(); // 0-100% scale
             $table->foreignIdFor(app('image'))->nullable();
-            $table->foreignIdFor(app('video'))->nullable()->unique();
+            $table->foreignIdFor(app('video'))->nullable();
             $table->foreignIdFor(app('image'), 'poster_image_id')->nullable();
             $table->foreignIdFor(app('image'), 'icon_id')->nullable();
             $table->foreignIdFor(app('supervision'), 'supervision_id');
