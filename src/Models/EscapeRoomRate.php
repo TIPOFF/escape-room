@@ -8,7 +8,6 @@ use Tipoff\Support\Models\BaseModel;
 use Tipoff\Support\Traits\HasCreator;
 use Tipoff\Support\Traits\HasPackageFactory;
 use Tipoff\Support\Traits\HasUpdater;
-use Tipoff\EscapeRoom\Models\Room;
 
 class EscapeRoomRate extends BaseModel
 {
@@ -135,7 +134,7 @@ class EscapeRoomRate extends BaseModel
      */
     public function rooms()
     {
-        return $this->hasMany(Room::class);
+        return $this->hasMany(app('room'));
     }
 
     /**
