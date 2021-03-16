@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Tests\Unit\Models;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tipoff\EscapeRoom\Models\EscapeRoomLocation;
+use Tipoff\EscapeRoom\Models\EscaperoomLocation;
 use Tipoff\EscapeRoom\Tests\TestCase;
 
-class EscapeRoomLocationModelTest extends TestCase
+class EscaperoomLocationModelTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -17,7 +17,7 @@ class EscapeRoomLocationModelTest extends TestCase
     */
     public function create()
     {
-        $model = EscapeRoomLocation::factory()->create();
+        $model = EscaperoomLocation::factory()->create();
         $this->assertNotNull($model);
     }
 
@@ -26,7 +26,7 @@ class EscapeRoomLocationModelTest extends TestCase
     */
     public function it_has_a_location()
     {
-        $model = EscapeRoomLocation::factory()->create();
+        $model = EscaperoomLocation::factory()->create();
         $this->assertInstanceOf(get_class(app('location')), $model->location);
     }
 
@@ -35,7 +35,7 @@ class EscapeRoomLocationModelTest extends TestCase
     */
     public function it_may_has_an_teamphoto()
     {
-        $model = EscapeRoomLocation::factory()->create();
+        $model = EscaperoomLocation::factory()->create();
         $array = [null, rand(1, 1)];
         $this->assertContains($model->team_image_id, $array);
     }

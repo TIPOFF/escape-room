@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Tests\Unit\Models;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tipoff\EscapeRoom\Models\EscapeRoomLocation;
+use Tipoff\EscapeRoom\Models\EscaperoomLocation;
 use Tipoff\EscapeRoom\Tests\TestCase;
 use Tipoff\Support\Contracts\Models\UserInterface;
 
-class EscapeRoomLocationPolicyTest extends TestCase
+class EscaperoomLocationPolicyTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -17,10 +17,10 @@ class EscapeRoomLocationPolicyTest extends TestCase
     public function view_any()
     {
         $user = self::createPermissionedUser('view escape room locations', true);
-        $this->assertTrue($user->can('viewAny', EscapeRoomLocation::class));
+        $this->assertTrue($user->can('viewAny', EscaperoomLocation::class));
 
         $user = self::createPermissionedUser('view escape room locations', false);
-        $this->assertFalse($user->can('viewAny', EscapeRoomLocation::class));
+        $this->assertFalse($user->can('viewAny', EscaperoomLocation::class));
     }
 
     /**
@@ -32,7 +32,7 @@ class EscapeRoomLocationPolicyTest extends TestCase
      */
     public function all_permissions_as_creator(string $permission, UserInterface $user, bool $expected)
     {
-        $room = EscapeRoomLocation::factory()->make([
+        $room = EscaperoomLocation::factory()->make([
             'creator_id' => $user,
         ]);
 
@@ -62,7 +62,7 @@ class EscapeRoomLocationPolicyTest extends TestCase
      */
     public function all_permissions_not_creator(string $permission, UserInterface $user, bool $expected)
     {
-        $room = EscapeRoomLocation::factory()->make();
+        $room = EscaperoomLocation::factory()->make();
 
         $this->assertEquals($expected, $user->can($permission, $room));
     }

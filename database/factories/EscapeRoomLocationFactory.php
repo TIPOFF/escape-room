@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Tipoff\EscapeRoom\Models\EscapeRoomLocation;
+use Tipoff\EscapeRoom\Models\EscaperoomLocation;
 
-class EscapeRoomLocationFactory extends Factory
+class EscaperoomLocationFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = EscapeRoomLocation::class;
+    protected $model = EscaperoomLocation::class;
 
     /**
      * Define the model's default state.

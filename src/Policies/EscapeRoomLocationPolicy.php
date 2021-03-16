@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Tipoff\EscapeRoom\Models\EscapeRoomLocation;
+use Tipoff\EscapeRoom\Models\EscaperoomLocation;
 use Tipoff\Support\Contracts\Models\UserInterface;
 
-class EscapeRoomLocationPolicy
+class EscaperoomLocationPolicy
 {
     use HandlesAuthorization;
 
@@ -17,7 +17,7 @@ class EscapeRoomLocationPolicy
         return $user->hasPermissionTo('view escape room locations');
     }
 
-    public function view(UserInterface $user, EscapeRoomLocation $escapeRoomLocation): bool
+    public function view(UserInterface $user, EscaperoomLocation $escapeRoomLocation): bool
     {
         return $user->hasPermissionTo('view escape room locations');
     }
@@ -27,22 +27,22 @@ class EscapeRoomLocationPolicy
         return $user->hasPermissionTo('create escape room locations');
     }
 
-    public function update(UserInterface $user, EscapeRoomLocation $escapeRoomLocation): bool
+    public function update(UserInterface $user, EscaperoomLocation $escapeRoomLocation): bool
     {
         return $user->hasPermissionTo('update escape room locations');
     }
 
-    public function delete(UserInterface $user, EscapeRoomLocation $escapeRoomLocation): bool
+    public function delete(UserInterface $user, EscaperoomLocation $escapeRoomLocation): bool
     {
         return false;
     }
 
-    public function restore(UserInterface $user, EscapeRoomLocation $escapeRoomLocation): bool
+    public function restore(UserInterface $user, EscaperoomLocation $escapeRoomLocation): bool
     {
         return false;
     }
 
-    public function forceDelete(UserInterface $user, EscapeRoomLocation $escapeRoomLocation): bool
+    public function forceDelete(UserInterface $user, EscaperoomLocation $escapeRoomLocation): bool
     {
         return false;
     }
