@@ -29,6 +29,7 @@ class EscapeRoomLocationFactory extends Factory
             'corporate'      => $this->faker->boolean,
             'booking_cutoff' => $this->faker->numberBetween(1, 127),
             'creator_id'     => randomOrCreate(app('user')),
+            'team_image_id'  => randomOrCreate(app('image')),
             'updater_id'     => randomOrCreate(app('user'))
         ];
     }
