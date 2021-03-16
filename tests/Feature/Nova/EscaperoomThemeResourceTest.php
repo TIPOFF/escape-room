@@ -19,7 +19,7 @@ class EscaperoomThemeResourceTest extends TestCase
 
         $this->actingAs(self::createPermissionedUser('view themes', true));
 
-        $response = $this->getJson('nova-api/themes')->assertOk();
+        $response = $this->getJson('nova-api/escaperoom-themes')->assertOk();
 
         $this->assertCount(1, $response->json('resources'));
     }
