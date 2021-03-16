@@ -36,7 +36,7 @@ class EscapeRoomLocationModelTest extends TestCase
     public function it_may_has_an_teamphoto()
     {
         $model = EscapeRoomLocation::factory()->create();
-        $array = array(NULL, rand(1,1));
+        $array = [NULL, rand(1,1)];
 		$this->assertContains($model->team_image_id, $array);
     }
 }
