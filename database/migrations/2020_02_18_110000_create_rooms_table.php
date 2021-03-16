@@ -13,8 +13,8 @@ class CreateRoomsTable extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(app('location'))->index();
-            $table->foreignId('theme_id')->constrained(app('escaperoom_theme'))->index();
-            $table->foreignId('rate_id')->constrained(app('escaperoom_rate'))->index(); // Default pricing rate structure for the room. Can be ovveridden by schedules & slots.
+            $table->foreignIdFor(app('escaperoom_theme'))->index();
+            $table->foreignIdFor(app('escaperoom_rate'))->index(); // Default pricing rate structure for the room. Can be ovveridden by schedules & slots.
             $table->foreignIdFor(app('supervision'));
             $table->date('opened_at');
             $table->date('closed_at')->nullable();
