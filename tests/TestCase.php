@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Tipoff\EscapeRoom\Tests;
 
+use DrewRoberts\Media\MediaServiceProvider;
 use Laravel\Nova\NovaCoreServiceProvider;
 use Spatie\Permission\PermissionServiceProvider;
 use Tipoff\Addresses\AddressesServiceProvider;
 use Tipoff\Authorization\AuthorizationServiceProvider;
-use Tipoff\EscapeRoom\EscapeRoomServiceProvider;
+use Tipoff\EscapeRoom\EscaperoomServiceProvider;
 use Tipoff\EscapeRoom\Tests\Support\Providers\NovaPackageServiceProvider;
 use Tipoff\Locations\LocationsServiceProvider;
 use Tipoff\Support\SupportServiceProvider;
@@ -22,14 +23,12 @@ class TestCase extends BaseTestCase
             NovaCoreServiceProvider::class,
             NovaPackageServiceProvider::class,
             SupportServiceProvider::class,
+            PermissionServiceProvider::class,
+            AuthorizationServiceProvider::class,
+            MediaServiceProvider::class,
             AddressesServiceProvider::class,
-            AuthorizationServiceProvider::class,
-            PermissionServiceProvider::class,
-            EscapeRoomServiceProvider::class,
             LocationsServiceProvider::class,
-            SupportServiceProvider::class,
-            AuthorizationServiceProvider::class,
-            PermissionServiceProvider::class,
+            EscaperoomServiceProvider::class,
         ];
     }
 }

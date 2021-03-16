@@ -10,24 +10,14 @@ use Tipoff\Locations\Models\Location;
 
 class RoomFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
     protected $model = Room::class;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
     public function definition()
     {
         return [
             'location_id'           => randomOrCreate(app('location')),
-            'theme_id'              => randomOrCreate(app('theme')),
-            'rate_id'               => randomOrCreate(app('rate')),
+            'escaperoom_theme_id'   => randomOrCreate(app('escaperoom_theme')),
+            'escaperoom_rate_id'    => randomOrCreate(app('escaperoom_rate')),
             'supervision_id'        => randomOrCreate(app('supervision')),
             'opened_at'             => $this->faker->dateTimeBetween('-1 years', '+3 months'),
             'closed_at'             => null,

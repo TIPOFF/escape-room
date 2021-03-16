@@ -5,9 +5,6 @@ declare(strict_types=1);
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Tipoff\EscapeRoom\Models\Rate;
-use Tipoff\EscapeRoom\Models\Supervision;
-use Tipoff\EscapeRoom\Models\Theme;
 
 class CreateRoomsTable extends Migration
 {
@@ -16,8 +13,8 @@ class CreateRoomsTable extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(app('location'))->index();
-            $table->foreignIdFor(app('theme'))->index();
-            $table->foreignIdFor(app('rate'))->index(); // Default pricing rate structure for the room. Can be ovveridden by schedules & slots.
+            $table->foreignIdFor(app('escaperoom_theme'))->index();
+            $table->foreignIdFor(app('escaperoom_rate'))->index(); // Default pricing rate structure for the room. Can be ovveridden by schedules & slots.
             $table->foreignIdFor(app('supervision'));
             $table->date('opened_at');
             $table->date('closed_at')->nullable();
