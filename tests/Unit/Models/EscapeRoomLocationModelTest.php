@@ -12,10 +12,31 @@ class EscapeRoomLocationModelTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /** 
+    @test 
+    */
     public function create()
     {
         $model = EscapeRoomLocation::factory()->create();
         $this->assertNotNull($model);
+    }
+
+    /** 
+    @test 
+    */
+    public function it_has_a_location()
+    {
+        $model = EscapeRoomLocation::factory()->create();
+        $this->assertInstanceOf(get_class(app('location')), $model->location);
+    }
+
+    /** 
+    @test
+    */
+    public function it_may_has_an_teamphoto()
+    {
+        $model = EscapeRoomLocation::factory()->create();
+        $array = array(NULL, rand(1,1));
+		$this->assertContains($model->team_image_id, $array);
     }
 }
