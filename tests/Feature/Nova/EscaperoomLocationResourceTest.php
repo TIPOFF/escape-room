@@ -19,7 +19,7 @@ class EscaperoomLocationResourceTest extends TestCase
 
         $this->actingAs(self::createPermissionedUser('view escape room locations', true));
 
-        $response = $this->getJson('nova-api/escape-room-locations')->assertOk();
+        $response = $this->getJson('nova-api/escaperoom-locations')->assertOk();
 
         $this->assertCount(1, $response->json('resources'));
     }
