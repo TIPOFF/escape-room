@@ -35,3 +35,7 @@ All notable changes to `escape-room` will be documented in this file.
 ## 2.1.1 - 2021-03-06
 
 - nova resource tests
+
+## 2.2.0 - 2021-03-16
+
+- add escaperoom prefix to classes
