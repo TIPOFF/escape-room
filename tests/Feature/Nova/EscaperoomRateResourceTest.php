@@ -19,7 +19,7 @@ class EscaperoomRateResourceTest extends TestCase
 
         $this->actingAs(self::createPermissionedUser('view rates', true));
 
-        $response = $this->getJson('nova-api/rates')->assertOk();
+        $response = $this->getJson('nova-api/escaperoom-rates')->assertOk();
 
         $this->assertCount(1, $response->json('resources'));
     }
