@@ -16,7 +16,7 @@ class CreateEscapeRoomLocations extends Migration
             $table->id();
             $table->boolean('corporate')->default(true); // Mark false for Miami & DC
             $table->string('team_names')->nullable();
-            $table->foreignIdFor(Image::class, 'team_image_id')->nullable();
+            $table->foreignIdFor(app('image'), 'team_image_id')->nullable();
             $table->unsignedTinyInteger('booking_cutoff'); // Minutes before a game/slot to cutoff the booking window.
             $table->boolean('covid')->default(false); // Mark true if location closed due to COVID-19
             $table->boolean('use_iframe')->default(false); // If yes, use the booking iframe below
