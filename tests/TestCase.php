@@ -9,7 +9,7 @@ use Laravel\Nova\NovaCoreServiceProvider;
 use Spatie\Permission\PermissionServiceProvider;
 use Tipoff\Addresses\AddressesServiceProvider;
 use Tipoff\Authorization\AuthorizationServiceProvider;
-use Tipoff\EscapeRoom\EscaperoomServiceProvider;
+use Tipoff\EscapeRoom\EscapeRoomServiceProvider;
 use Tipoff\EscapeRoom\Tests\Support\Providers\NovaPackageServiceProvider;
 use Tipoff\Locations\LocationsServiceProvider;
 use Tipoff\Support\SupportServiceProvider;
@@ -28,7 +28,7 @@ class TestCase extends BaseTestCase
             MediaServiceProvider::class,
             AddressesServiceProvider::class,
             LocationsServiceProvider::class,
-            EscaperoomServiceProvider::class,
+            EscapeRoomServiceProvider::class,
         ];
     }
 }

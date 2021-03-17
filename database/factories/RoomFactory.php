@@ -27,6 +27,7 @@ class RoomFactory extends Factory
             'reset_time'            => $this->faker->randomElement([10, 15, 15, 20, 25, 30, 30, 30, 45]),
             'occupied_time'         => $this->faker->randomElement([45, 60, 75, 90, 120]),
             'note'                  => $this->faker->sentences(1, true),
+            'image_id'              => randomOrCreate(app('image')),
             'creator_id'            => randomOrCreate(app('user')),
             'updater_id'            => randomOrCreate(app('user'))
         ];
