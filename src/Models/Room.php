@@ -66,7 +66,7 @@ class Room extends BaseModel
     public function getTitleAttribute()
     {
         // Check if the location has multiple rooms with same theme. Will need to edit later for accurate count.
-        if (self::where('location_id', $this->location_id)->where('theme_id', $this->theme_id)->count() > 1) {
+        if (self::where('location_id', $this->location_id)->where('escaperoom_theme_id', $this->escaperoom_theme_id)->count() > 1) {
             return "{$this->theme->title} #{$this->id}";
         }
 
@@ -77,7 +77,7 @@ class Room extends BaseModel
     public function getNameAttribute()
     {
         // Check if the location has multiple rooms with same theme. Will need to edit later for accurate count.
-        if (self::where('location_id', $this->location_id)->where('theme_id', $this->theme_id)->count() > 1) {
+        if (self::where('location_id', $this->location_id)->where('escaperoom_theme_id', $this->escaperoom_theme_id)->count() > 1) {
             return "{$this->location->abbreviation} {$this->theme->name} #{$this->id}";
         }
 
@@ -97,12 +97,12 @@ class Room extends BaseModel
 
     public function theme()
     {
-        return $this->belongsTo(app('escaperoom_theme'));
+        return $this->belongsTo(app('escaperoom_theme'), 'escaperoom_theme_id');
     }
 
     public function rate()
     {
-        return $this->belongsTo(app('escaperoom_rate'));
+        return $this->belongsTo(app('escaperoom_rate'), 'escaperoom_rate_id');
     }
 
     public function supervision()
