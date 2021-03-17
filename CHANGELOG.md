@@ -39,3 +39,8 @@ All notable changes to `escape-room` will be documented in this file.
 ## 2.2.0 - 2021-03-16
 
 - add escaperoom prefix to classes
+
+## 2.2.1 - 2021-03-17
+
+- update theme relationships
+- add more testing
