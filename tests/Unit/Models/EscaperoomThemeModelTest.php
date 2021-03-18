@@ -14,6 +14,7 @@ use Tipoff\EscapeRoom\Models\Room;
 use Tipoff\EscapeRoom\Tests\TestCase;
 use Tipoff\Locations\Models\Location;
 use Tipoff\Locations\Models\Market;
+use Tipoff\EscapeRoom\Models\Supervision;
 
 class EscaperoomThemeModelTest extends TestCase
 {
@@ -113,14 +114,14 @@ class EscaperoomThemeModelTest extends TestCase
         $theme = EscaperoomTheme::factory()->create();
         $room = Room::factory()->create(['escaperoom_theme_id' => $theme->id, 'location_id' => $location->id]);
         $markets = $theme->findMarkets();
-        $this->assertEquals($markets[0]->id, $room->location->market->id);
+        $this->assertEquals($room->location->market->id,$markets[0]->id);
 
         $market2 = Market::factory()->create();
         $location2 = Location::factory()->create(['closed_at' => Carbon::now(), 'market_id' => $market2->id]);
         $theme2 = EscaperoomTheme::factory()->create();
         $room2 = Room::factory()->create(['escaperoom_theme_id' => $theme2->id, 'location_id' => $location2->id]);
         $markets2 = $theme2->findMarkets();
-        $this->assertEquals($markets2, null);
+        $this->assertEquals(null,$markets2);
     }
 
     /**
@@ -129,7 +130,7 @@ class EscaperoomThemeModelTest extends TestCase
     public function it_has_a_supervision()
     {
         $model = EscaperoomTheme::factory()->create();
-        $this->assertInstanceOf(get_class(app('supervision')), $model->supervision);
+        $this->assertInstanceOf(Supervision::class, $model->supervision);
     }
 
     /**
@@ -138,7 +139,7 @@ class EscaperoomThemeModelTest extends TestCase
     public function it_has_poster()
     {
         $model = EscaperoomTheme::factory()->create();
-        $this->assertInstanceOf(get_class(app('image')), $model->poster);
+        $this->assertInstanceOf(Image::class, $model->poster);
     }
 
     /**
@@ -189,6 +190,6 @@ class EscaperoomThemeModelTest extends TestCase
     {
         $icon = Image::factory()->create();
         $theme = EscaperoomTheme::factory()->create(['icon_id' => $icon->id]);
-        $this->assertEquals($theme->getIconUrlAttribute(), $theme->icon->url);
+        $this->assertEquals($theme->icon->url, $theme->getIconUrlAttribute());
     }
 }
