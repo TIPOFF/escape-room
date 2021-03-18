@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Tests\Unit\Models;
 
 use Carbon\Carbon;
+use DrewRoberts\Media\Models\Image;
+use DrewRoberts\Media\Models\Video;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Session;
 use Tipoff\EscapeRoom\Models\EscaperoomTheme;
-use Tipoff\EscapeRoom\Tests\TestCase;
-use DrewRoberts\Media\Models\Video;
-use DrewRoberts\Media\Models\Image;
-use Tipoff\Locations\Models\Market;
-use Tipoff\Locations\Models\Location;
 use Tipoff\EscapeRoom\Models\Room;
+use Tipoff\EscapeRoom\Tests\TestCase;
+use Tipoff\Locations\Models\Location;
+use Tipoff\Locations\Models\Market;
 
 class EscaperoomThemeModelTest extends TestCase
 {
