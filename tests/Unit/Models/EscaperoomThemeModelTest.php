@@ -11,10 +11,10 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Session;
 use Tipoff\EscapeRoom\Models\EscaperoomTheme;
 use Tipoff\EscapeRoom\Models\Room;
+use Tipoff\EscapeRoom\Models\Supervision;
 use Tipoff\EscapeRoom\Tests\TestCase;
 use Tipoff\Locations\Models\Location;
 use Tipoff\Locations\Models\Market;
-use Tipoff\EscapeRoom\Models\Supervision;
 
 class EscaperoomThemeModelTest extends TestCase
 {
@@ -114,14 +114,14 @@ class EscaperoomThemeModelTest extends TestCase
         $theme = EscaperoomTheme::factory()->create();
         $room = Room::factory()->create(['escaperoom_theme_id' => $theme->id, 'location_id' => $location->id]);
         $markets = $theme->findMarkets();
-        $this->assertEquals($room->location->market->id,$markets[0]->id);
+        $this->assertEquals($room->location->market->id, $markets[0]->id);
 
         $market2 = Market::factory()->create();
         $location2 = Location::factory()->create(['closed_at' => Carbon::now(), 'market_id' => $market2->id]);
         $theme2 = EscaperoomTheme::factory()->create();
         $room2 = Room::factory()->create(['escaperoom_theme_id' => $theme2->id, 'location_id' => $location2->id]);
         $markets2 = $theme2->findMarkets();
-        $this->assertEquals(null,$markets2);
+        $this->assertEquals(null, $markets2);
     }
 
     /**

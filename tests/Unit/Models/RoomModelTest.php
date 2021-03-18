@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Tests\Unit\Models;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tipoff\EscapeRoom\Models\Room;
-use Tipoff\EscapeRoom\Models\EscaperoomTheme;
 use Tipoff\EscapeRoom\Models\EscaperoomRate;
+use Tipoff\EscapeRoom\Models\EscaperoomTheme;
+use Tipoff\EscapeRoom\Models\Room;
+use Tipoff\EscapeRoom\Models\Supervision;
 use Tipoff\EscapeRoom\Tests\TestCase;
 use Tipoff\Locations\Models\Location;
 use Tipoff\Locations\Models\Market;
-use Tipoff\EscapeRoom\Models\Supervision;
 
 class RoomModelTest extends TestCase
 {
@@ -218,7 +218,7 @@ class RoomModelTest extends TestCase
     {
         $theme = EscaperoomTheme::factory()->create(['icon_id' => null, 'video_id' => rand(0, 1)]);
         $room = Room::factory()->create(['escaperoom_theme_id' => $theme->id]);
-        $this->assertEquals(NULL, $room->getIconUrlAttribute());
+        $this->assertEquals(null, $room->getIconUrlAttribute());
 
         $theme = EscaperoomTheme::factory()->create(['video_id' => rand(2, 3)]);
         $room = Room::factory()->create(['escaperoom_theme_id' => $theme->id]);
