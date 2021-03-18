@@ -124,10 +124,10 @@ class RoomModelTest extends TestCase
         $location = Location::factory()->create();
         $theme = EscaperoomTheme::factory()->create();
         $room = Room::factory()->create(['escaperoom_theme_id' => $theme->id, 'location_id' => $location->id]);
-        $this->assertEquals($room->getTitleAttribute(), $room->theme->title);
+        $this->assertEquals($room->theme->title, $room->getTitleAttribute());
 
         $room2 = Room::factory()->create(['escaperoom_theme_id' => $theme->id, 'location_id' => $location->id]);
-        $this->assertEquals($room2->getTitleAttribute(), "{$room2->theme->title} #{$room2->id}");
+        $this->assertEquals("{$room2->theme->title} #{$room2->id}", $room2->getTitleAttribute());
     }
 
     /**
@@ -138,10 +138,10 @@ class RoomModelTest extends TestCase
         $location = Location::factory()->create();
         $theme = EscaperoomTheme::factory()->create();
         $room = Room::factory()->create(['escaperoom_theme_id' => $theme->id, 'location_id' => $location->id]);
-        $this->assertEquals($room->getNameAttribute(), "{$room->location->abbreviation} {$room->theme->name}");
+        $this->assertEquals("{$room->location->abbreviation} {$room->theme->name}", $room->getNameAttribute());
 
         $room2 = Room::factory()->create(['escaperoom_theme_id' => $theme->id, 'location_id' => $location->id]);
-        $this->assertEquals($room2->getNameAttribute(), "{$room2->location->abbreviation} {$room2->theme->name} #{$room2->id}");
+        $this->assertEquals("{$room2->location->abbreviation} {$room2->theme->name} #{$room2->id}", $room2->getNameAttribute());
     }
 
     /**
@@ -154,7 +154,7 @@ class RoomModelTest extends TestCase
         $theme = EscaperoomTheme::factory()->create();
         $room = Room::factory()->create(['escaperoom_theme_id' => $theme->id, 'location_id' => $location->id]);
 
-        $this->assertEquals($room->getPathAttribute(), "/{$room->location->market->slug}/rooms/{$room->theme->slug}");
+        $this->assertEquals("/{$room->location->market->slug}/rooms/{$room->theme->slug}", $room->getPathAttribute());
     }
 
     /**
@@ -199,7 +199,7 @@ class RoomModelTest extends TestCase
     public function room_has_incoming_property()
     {
         $model = Room::factory()->create();
-        $this->assertEquals($model->isComing(), $model->opened_at->isFuture());
+        $this->assertEquals($model->opened_at->isFuture(), $model->isComing());
     }
 
     /**
@@ -208,7 +208,7 @@ class RoomModelTest extends TestCase
     public function room_has_pitch_attribute()
     {
         $model = Room::factory()->create();
-        $this->assertEquals($model->getPitchAttribute(), $model->theme->pitch);
+        $this->assertEquals($model->theme->pitch, $model->getPitchAttribute());
     }
 
     /**
@@ -218,11 +218,11 @@ class RoomModelTest extends TestCase
     {
         $theme = EscaperoomTheme::factory()->create(['icon_id' => null, 'video_id' => rand(0, 1)]);
         $room = Room::factory()->create(['escaperoom_theme_id' => $theme->id]);
-        $this->assertEquals($room->getIconUrlAttribute(), null);
+        $this->assertEquals(NULL, $room->getIconUrlAttribute());
 
         $theme = EscaperoomTheme::factory()->create(['video_id' => rand(2, 3)]);
         $room = Room::factory()->create(['escaperoom_theme_id' => $theme->id]);
-        $this->assertEquals($room->getIconUrlAttribute(), $room->theme->icon->url);
+        $this->assertEquals($room->theme->icon->url, $room->getIconUrlAttribute());
     }
 
     /**
@@ -231,6 +231,6 @@ class RoomModelTest extends TestCase
     public function room_has_youtube_attribute()
     {
         $model = Room::factory()->create();
-        $this->assertEquals($model->getYoutubeAttribute(), $model->theme->youtube);
+        $this->assertEquals($model->theme->youtube, $model->getYoutubeAttribute());
     }
 }
