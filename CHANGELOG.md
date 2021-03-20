@@ -44,3 +44,9 @@ All notable changes to `escape-room` will be documented in this file.
 
 - update theme relationships
 - add more testing
+
+## 2.2.2 - 2021-03-20
+
+- implement interface
+- update nova resources
+- resolve classes from service provider
