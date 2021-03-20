@@ -5,10 +5,16 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Tests\Unit\Models;
 
 use Carbon\Carbon;
+use DrewRoberts\Media\Models\Image;
+use DrewRoberts\Media\Models\Video;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Session;
 use Tipoff\EscapeRoom\Models\EscaperoomTheme;
+use Tipoff\EscapeRoom\Models\Room;
+use Tipoff\EscapeRoom\Models\Supervision;
 use Tipoff\EscapeRoom\Tests\TestCase;
+use Tipoff\Locations\Models\Location;
+use Tipoff\Locations\Models\Market;
 
 class EscaperoomThemeModelTest extends TestCase
 {
@@ -103,19 +109,19 @@ class EscaperoomThemeModelTest extends TestCase
     */
     public function it_can_find_markets()
     {
-        $market = app('market')::factory()->create();
-        $location = app('location')::factory()->create(['closed_at' => null, 'market_id' => $market->id]);
+        $market = Market::factory()->create();
+        $location = Location::factory()->create(['closed_at' => null, 'market_id' => $market->id]);
         $theme = EscaperoomTheme::factory()->create();
-        $room = app('room')::factory()->create(['escaperoom_theme_id' => $theme->id, 'location_id' => $location->id]);
+        $room = Room::factory()->create(['escaperoom_theme_id' => $theme->id, 'location_id' => $location->id]);
         $markets = $theme->findMarkets();
-        $this->assertEquals($markets[0]->id, $room->location->market->id);
+        $this->assertEquals($room->location->market->id, $markets[0]->id);
 
-        $market2 = app('market')::factory()->create();
-        $location2 = app('location')::factory()->create(['closed_at' => Carbon::now(), 'market_id' => $market2->id]);
+        $market2 = Market::factory()->create();
+        $location2 = Location::factory()->create(['closed_at' => Carbon::now(), 'market_id' => $market2->id]);
         $theme2 = EscaperoomTheme::factory()->create();
-        $room2 = app('room')::factory()->create(['escaperoom_theme_id' => $theme2->id, 'location_id' => $location2->id]);
+        $room2 = Room::factory()->create(['escaperoom_theme_id' => $theme2->id, 'location_id' => $location2->id]);
         $markets2 = $theme2->findMarkets();
-        $this->assertEquals($markets2, null);
+        $this->assertEquals(null, $markets2);
     }
 
     /**
@@ -124,7 +130,7 @@ class EscaperoomThemeModelTest extends TestCase
     public function it_has_a_supervision()
     {
         $model = EscaperoomTheme::factory()->create();
-        $this->assertInstanceOf(get_class(app('supervision')), $model->supervision);
+        $this->assertInstanceOf(Supervision::class, $model->supervision);
     }
 
     /**
@@ -133,7 +139,7 @@ class EscaperoomThemeModelTest extends TestCase
     public function it_has_poster()
     {
         $model = EscaperoomTheme::factory()->create();
-        $this->assertInstanceOf(get_class(app('image')), $model->poster);
+        $this->assertInstanceOf(Image::class, $model->poster);
     }
 
     /**
@@ -142,7 +148,7 @@ class EscaperoomThemeModelTest extends TestCase
     public function it_has_icon()
     {
         $model = EscaperoomTheme::factory()->create();
-        $this->assertInstanceOf(get_class(app('image')), $model->icon);
+        $this->assertInstanceOf(Image::class, $model->icon);
     }
 
     /**
@@ -151,7 +157,7 @@ class EscaperoomThemeModelTest extends TestCase
     public function it_has_image()
     {
         $model = EscaperoomTheme::factory()->create();
-        $this->assertInstanceOf(get_class(app('image')), $model->image);
+        $this->assertInstanceOf(Image::class, $model->image);
     }
 
     /**
@@ -160,7 +166,7 @@ class EscaperoomThemeModelTest extends TestCase
     public function it_has_video()
     {
         $model = EscaperoomTheme::factory()->create();
-        $this->assertInstanceOf(get_class(app('video')), $model->video);
+        $this->assertInstanceOf(Video::class, $model->video);
     }
 
     /**
@@ -168,13 +174,13 @@ class EscaperoomThemeModelTest extends TestCase
     */
     public function it_has_youtube_attribute()
     {
-        $video = app('video')::factory()->create(['source' => 'youtube']);
+        $video = Video::factory()->create(['source' => 'youtube']);
         $theme = EscaperoomTheme::factory()->create(['video_id' => $video->id]);
         $this->assertIsString($theme->getYoutubeAttribute());
 
-        $video2 = app('video')::factory()->create(['source' => 'vimeo']);
+        $video2 = Video::factory()->create(['source' => 'vimeo']);
         $theme2 = EscaperoomTheme::factory()->create(['video_id' => $video2->id]);
-        $this->assertEquals($theme2->getYoutubeAttribute(), 'P_BWLv-PQfk');
+        $this->assertEquals('P_BWLv-PQfk', $theme2->getYoutubeAttribute());
     }
 
     /**
@@ -182,8 +188,8 @@ class EscaperoomThemeModelTest extends TestCase
     */
     public function it_has_icon_url_attribute()
     {
-        $icon = app('image')::factory()->create();
+        $icon = Image::factory()->create();
         $theme = EscaperoomTheme::factory()->create(['icon_id' => $icon->id]);
-        $this->assertEquals($theme->getIconUrlAttribute(), $theme->icon->url);
+        $this->assertEquals($theme->icon->url, $theme->getIconUrlAttribute());
     }
 }

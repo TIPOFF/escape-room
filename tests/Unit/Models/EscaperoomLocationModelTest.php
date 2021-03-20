@@ -7,6 +7,7 @@ namespace Tipoff\EscapeRoom\Tests\Unit\Models;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tipoff\EscapeRoom\Models\EscaperoomLocation;
 use Tipoff\EscapeRoom\Tests\TestCase;
+use Tipoff\Locations\Models\Location;
 
 class EscaperoomLocationModelTest extends TestCase
 {
@@ -27,7 +28,7 @@ class EscaperoomLocationModelTest extends TestCase
     public function it_has_a_location()
     {
         $model = EscaperoomLocation::factory()->create();
-        $this->assertInstanceOf(get_class(app('location')), $model->location);
+        $this->assertInstanceOf(Location::class, $model->location);
     }
 
     /**
