@@ -107,7 +107,7 @@ class EscaperoomRateModelTest extends TestCase
     {
         $isPrivate = (bool)rand(0, 1);
         $participants = rand(1, 9);
-        $amount = $model->getAmount($participants, $isPrivate);
+        $amount = $model->generateAmount($participants, $isPrivate);
         $this->assertIsInt($amount);
     }
 
