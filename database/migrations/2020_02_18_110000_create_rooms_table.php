@@ -14,8 +14,8 @@ class CreateRoomsTable extends Migration
             $table->id();
             $table->foreignIdFor(app('location'))->index();
             $table->foreignIdFor(app('escaperoom_theme'))->index();
-            $table->foreignIdFor(app('escaperoom_rate'))->index(); // Default pricing rate structure for the room. Can be ovveridden by schedules & slots.
-            $table->foreignIdFor(app('supervision'));
+            $table->foreignIdFor(app('escaperoom_rate'))->index(); // Default pricing rate structure for the room. Can be overidden by schedules & slots.
+            $table->foreignIdFor(app('supervision')); // Defaults to theme->supervision but this allows each room to have a custom supervision
             $table->date('opened_at');
             $table->date('closed_at')->nullable();
             $table->unsignedTinyInteger('participants'); // Max amount of participants for public games
@@ -23,7 +23,7 @@ class CreateRoomsTable extends Migration
             $table->unsignedTinyInteger('reset_time'); // Time needed to reset the room in minutes. Can be 15 min on some of the newer rooms.
             $table->unsignedTinyInteger('occupied_time'); // Minutes. Used for scheduling & slot conflicts. Defaults to theme->occupied_time but this allows each room to have a custom time.
             $table->unsignedTinyInteger('priority'); // Used to order the themes on the market page
-            $table->text('note')->nullable(); // Shown on website. Internal notes may be made in admin panel.
+            $table->text('note')->nullable(); // Shown on website. Internal notes may be made in admin panel using tipoff/notes package
             $table->string('title')->nullable(); // Override of theme title on Market page if needed
             $table->text('excerpt')->nullable(); // Override of theme excerpt on Market page if needed
             $table->text('description')->nullable(); // Override of theme description on Market page if needed
