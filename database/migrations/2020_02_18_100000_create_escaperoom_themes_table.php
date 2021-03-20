@@ -21,9 +21,9 @@ class CreateEscaperoomThemesTable extends Migration
             $table->text('description')->nullable();
             $table->text('synopsis')->nullable();
             $table->text('story')->nullable();
-            $table->text('info')->nullable(); // Additional information about escape rooms with this theme. Used for note on Escape the Colosseum
+            $table->text('info')->nullable(); // Additional information about escape rooms with this theme. Used for note to display on frontend of website
             $table->unsignedTinyInteger('duration'); // Minutes
-            $table->unsignedTinyInteger('occupied_time'); // Minutes. Typically is duration of theme plus a reset/cleanup time. In some cases like Colossuem, groups can be staggered into room every 45 min.
+            $table->unsignedTinyInteger('occupied_time'); // Minutes. Typically is duration of theme plus a reset/cleanup time. In some cases, groups can be staggered into room at intervals less than duration.
             $table->unsignedTinyInteger('scavenger_level')->nullable(); // 1-5 scale
             $table->unsignedTinyInteger('puzzle_level')->nullable(); // 1-5 scale
             $table->unsignedTinyInteger('escape_rate')->nullable(); // 0-100% scale
