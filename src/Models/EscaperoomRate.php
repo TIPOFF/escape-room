@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Tipoff\EscapeRoom\Models;
 
+use Illuminate\Database\Eloquent\Relations\Relation;
+use Tipoff\Support\Contracts\Booking\BookingRateCategoryInterface;
 use Tipoff\Support\Contracts\Booking\BookingRateInterface;
 use Tipoff\Support\Models\BaseModel;
 use Tipoff\Support\Traits\HasCreator;
@@ -184,13 +186,13 @@ class EscaperoomRate extends BaseModel /*implements BookingRateInterface*/
         return "";
     }
 
-    public function category(): Relation
+    public function category(): ?Relation
     {
         // @todo: implement category
         return null;
     }
 
-    public function getCategory(): BookingRateCategoryInterface
+    public function getCategory(): ?BookingRateCategoryInterface
     {
         // @todo: implement getCategory
         return null;
