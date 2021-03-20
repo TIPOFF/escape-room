@@ -21,7 +21,6 @@ class CreateEscaperoomMarkets extends Migration
             
             $table->foreignIdFor(app('user'), 'creator_id');
             $table->foreignIdFor(app('user'), 'updater_id');
-
             $table->timestamps();
         });
     }
