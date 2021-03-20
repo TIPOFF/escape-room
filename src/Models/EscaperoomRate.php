@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Tipoff\EscapeRoom\Models;
 
+use Tipoff\Support\Contracts\Booking\BookingRateInterface;
 use Tipoff\Support\Models\BaseModel;
 use Tipoff\Support\Traits\HasCreator;
 use Tipoff\Support\Traits\HasPackageFactory;
 use Tipoff\Support\Traits\HasUpdater;
-use Tipoff\Support\Contracts\Booking\BookingRateInterface;
 
 class EscaperoomRate extends BaseModel /*implements BookingRateInterface*/
 {
