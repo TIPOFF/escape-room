@@ -45,17 +45,17 @@ class EscaperoomTheme extends BaseModel
 
     public function rooms()
     {
-        return $this->hasMany(Room::class);
+        return $this->hasMany(app('room'));
     }
 
     public function locations()
     {
-        return $this->hasManyThrough(app('location'), Room::class, 'escaperoom_theme_id', 'id', 'id', 'location_id');
+        return $this->hasManyThrough(app('location'), app('room'), 'escaperoom_theme_id', 'id', 'id', 'location_id');
     }
 
     public function supervision()
     {
-        return $this->belongsTo(Supervision::class);
+        return $this->belongsTo(app('supervision'));
     }
 
     public function images()
