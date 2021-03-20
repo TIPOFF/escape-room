@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Tipoff\EscapeRoom\Models;
 
+use Illuminate\Database\Eloquent\Relations\Relation;
+use Tipoff\Support\Contracts\Booking\BookingRateCategoryInterface;
 use Tipoff\Support\Contracts\Booking\BookingRateInterface;
 use Tipoff\Support\Models\BaseModel;
 use Tipoff\Support\Traits\HasCreator;
 use Tipoff\Support\Traits\HasPackageFactory;
 use Tipoff\Support\Traits\HasUpdater;
-use Illuminate\Database\Eloquent\Relations\Relation;
-use Tipoff\Support\Contracts\Booking\BookingRateCategoryInterface;
 
 class EscaperoomRate extends BaseModel /*implements BookingRateInterface*/
 {
