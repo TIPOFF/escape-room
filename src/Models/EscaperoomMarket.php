@@ -22,7 +22,7 @@ class EscaperoomMarket extends BaseModel
      */
     public function location()
     {
-        return $this->belongsTo(Location::class);
+        return $this->belongsTo(app('location'));
     }
 
     /**
@@ -30,6 +30,6 @@ class EscaperoomMarket extends BaseModel
      */
     public function teamPhoto()
     {
-        return $this->belongsTo(Image::class, 'team_image_id');
+        return $this->belongsTo(app('image'), 'team_image_id');
     }
 }
