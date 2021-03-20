@@ -9,6 +9,8 @@ use Tipoff\Support\Models\BaseModel;
 use Tipoff\Support\Traits\HasCreator;
 use Tipoff\Support\Traits\HasPackageFactory;
 use Tipoff\Support\Traits\HasUpdater;
+use Illuminate\Database\Eloquent\Relations\Relation;
+use Tipoff\Support\Contracts\Booking\BookingRateCategoryInterface;
 
 class EscaperoomRate extends BaseModel /*implements BookingRateInterface*/
 {
@@ -184,13 +186,13 @@ class EscaperoomRate extends BaseModel /*implements BookingRateInterface*/
         return "";
     }
 
-    public function category(): Relation
+    public function category(): ?Relation
     {
         // @todo: implement category
         return null;
     }
 
-    public function getCategory(): BookingRateCategoryInterface
+    public function getCategory(): ?BookingRateCategoryInterface
     {
         // @todo: implement getCategory
         return null;
