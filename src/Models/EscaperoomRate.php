@@ -4,18 +4,21 @@ declare(strict_types=1);
 
 namespace Tipoff\EscapeRoom\Models;
 
+use Tipoff\Support\Contracts\Booking\BookingRateInterface;
 use Tipoff\Support\Models\BaseModel;
 use Tipoff\Support\Traits\HasCreator;
 use Tipoff\Support\Traits\HasPackageFactory;
 use Tipoff\Support\Traits\HasUpdater;
 
-class EscaperoomRate extends BaseModel
+class EscaperoomRate extends BaseModel /*implements BookingRateInterface*/
 {
     use HasCreator;
     use HasUpdater;
     use HasPackageFactory;
 
     protected $casts = [];
+
+    public $amount;
 
     protected static function boot()
     {
@@ -122,12 +125,14 @@ class EscaperoomRate extends BaseModel
      * @param bool $isPrivate
      * @return int
      */
-    public function getAmount(int $participants, bool $isPrivate)
+    public function generateAmount(int $participants, bool $isPrivate): int
     {
         $key = ($isPrivate) ? 'private_' : 'public_';
         $key = $key.$participants;
 
-        return $this->$key * $participants;
+        $this->amount = $this->$key * $participants;
+
+        return $this->amount;
     }
 
     /**
@@ -160,5 +165,40 @@ class EscaperoomRate extends BaseModel
     public function schedules()
     {
         return $this->hasMany(app('schedule'));
+    }
+
+    public function getAmount(): int
+    {
+        return $this->amount;
+    }
+
+    public function getLabel(): string
+    {
+        // @todo: implement getLabel
+        return "";
+    }
+
+    public function getSlug(): string
+    {
+        // @todo: implement getSlug
+        return "";
+    }
+
+    public function category(): Relation
+    {
+        // @todo: implement category
+        return null;
+    }
+
+    public function getCategory(): BookingRateCategoryInterface
+    {
+        // @todo: implement getCategory
+        return null;
+    }
+
+    public function getParticipantsLimit(): ?int
+    {
+        // @todo: implement getParticipantsLimit
+        return 1;
     }
 }
