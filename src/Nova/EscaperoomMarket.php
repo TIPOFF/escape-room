@@ -25,12 +25,12 @@ class EscaperoomMarket extends BaseResource
 
     public static $group = 'Escape Rooms';
 
-    //public function fieldsForIndex(NovaRequest $request)
-    //{
-    //    return array_filter([
-    //        ID::make()->sortable(),
-    //    ]);
-    //}
+    public function fieldsForIndex(NovaRequest $request)
+    {
+        return array_filter([
+            ID::make()->sortable(),
+        ]);
+    }
 
     public function fields(Request $request)
     {
