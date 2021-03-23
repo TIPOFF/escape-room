@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Tests\Feature\Nova;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tipoff\EscapeRoom\Models\EscaperoomRate;
-use Tipoff\EscapeRoom\Tests\TestCase;
-
 use Tipoff\Authorization\Models\User;
-use Spatie\Permission\Models\Role;
+use Tipoff\EscapeRoom\Models\EscaperoomRate;
+
+use Tipoff\EscapeRoom\Tests\TestCase;
 
 class EscaperoomRateResourceTest extends TestCase
 {

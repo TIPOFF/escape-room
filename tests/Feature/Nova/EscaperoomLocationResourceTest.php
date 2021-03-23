@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Tests\Feature\Nova;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Spatie\Permission\Models\Role;
+use Tipoff\Authorization\Models\User;
+
 use Tipoff\EscapeRoom\Models\EscaperoomLocation;
 use Tipoff\EscapeRoom\Tests\TestCase;
-
 use Tipoff\Locations\Models\Location;
-use Tipoff\Authorization\Models\User;
-use Spatie\Permission\Models\Role;
 
 class EscaperoomLocationResourceTest extends TestCase
 {
