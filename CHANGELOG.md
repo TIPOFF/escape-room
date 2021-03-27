@@ -50,3 +50,7 @@ All notable changes to `escape-room` will be documented in this file.
 - implement interface
 - update nova resources
 - resolve classes from service provider
+
+## 2.2.3 - 2021-03-26
+
+- update tests
