@@ -54,3 +54,7 @@ All notable changes to `escape-room` will be documented in this file.
 ## 2.2.3 - 2021-03-26
 
 - update tests
+
+## 2.3.0 - 2021-04-11
+
+- bump package dependencies
