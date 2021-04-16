@@ -9,7 +9,6 @@ use DrewRoberts\Media\Models\Image;
 use DrewRoberts\Media\Models\Video;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Session;
-use Tipoff\EscapeRoom\Models\EscaperoomLocation;
 use Tipoff\EscapeRoom\Models\EscaperoomTheme;
 use Tipoff\EscapeRoom\Models\Room;
 use Tipoff\EscapeRoom\Models\Supervision;
@@ -202,7 +201,7 @@ class EscaperoomThemeModelTest extends TestCase
         // 3 distinct themes, 3 different locations - room open, location open
         Room::factory()->count(3)->create([
             'closed_at' => null,
-            'escaperoom_theme_id' => function() {
+            'escaperoom_theme_id' => function () {
                 return EscaperoomTheme::factory()->create();
             },
             'location_id' => function () use ($market) {
@@ -228,7 +227,7 @@ class EscaperoomThemeModelTest extends TestCase
             'closed_at' => null,
             'escaperoom_theme_id' => EscaperoomTheme::factory()->create(),
             'location_id' => Location::factory()->create([
-                'closed_at' =>  Carbon::yesterday(),
+                'closed_at' => Carbon::yesterday(),
                 'market_id' => Market::factory()->create(),
             ]),
         ]);

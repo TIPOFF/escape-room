@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tipoff\EscapeRoom\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Tipoff\EscapeRoom\Models\EscaperoomTheme;
 use Tipoff\Locations\Models\Market;
 use Tipoff\Support\Http\Controllers\BaseController;

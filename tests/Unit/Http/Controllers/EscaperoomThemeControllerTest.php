@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Tests\Unit\Http\Controllers;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Facades\DB;
-use Tipoff\EscapeRoom\Models\EscaperoomLocation;
 use Tipoff\EscapeRoom\Models\EscaperoomTheme;
 use Tipoff\EscapeRoom\Models\Room;
 use Tipoff\EscapeRoom\Tests\TestCase;
@@ -25,7 +23,7 @@ class EscaperoomThemeControllerTest extends TestCase
         // 3 distinct themes, 3 different locations with same market - room open, location open
         Room::factory()->count(3)->create([
             'closed_at' => null,
-            'escaperoom_theme_id' => function() {
+            'escaperoom_theme_id' => function () {
                 return EscaperoomTheme::factory()->create();
             },
             'location_id' => function () use ($market) {
@@ -39,7 +37,7 @@ class EscaperoomThemeControllerTest extends TestCase
         // 3 distinct themes, 3 different locations with different markets - room open, location open
         Room::factory()->count(3)->create([
             'closed_at' => null,
-            'escaperoom_theme_id' => function() {
+            'escaperoom_theme_id' => function () {
                 return EscaperoomTheme::factory()->create();
             },
             'location_id' => function () {
@@ -66,7 +64,7 @@ class EscaperoomThemeControllerTest extends TestCase
         // 3 distinct themes, 3 different locations with same market - room open, location open
         Room::factory()->count(3)->create([
             'closed_at' => null,
-            'escaperoom_theme_id' => function() {
+            'escaperoom_theme_id' => function () {
                 return EscaperoomTheme::factory()->create();
             },
             'location_id' => function () use ($market) {
@@ -80,7 +78,7 @@ class EscaperoomThemeControllerTest extends TestCase
         // 3 distinct themes, 3 different locations with different markets - room open, location open
         Room::factory()->count(3)->create([
             'closed_at' => null,
-            'escaperoom_theme_id' => function() {
+            'escaperoom_theme_id' => function () {
                 return EscaperoomTheme::factory()->create();
             },
             'location_id' => function () {

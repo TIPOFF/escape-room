@@ -60,7 +60,7 @@ class EscapeRoomServiceProvider extends TipoffServiceProvider
                 ->where('slug', $value)
                 ->where(function (Builder $query) use ($market) {
                     if ($market instanceof Market) {
-                       $query->byMarket($market);
+                        $query->byMarket($market);
                     }
                 })
                 ->firstOrFail();
