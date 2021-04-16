@@ -58,3 +58,7 @@ All notable changes to `escape-room` will be documented in this file.
 ## 2.3.0 - 2021-04-11
 
 - bump package dependencies
+
+## 2.3.1 - 2021-04-16
+
+- add routes, controllers & views
