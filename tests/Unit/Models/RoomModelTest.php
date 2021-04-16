@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Tests\Unit\Models;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tipoff\EscapeRoom\Models\EscaperoomLocation;
 use Tipoff\EscapeRoom\Models\EscaperoomRate;
 use Tipoff\EscapeRoom\Models\EscaperoomTheme;
 use Tipoff\EscapeRoom\Models\Room;
@@ -232,5 +233,12 @@ class RoomModelTest extends TestCase
     {
         $model = Room::factory()->create();
         $this->assertEquals($model->theme->youtube, $model->getYoutubeAttribute());
+    }
+
+    /** @test */
+    public function it_has_escaperoom_location()
+    {
+        $room = Room::factory()->create();
+        $this->assertInstanceOf(EscaperoomLocation::class, $room->escaperoom_location);
     }
 }

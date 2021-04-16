@@ -7,6 +7,7 @@ namespace Tipoff\EscapeRoom\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
+use Tipoff\Locations\Models\Market;
 use Tipoff\Support\Contracts\Models\UserInterface;
 use Tipoff\Support\Models\BaseModel;
 use Tipoff\Support\Traits\HasCreator;
@@ -156,6 +157,17 @@ class EscaperoomTheme extends BaseModel
     public function scopeVisibleBy(Builder $query, UserInterface $user) : Builder
     {
         return $query;
+    }
+
+    public function scopeByMarket(Builder $query, Market $market): Builder
+    {
+        return $query->whereHas('rooms', function (Builder $q) use ($market) {
+            $q->whereNull('closed_at');
+            $q->whereHas('location', function (Builder $q) use ($market) {
+                $q->whereNull('closed_at')
+                    ->where('market_id', '=', $market->id);
+            });
+        });
     }
 
     public function findMarkets()

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Tipoff\EscapeRoom;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Route;
 use Tipoff\EscapeRoom\Models\EscaperoomLocation;
 use Tipoff\EscapeRoom\Models\EscaperoomMarket;
 use Tipoff\EscapeRoom\Models\EscaperoomRate;
@@ -16,6 +18,7 @@ use Tipoff\EscapeRoom\Policies\EscaperoomRatePolicy;
 use Tipoff\EscapeRoom\Policies\EscaperoomThemePolicy;
 use Tipoff\EscapeRoom\Policies\RoomPolicy;
 use Tipoff\EscapeRoom\Policies\SupervisionPolicy;
+use Tipoff\Locations\Models\Market;
 use Tipoff\Support\TipoffPackage;
 use Tipoff\Support\TipoffServiceProvider;
 
@@ -40,7 +43,27 @@ class EscapeRoomServiceProvider extends TipoffServiceProvider
                 \Tipoff\EscapeRoom\Nova\Room::class,
                 \Tipoff\EscapeRoom\Nova\Supervision::class,
             ])
+            ->hasWebRoute('web')
             ->name('escape-room')
+            ->hasViews()
             ->hasConfigFile();
+    }
+
+    public function bootingPackage()
+    {
+        parent::bootingPackage();
+
+        Route::bind('theme', function ($value) {
+            $market = request()->route('market');
+
+            return EscaperoomTheme::query()
+                ->where('slug', $value)
+                ->where(function (Builder $query) use ($market) {
+                    if ($market instanceof Market) {
+                        $query->byMarket($market);
+                    }
+                })
+                ->firstOrFail();
+        });
     }
 }

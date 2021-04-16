@@ -65,7 +65,7 @@ class EscaperoomThemeModelTest extends TestCase
         $model->scavenger_level = rand(0, 3);
         $model->save();
         $this->assertFalse($model->isScavenger());
-        
+
         $model->scavenger_level = 4;
         $model->save();
         $this->assertTrue($model->isScavenger());
@@ -80,7 +80,7 @@ class EscaperoomThemeModelTest extends TestCase
         $model->scavenger_level = rand(0, 3);
         $model->save();
         $this->assertStringContainsString('This is an Advanced Escape Room, best for enthusiasts & problem solvers.', $model->getPitchAttribute());
-        
+
         $model->scavenger_level = 4;
         $model->save();
         $this->assertStringContainsString('This is a Scavenger Hunt Room, best for families & groups of all skills levels. To ensure you have the best experience possible, your personal gamemaster will join you in the room.', $model->getPitchAttribute());
@@ -191,5 +191,58 @@ class EscaperoomThemeModelTest extends TestCase
         $icon = Image::factory()->create();
         $theme = EscaperoomTheme::factory()->create(['icon_id' => $icon->id]);
         $this->assertEquals($theme->icon->url, $theme->getIconUrlAttribute());
+    }
+
+    /** @test */
+    public function scope_by_market()
+    {
+        $market = Market::factory()->create();
+
+        // 3 distinct themes, 3 different locations - room open, location open
+        Room::factory()->count(3)->create([
+            'closed_at' => null,
+            'escaperoom_theme_id' => function () {
+                return EscaperoomTheme::factory()->create();
+            },
+            'location_id' => function () use ($market) {
+                return Location::factory()->create([
+                    'closed_at' => null,
+                    'market_id' => $market,
+                ]);
+            },
+        ]);
+
+        // Room is closed - should be omitted
+        Room::factory()->create([
+            'closed_at' => Carbon::yesterday(),
+            'escaperoom_theme_id' => EscaperoomTheme::factory()->create(),
+            'location_id' => Location::factory()->create([
+                'closed_at' => null,
+                'market_id' => Market::factory()->create(),
+            ]),
+        ]);
+
+        // Location is closed - should be omitted
+        Room::factory()->create([
+            'closed_at' => null,
+            'escaperoom_theme_id' => EscaperoomTheme::factory()->create(),
+            'location_id' => Location::factory()->create([
+                'closed_at' => Carbon::yesterday(),
+                'market_id' => Market::factory()->create(),
+            ]),
+        ]);
+
+        // Different market - should be omitted
+        Room::factory()->create([
+            'closed_at' => null,
+            'escaperoom_theme_id' => EscaperoomTheme::factory()->create(),
+            'location_id' => Location::factory()->create([
+                'closed_at' => null,
+                'market_id' => Market::factory()->create(),
+            ]),
+        ]);
+
+        $count = EscaperoomTheme::query()->byMarket($market)->count();
+        $this->assertEquals(3, $count);
     }
 }
