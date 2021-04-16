@@ -95,6 +95,11 @@ class Room extends BaseModel
         return $this->belongsTo(app('location'));
     }
 
+    public function escaperoom_location()
+    {
+        return $this->belongsTo(EscaperoomLocation::class, 'location_id', 'location_id');
+    }
+
     public function theme()
     {
         return $this->belongsTo(app('escaperoom_theme'), 'escaperoom_theme_id');
