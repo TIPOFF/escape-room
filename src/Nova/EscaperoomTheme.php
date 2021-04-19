@@ -6,6 +6,7 @@ namespace Tipoff\EscapeRoom\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
@@ -54,7 +55,7 @@ class EscaperoomTheme extends BaseResource
 
             new Panel('Info Fields', $this->infoFields()),
 
-            nova('image') ? BelongsTo::make('Image', 'image', nova('image')) : null,
+            nova('image') ? BelongsToMany::make('Images', 'image_theme', nova('image')) : null,
 
             new Panel('Media Fields', $this->mediaFields()),
 
