@@ -68,6 +68,11 @@ class EscaperoomTheme extends BaseModel
     {
         return $this->belongsTo(app('image'));
     }
+    
+    public function image_theme()
+    {
+        return $this->belongsToMany(app('image'), 'image_theme', 'escaperoom_theme_id', 'image_id');
+    }
 
     public function icon()
     {
