@@ -55,7 +55,7 @@ class EscaperoomTheme extends BaseResource
 
             new Panel('Info Fields', $this->infoFields()),
 
-            nova('image') ? BelongsToMany::make('Images', 'images', nova('image')) : null,
+            nova('image') ? BelongsTo::make('Image', 'image', nova('image')) : null,
 
             new Panel('Media Fields', $this->mediaFields()),
 
