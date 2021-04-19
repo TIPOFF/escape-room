@@ -25,10 +25,6 @@ class Room extends BaseResource
 
     public static $title = 'name';
 
-    public static $search = [
-        'name',
-    ];
-
     public static $group = 'Escape Rooms';
 
     public static $perPageViaRelationship = 20;
