@@ -31,4 +31,9 @@ class EscaperoomMarket extends BaseModel
     {
         return $this->belongsTo(app('image'), 'team_image_id');
     }
+
+    public function market()
+    {
+        return $this->belongsTo(app('market'));
+    }
 }

@@ -46,6 +46,7 @@ class EscaperoomTheme extends BaseResource
             Text::make('Name')->required(),
             Slug::make('Slug')->from('Name'),
             Text::make('Title')->required(),
+            Text::make('Full Title')->required(),
             Number::make('Duration (Minutes)', 'duration')->min(0)->max(150)->step(1)->nullable(),
             Number::make('Occupied Time (Minutes)', 'occupied_time')->min(0)->max(150)->step(1)->nullable(),
             Number::make('Scavenger Level')->min(0)->max(5)->step(1)->nullable(),
@@ -54,7 +55,7 @@ class EscaperoomTheme extends BaseResource
 
             new Panel('Info Fields', $this->infoFields()),
 
-            nova('image') ? BelongsToMany::make('Images', 'images', nova('image')) : null,
+            nova('image') ? BelongsToMany::make('Images', 'image_theme', nova('image')) : null,
 
             new Panel('Media Fields', $this->mediaFields()),
 

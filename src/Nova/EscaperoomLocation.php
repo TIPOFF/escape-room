@@ -28,12 +28,20 @@ class EscaperoomLocation extends BaseResource
 
     public static $group = 'Escape Rooms';
 
-    //public function fieldsForIndex(NovaRequest $request)
-    //{
-    //    return array_filter([
-    //        ID::make()->sortable(),
-    //    ]);
-    //}
+    public function fieldsForIndex(NovaRequest $request)
+    {
+        return array_filter([
+            ID::make()->sortable(),
+            nova('location') ? BelongsTo::make('Location', 'location', nova('location')) : null,
+            Number::make('Booking Cutoff')->sortable(),
+            Boolean::make('Corporate')->sortable(),
+            Boolean::make('Covid')->sortable(),
+            Text::make('Team Names')->sortable(),
+            nova('image') ? BelongsTo::make('team_photo', 'teamPhoto', nova('image')) : null,
+            Boolean::make('Booking Cutoff')->sortable(),
+            Boolean::make('Use Iframe')->sortable(),
+        ]);
+    }
 
     public function fields(Request $request)
     {
