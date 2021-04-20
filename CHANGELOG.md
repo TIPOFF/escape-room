@@ -62,3 +62,7 @@ All notable changes to `escape-room` will be documented in this file.
 ## 2.3.1 - 2021-04-16
 
 - add routes, controllers & views
+
+## 2.3.2 - 2021-04-20
+
+- update nova resources
