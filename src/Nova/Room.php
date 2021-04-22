@@ -17,7 +17,7 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
 use Tipoff\Support\Nova\BaseResource;
 
-class Room extends BaseResource
+class Room extends BaseResource 
 {
     public static $model = \Tipoff\EscapeRoom\Models\Room::class;
 
