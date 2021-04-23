@@ -53,6 +53,9 @@ class EscapeRoomServiceProvider extends TipoffServiceProvider
     {
         parent::bootingPackage();
 
+        // Make sure we dont accidentally steal any nova API or company routes
+        Route::pattern('market', '^(?!(nova-api|nova-vendor|company))[^\/]+$');
+
         Route::bind('theme', function ($value) {
             $market = request()->route('market');
 
