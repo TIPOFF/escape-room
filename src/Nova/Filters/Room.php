@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tipoff\Bookings\Nova\Filters;
+namespace Tipoff\EscapeRoom\Nova\Filters;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Filters\Filter;

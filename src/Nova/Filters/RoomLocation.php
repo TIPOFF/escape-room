@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Tipoff\EscapeRoom\Nova\Filters;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Filters\Filter;
 
-class RoomLocation extends Filters
+class RoomLocation extends Filter
 {
     /**
      * The filter's component.
@@ -23,15 +24,6 @@ class RoomLocation extends Filters
     public $name = 'Location';
 
     /**
-     * Registered filters to operate upon.
-     *
-     * @var array
-     */
-    protected $availableFilters = [
-        'room',
-    ];
-
-    /**
      * Filter the room query by a given location id.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -39,7 +31,7 @@ class RoomLocation extends Filters
      * @param  mixed  $value
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function room(Request $request, $query, $value)
+    public function apply(Request $request, $query, $value)
     {
         return $query->whereHas('room', function ($query) use ($value) {
             $query->where('rooms.location_id', $value);
