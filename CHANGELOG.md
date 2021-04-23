@@ -66,3 +66,7 @@ All notable changes to `escape-room` will be documented in this file.
 ## 2.3.2 - 2021-04-20
 
 - update nova resources
+
+## 2.3.3 - 2021-04-23
+
+- update laravel nova
