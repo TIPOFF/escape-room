@@ -70,3 +70,7 @@ All notable changes to `escape-room` will be documented in this file.
 ## 2.3.3 - 2021-04-23
 
 - update laravel nova
+
+## 2.3.4 - 2021-04-23
+
+- fix namespace
