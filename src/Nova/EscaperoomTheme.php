@@ -43,10 +43,10 @@ class EscaperoomTheme extends BaseResource
     public function fields(Request $request)
     {
         return array_filter([
-            Text::make('Name')->required(),
-            Slug::make('Slug')->from('Name'),
-            Text::make('Title')->required(),
-            Text::make('Full Title')->required(),
+            Text::make('Name')->rules('required')->creationRules('unique:escaperoom_themes,name')->updateRules('unique:escaperoom_themes,name,{{resourceId}}'),
+            Slug::make('Slug')->from('Name')->rules('required')->creationRules('unique:escaperoom_themes,slug')->updateRules('unique:escaperoom_themes,slug,{{resourceId}}'),
+            Text::make('Title')->rules('required')->creationRules('unique:escaperoom_themes,title')->updateRules('unique:escaperoom_themes,title,{{resourceId}}'),
+            Text::make('Full Title')->rules('required')->creationRules('unique:escaperoom_themes,full_title')->updateRules('unique:escaperoom_themes,full_title,{{resourceId}}'),
             Number::make('Duration (Minutes)', 'duration')->min(0)->max(150)->step(1)->nullable(),
             Number::make('Occupied Time (Minutes)', 'occupied_time')->min(0)->max(150)->step(1)->nullable(),
             Number::make('Scavenger Level')->min(0)->max(5)->step(1)->nullable(),

@@ -48,9 +48,9 @@ class EscaperoomLocation extends BaseResource
         return array_filter([
             Boolean::make('Corporate'),
 
-            Number::make('Booking Cutoff')->required(),
+            Number::make('Booking Cutoff')->rules(['required','max:3']),
 
-            nova('location') ? BelongsTo::make('Location', 'location', nova('location'))->hideWhenUpdating()->required() : null,
+            nova('location') ? BelongsTo::make('Location', 'location', nova('location'))->rules(['required','unique:escaperoom_locations,location_id'])->hideWhenUpdating() : null,
 
             new Panel('Location Team', $this->teamFields()),
 

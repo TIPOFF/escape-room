@@ -44,10 +44,10 @@ class Supervision extends BaseResource
     public function fields(Request $request)
     {
         return array_filter([
-            Text::make('Name (Internal)', 'name')->required(),
-            Text::make('Title (What Customers See)', 'title')->required(),
-            Slug::make('Slug')->from('Title'),
-            Text::make('Excerpt')->required(),
+            Text::make('Name (Internal)', 'name')->rules('required')->creationRules('unique:supervisions,name')->updateRules('unique:supervisions,name,{{resourceId}}'),
+            Text::make('Title (What Customers See)', 'title')->rules('required'),
+            Slug::make('Slug')->from('Title')->rules('required')->creationRules('unique:supervisions,slug')->updateRules('unique:supervisions,slug,{{resourceId}}'),
+            Text::make('Excerpt')->rules('required'),
             Textarea::make('Description')->nullable(),
             Markdown::make('Details')->nullable(),
 

@@ -42,8 +42,8 @@ class EscaperoomRate extends BaseResource
     public function fields(Request $request)
     {
         return array_filter([
-            Text::make('Name')->required(),
-            Slug::make('Slug')->from('Name'),
+            Text::make('Name')->rules('required')->creationRules('unique:escaperoom_rates,name')->updateRules('unique:escaperoom_rates,name,{{resourceId}}'),
+            Slug::make('Slug')->from('Name')->rules('required')->creationRules('unique:escaperoom_rates,slug')->updateRules('unique:escaperoom_rates,slug,{{resourceId}}'),
 
             new Panel('Public Fields', $this->publicFields()),
 
