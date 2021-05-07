@@ -212,4 +212,9 @@ class Room extends BaseModel
 
         return $query;
     }
+
+    public function booking()
+    {
+        return $this->morphMany(app('booking'), 'subject');
+    }
 }
