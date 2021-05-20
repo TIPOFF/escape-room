@@ -68,7 +68,7 @@ class EscaperoomTheme extends BaseModel
     {
         return $this->belongsTo(app('image'));
     }
-    
+
     public function image_theme()
     {
         return $this->belongsToMany(app('image'), 'image_theme', 'escaperoom_theme_id', 'image_id');
@@ -123,12 +123,12 @@ class EscaperoomTheme extends BaseModel
 
     public function getIconUrlAttribute()
     {
-        return $this->icon->url;
+        return $this->icon->url ?? null;
     }
 
     public function getYoutubeAttribute()
     {
-        if ($this->video->source == 'youtube') {
+        if (isset($this->video) && $this->video->source == 'youtube') {
             return $this->video->identifier;
         }
 
